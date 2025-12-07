@@ -11,7 +11,7 @@ public class FitnessManager {
         System.out.println("testing git");
         System.out.println("Hello from GIT2");
         System.out.println("TEST");
-        System.out.println("TEST");
+
 
     }
 }
