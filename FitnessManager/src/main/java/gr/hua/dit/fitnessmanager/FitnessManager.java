@@ -9,7 +9,7 @@ public class FitnessManager {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         System.out.println("testing git");
-        System.out.println("Hello from GIT");
+        System.out.println("Hello from GIT2");
         System.out.println("TEST");
     }
 }
