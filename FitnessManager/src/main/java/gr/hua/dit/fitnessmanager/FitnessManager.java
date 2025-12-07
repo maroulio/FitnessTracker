@@ -13,5 +13,6 @@ public class FitnessManager {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         System.out.println("testing git");
+        System.out.println("TEST");
     }
 }
