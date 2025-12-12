@@ -4,5 +4,4 @@ import java.util.List;
 
 public class Tracks {
     private List<Trackpoints> trackpoints = new ArrayList<>();
-
 }
