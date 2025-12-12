@@ -29,5 +29,7 @@ public class Laps {
     public double getAverageSpeed) {
         return tracks.averageSpeed();
     }
-
+    public Tracks getTracks() {
+        return tracks;
+    }
 }
