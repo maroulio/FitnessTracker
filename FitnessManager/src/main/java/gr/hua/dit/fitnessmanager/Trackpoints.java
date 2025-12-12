@@ -1,4 +1,4 @@
 package gr.hua.dit.fitnessmanager;
 
-public class Trackpoint {
+public class Trackpoints {
 }

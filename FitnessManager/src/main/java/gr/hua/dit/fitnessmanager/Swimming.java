@@ -1,4 +1,5 @@
 package gr.hua.dit.fitnessmanager;
 
-public class Swimming {
+public class Swimming extends Activity {
+    public Swimming() {}
 }

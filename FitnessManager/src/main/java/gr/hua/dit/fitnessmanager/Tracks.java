@@ -1,8 +1,8 @@
 package gr.hua.dit.fitnessmanager;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Tracks {
-    private List<Trackpoint> trackpoints = new ArrayList<>();
+    private List<Trackpoints> trackpoints = new ArrayList<>();
 
 }
