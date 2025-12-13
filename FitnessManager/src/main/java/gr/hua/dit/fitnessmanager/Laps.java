@@ -9,14 +9,12 @@ public class Laps {
     }
 
     public LocalDateTime getStartTime() {
-        return tracks.StartTime;
+        return tracks.StartTime();
     }
     public int getAHR() {
         return tracks.AHR();
     }
-    public int getAHR() {
-        return tracks.AHR();
-    }
+
     public int getMHR() {
         return tracks.MHR();
     }

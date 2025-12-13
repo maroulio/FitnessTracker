@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tracks {
+   // public LocalDateTime StartTime;
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
     public void addTrackpoint(Trackpoints tp) {
         trackpoints.add(tp);
     }
 
-    public LocalDateTime startTime() {
+    public LocalDateTime StartTime() {
         return trackpoints.isEmpty() ? null : trackpoints.get(0).getTime();
     }
 
@@ -34,7 +35,7 @@ public class Tracks {
         return distanceMeters() / t;  // m/s
     }
 
-    public double AHR() {
+    public int AHR() {
         return trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
                 .average()
