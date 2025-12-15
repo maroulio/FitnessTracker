@@ -25,12 +25,11 @@ public abstract class Activity {
         return getTimeSeconds() / 60 / (getDistanceMeters() / 1000);
     }
 
-        public int getAHR() {
-            int sum = 0;
+    public double getAHR() {
+        int sum = 0;
         for (Laps lap: laps) {
-            sum += lap.getAHR();
-        }
-        return sum / laps.size();
+            sum += (int) lap.getAHR();      }
+        return (double) sum / laps.size();
     }
 
     public double getAverageSpeed() {

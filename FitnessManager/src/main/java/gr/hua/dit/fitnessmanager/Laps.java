@@ -1,33 +1,63 @@
 package gr.hua.dit.fitnessmanager;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Laps {
-    private Tracks tracks;
+    private List<Tracks> tracksList;
 
-    public Laps(Tracks tracks) {
-        this.tracks = tracks;
+    public Laps() {
+        this.tracksList = new ArrayList<>();
     }
 
+    public void addTracks(Tracks tracks) {
+        tracksList.add(tracks);
+    }
+
+    // ώρα πρώτου trackpoint του πρώτου track
     public LocalDateTime getStartTime() {
-        return tracks.StartTime();
+        if (tracksList.isEmpty()) return null;
+        return tracksList.get(0).startTime();
     }
-    public int getAHR() {
-        return tracks.AHR();
+
+    public double getTimeSeconds() {
+        return tracksList.stream()
+                .mapToDouble(Tracks::timeSeconds)
+                .sum();
+    }
+
+    public double getDistanceMeters() {
+        return tracksList.stream()
+                .mapToDouble(Tracks::distanceMeters)
+                .sum();
+    }
+
+    public double getAverageSpeed() {
+        double time = getTimeSeconds();
+        if (time == 0) return 0;
+        return getDistanceMeters() / time;
+    }
+
+    public double getAHR() {
+        double sum = 0;
+        int count = 0;
+
+        for (Tracks t : tracksList) {
+            sum += t.AHR() * t.getTrackpoints().size();
+            count += t.getTrackpoints().size();
+        }
+        return count == 0 ? 0 : sum / count;
     }
 
     public int getMHR() {
-        return tracks.MHR();
+        return tracksList.stream()
+                .mapToInt(Tracks::MHR)
+                .max()
+                .orElse(0);
     }
-    public double getDistanceMeters() {
-        return tracks.distanceMeters();
+
+    public List<Tracks> getTracksList() {
+        return tracksList;
     }
-    public double getTimeSeconds() {
-        return tracks.timeSeconds();
-    }
-    public double getAverageSpeed() {
-        return tracks.averageSpeed();
-    }
-    public Tracks getTracks() {
-        return tracks;
-    }
+
 }

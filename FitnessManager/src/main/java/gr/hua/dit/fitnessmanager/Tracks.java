@@ -1,17 +1,20 @@
 package gr.hua.dit.fitnessmanager;
+
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Tracks {
-   // public LocalDateTime StartTime;
+
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
     public void addTrackpoint(Trackpoints tp) {
         trackpoints.add(tp);
     }
 
-    public LocalDateTime StartTime() {
+    // ώρα πρώτου trackpoint
+    public LocalDateTime startTime() {
         return trackpoints.isEmpty() ? null : trackpoints.get(0).getTime();
     }
 
@@ -35,7 +38,7 @@ public class Tracks {
         return distanceMeters() / t;  // m/s
     }
 
-    public int AHR() {
+    public double AHR() {
         return trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
                 .average()
