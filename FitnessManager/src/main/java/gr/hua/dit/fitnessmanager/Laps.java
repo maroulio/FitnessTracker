@@ -4,30 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Laps {
-    private List<Tracks> tracksList;
+    private List<Tracks> tracks;
 
     public Laps() {
-        this.tracksList = new ArrayList<>();
+        this.tracks = new ArrayList<>();
     }
 
     public void addTracks(Tracks tracks) {
-        tracksList.add(tracks);
+        tracks.add(tracks);
     }
 
     // ώρα πρώτου trackpoint του πρώτου track
     public LocalDateTime getStartTime() {
-        if (tracksList.isEmpty()) return null;
-        return tracksList.get(0).startTime();
+        if (tracks.isEmpty()) return null;
+        return tracks.get(0).startTime();
     }
 
     public double getTimeSeconds() {
-        return tracksList.stream()
+        return tracks.stream()
                 .mapToDouble(Tracks::timeSeconds)
                 .sum();
     }
 
     public double getDistanceMeters() {
-        return tracksList.stream()
+        return tracks.stream()
                 .mapToDouble(Tracks::distanceMeters)
                 .sum();
     }
@@ -42,7 +42,7 @@ public class Laps {
         double sum = 0;
         int count = 0;
 
-        for (Tracks t : tracksList) {
+        for (Tracks t : tracks) {
             sum += t.AHR() * t.getTrackpoints().size();
             count += t.getTrackpoints().size();
         }
@@ -50,14 +50,14 @@ public class Laps {
     }
 
     public int getMHR() {
-        return tracksList.stream()
+        return tracks.stream()
                 .mapToInt(Tracks::MHR)
                 .max()
                 .orElse(0);
     }
 
     public List<Tracks> getTracksList() {
-        return tracksList;
+        return tracks;
     }
 
 }
