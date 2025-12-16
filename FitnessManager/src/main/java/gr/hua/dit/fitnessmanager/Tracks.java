@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracks {
+public class Tracks implements Active {
    // public LocalDateTime StartTime;
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
@@ -11,16 +11,16 @@ public class Tracks {
         trackpoints.add(tp);
     }
 
-    public LocalDateTime StartTime() {
+    public LocalDateTime getStartTime() {
         return trackpoints.isEmpty() ? null : trackpoints.get(0).getTime();
     }
 
-    public double distanceMeters() {
+    public double getDistanceMeters() {
         if (trackpoints.isEmpty()) return 0;
         return trackpoints.get(trackpoints.size() - 1).getDistanceMeters();
     }
 
-    public double timeSeconds() {
+    public double getTimeSeconds() {
         if (trackpoints.size() < 2) return 0;
 
         return Duration.between(
@@ -29,20 +29,20 @@ public class Tracks {
         ).toSeconds();
     }
 
-    public double averageSpeed() {
-        double t = timeSeconds();
+    public double getAverageSpeed() {
+        double t = getTimeSeconds();
         if (t == 0) return 0;
-        return distanceMeters() / t;  // m/s
+        return getDistanceMeters() / t;  // m/s
     }
 
-    public int AHR() {
+    public int getAHR() {
         return trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
                 .average()
                 .orElse(0);
     }
 
-    public int MHR() {
+    public int getMHR() {
         return trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
                 .max()
