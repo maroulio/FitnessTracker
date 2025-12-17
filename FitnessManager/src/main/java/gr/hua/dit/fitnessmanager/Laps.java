@@ -38,7 +38,7 @@ public class Laps implements Active {
         return getDistanceMeters() / time;
     }
 
-    public double getAHR() {
+    public int getAHR() {
         double sum = 0;
         int count = 0;
 
@@ -46,7 +46,7 @@ public class Laps implements Active {
             sum += t.getAHR() * t.getTrackpoints().size();
             count += t.getTrackpoints().size();
         }
-        return count == 0 ? 0 : sum / count;
+        return count == 0 ? 0 : (int) (sum / count);
     }
 
     public int getMHR() {
