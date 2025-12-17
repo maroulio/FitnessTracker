@@ -4,7 +4,7 @@ public class FitnessManager {
     public static void main(String[] args) {
         ActivityFactory sport = new ActivityFactory();
         Activity activity = sport.createActivity("");
-        // System.out.println("Activity: " + activity.getName());
+        System.out.println("Activity: " + activity.getName());
         System.out.println("Total Time: " + activity.getTimeSeconds() / 60 + ":" + activity.getTimeSeconds() % 60);
         System.out.println("Total Distance: " + activity.getDistanceMeters() / 1000);
         System.out.println("Avg Pace: " + activity.getAveragePace() + " min/km");
