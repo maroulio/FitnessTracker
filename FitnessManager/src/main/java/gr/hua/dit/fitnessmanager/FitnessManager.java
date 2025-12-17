@@ -18,8 +18,13 @@ public class FitnessManager {
             }
         }
         if (f) {
-            // New User class with Scanner s = new Scanner(System.in)
-            System.out.println("Total calories burned: ");
+            User u = new User();
+            if (u.getGender() == 1) {
+                u.getAge();
+            } else {
+                u.getAge();
+            }
+            System.out.println("Total Calories: ");
         }
     }
 }

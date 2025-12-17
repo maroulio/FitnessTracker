@@ -3,32 +3,32 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Laps {
-    private List<Tracks> tracks;
+public class Laps implements Active {
+    private List<Tracks> tracks = new ArrayList<>();
 
     public Laps() {
-        this.tracks = new ArrayList<>();
+        this.tracks = tracks;
     }
 
-    public void addTracks(Tracks tracks) {
-        tracks.add(tracks);
+    public void addTrack(Tracks track) {
+        tracks.add(track);
     }
 
     // ώρα πρώτου trackpoint του πρώτου track
     public LocalDateTime getStartTime() {
         if (tracks.isEmpty()) return null;
-        return tracks.get(0).startTime();
+        return tracks.get(0).getStartTime();
     }
 
     public double getTimeSeconds() {
         return tracks.stream()
-                .mapToDouble(Tracks::timeSeconds)
+                .mapToDouble(Tracks::getTimeSeconds)
                 .sum();
     }
 
     public double getDistanceMeters() {
         return tracks.stream()
-                .mapToDouble(Tracks::distanceMeters)
+                .mapToDouble(Tracks::getDistanceMeters)
                 .sum();
     }
 
@@ -43,7 +43,7 @@ public class Laps {
         int count = 0;
 
         for (Tracks t : tracks) {
-            sum += t.AHR() * t.getTrackpoints().size();
+            sum += t.getAHR() * t.getTrackpoints().size();
             count += t.getTrackpoints().size();
         }
         return count == 0 ? 0 : sum / count;
@@ -51,7 +51,7 @@ public class Laps {
 
     public int getMHR() {
         return tracks.stream()
-                .mapToInt(Tracks::MHR)
+                .mapToInt(Tracks::getMHR)
                 .max()
                 .orElse(0);
     }
