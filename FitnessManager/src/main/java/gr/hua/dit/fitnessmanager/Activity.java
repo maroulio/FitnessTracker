@@ -16,7 +16,7 @@ public abstract class Activity implements Active {
     private double cal;
 
     public Activity() {
-        this.laps = laps;
+        // this.laps = laps;
         this.name = name;
         this.starttime = starttime;
         this.timeseconds = timeseconds;

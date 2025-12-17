@@ -6,7 +6,7 @@ public class ActivityFactory {
 
     public Activity createActivity(String sport) {
         if (sport == null) {
-            System.out.println("Sport is null. Using default Activity (Running).");
+            // System.out.println("Sport is null. Using default Activity (Running).");
             return new Running();
         }
         sport = sport.trim().toLowerCase();
