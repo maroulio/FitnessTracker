@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Activity implements Active {
+public abstract class Activity {
     private List<Laps> laps = new ArrayList<>();
     private String name;
     private LocalDateTime starttime;

@@ -1,9 +1,10 @@
 package gr.hua.dit.fitnessmanager;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tracks implements Active {
+public class Tracks {
    // public LocalDateTime StartTime;
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
