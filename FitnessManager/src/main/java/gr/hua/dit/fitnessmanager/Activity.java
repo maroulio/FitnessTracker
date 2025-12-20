@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Activity implements Active {
+public abstract class Activity {
     private List<Laps> laps = new ArrayList<>();
     private String name;
     private LocalDateTime starttime;
@@ -14,6 +14,8 @@ public abstract class Activity implements Active {
     private int mhr;
     private double averagespeed;
     private double cal;
+    protected String sport;
+
 
     public Activity() {
         this.laps = laps;
@@ -26,8 +28,14 @@ public abstract class Activity implements Active {
         this.mhr = mhr;
         this.averagespeed = averagespeed;
         this.cal = cal;
+        this.sport=sport;
     }
-
+    public String getSport() {
+        return sport;
+    }
+    public List<Laps> getLaps() {
+        return laps;
+    }
     public String getName() {
         return name;
     }
@@ -99,7 +107,5 @@ public abstract class Activity implements Active {
         return averagespeed = s / laps.size();
     }
 
-    public List<Laps> getLaps() {
-        return laps;
-    }
+
 }

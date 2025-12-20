@@ -3,7 +3,7 @@ package gr.hua.dit.fitnessmanager;
 public class FitnessManager {
     public static void main(String[] args) {
         ActivityFactory sport = new ActivityFactory();
-        Activity activity = sport.createActivity("");
+        Activity activity = sport.createActivity(null);
         System.out.println("Activity: " + activity.getName());
         System.out.println("Total Time: " + activity.getTimeSeconds() / 60 + ":" + activity.getTimeSeconds() % 60);
         System.out.println("Total Distance: " + activity.getDistanceMeters() / 1000);
