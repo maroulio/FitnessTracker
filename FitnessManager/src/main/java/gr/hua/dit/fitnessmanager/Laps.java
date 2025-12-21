@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Laps  {
+public class Laps {
     private List<Tracks> tracks = new ArrayList<>();
 
     public Laps() {

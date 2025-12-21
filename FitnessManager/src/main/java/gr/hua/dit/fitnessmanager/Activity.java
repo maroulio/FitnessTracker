@@ -118,4 +118,47 @@ public abstract class Activity {
         return sport;
     }
 
+    public void setLaps(List<Laps> laps) {
+        this.laps = laps;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStartTime(LocalDateTime starttime) {
+        this.starttime = starttime;
+    }
+
+    public void setTimeseconds(double timeseconds) {
+        this.timeseconds = timeseconds;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public void setAveragePace(double averagepace) {
+        this.averagepace = averagepace;
+    }
+
+    public void setAHR(int ahr) {
+        this.ahr = ahr;
+    }
+
+    public void setMHR(int mhr) {
+        this.mhr = mhr;
+    }
+
+    public void setAverageSpeed(double averagespeed) {
+        this.averagespeed = averagespeed;
+    }
+
+    public void setCal(double weight, int age, char gender, double timeseconds) {
+        this.cal = cal;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
+    }
 }
