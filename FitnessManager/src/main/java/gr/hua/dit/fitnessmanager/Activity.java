@@ -13,9 +13,8 @@ public abstract class Activity {
     private int ahr;
     private int mhr;
     private double averagespeed;
-    private double cal;
+    private int cal;
     protected String sport;
-
 
     public Activity() {
         this.laps = laps;
@@ -28,17 +27,17 @@ public abstract class Activity {
         this.mhr = mhr;
         this.averagespeed = averagespeed;
         this.cal = cal;
-        this.sport=sport;
+        this.sport = sport;
     }
-    public String getSport() {
-        return sport;
-    }
+
     public List<Laps> getLaps() {
         return laps;
     }
+
     public String getName() {
         return name;
     }
+
     public LocalDateTime getStartTime() {
         return starttime;
     }
@@ -107,5 +106,12 @@ public abstract class Activity {
         return averagespeed = s / laps.size();
     }
 
+    public int getCal(double weight, int age, char gender, double timeseconds) {
+        CaloriesFactory calories = new CaloriesFactory();
+    }
+
+    public String getSport() {
+        return sport;
+    }
 
 }

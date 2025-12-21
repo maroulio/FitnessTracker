@@ -7,11 +7,9 @@ public class CaloriesFactory {
     }
 
     public static CaloriesCalculator createCalculator(CalorieType type) {
-
         switch (type) {
             case HEART_RATE:
                 return new HRCaloriesCalculator();
-
             case SIMPLE:
             default:
                 return new SimpleCaloriesCalculator();

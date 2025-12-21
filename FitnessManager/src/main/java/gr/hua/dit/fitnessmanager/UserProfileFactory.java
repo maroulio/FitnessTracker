@@ -3,7 +3,7 @@ package gr.hua.dit.fitnessmanager;
 import java.util.Scanner;
 
 public class UserProfileFactory {
-    public static UserProfile fromConsole(User user) {
+    public static UserProfile fromConsole(UserProfile user) {
 
         Scanner sc = new Scanner(System.in);
 

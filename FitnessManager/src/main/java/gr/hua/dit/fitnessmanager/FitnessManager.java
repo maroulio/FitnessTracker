@@ -18,13 +18,26 @@ public class FitnessManager {
             }
         }
         if (f) {
-            User u = new User();
-            if (u.getGender() == 1) {
-                u.getAge();
-            } else {
-                u.getAge();
+            f = false;
+            double weight;
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("-w")) {
+                    f = true;
+                    try {
+                        weight = Double.parseDouble(args[++i]);
+                    } catch (Exception e) { // It may be an InputMismatchException
+                        System.out.println("Invalid weight input");
+                    }
+                    break;
+                }
             }
-            System.out.println("Total Calories: ");
+            if (f) {
+                f = false;
+                int age;
+                char gender;
+            } else {
+                System.out.println("Invalid weight input");
+            }
         }
     }
 }
