@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-//
+
 import java.util.Scanner;
 
 public class UserProfileFactory {

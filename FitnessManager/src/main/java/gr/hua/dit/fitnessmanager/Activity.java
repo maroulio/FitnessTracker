@@ -2,7 +2,7 @@ package gr.hua.dit.fitnessmanager;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-//
+
 public abstract class Activity {
     private List<Laps> laps = new ArrayList<>();
     private String name;
@@ -107,6 +107,10 @@ public abstract class Activity {
     }
 
     public int getCal(double weight, int age, char gender, double timeseconds) {
+        CaloriesFactory calories = new CaloriesFactory();
+    }
+
+    public int getCal(double weight, double timeseconds) {
         CaloriesFactory calories = new CaloriesFactory();
     }
 

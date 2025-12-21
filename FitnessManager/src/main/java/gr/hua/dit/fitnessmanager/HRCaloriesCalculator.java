@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-//
+
 public class HRCaloriesCalculator implements CaloriesCalculator {
     @Override
     public int calculate(Activity activity, UserProfile profile) {

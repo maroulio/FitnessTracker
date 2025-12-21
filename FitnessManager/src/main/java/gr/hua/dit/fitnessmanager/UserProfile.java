@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-//
+
 public class UserProfile {
 
     private String gender; // "male" / "female"

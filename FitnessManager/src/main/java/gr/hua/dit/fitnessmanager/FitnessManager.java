@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-//
+
 public class FitnessManager {
     public static void main(String[] args) {
         //parser
@@ -26,24 +26,47 @@ public class FitnessManager {
         }
         if (f) {
             f = false;
-            double weight;
+            double weight = 0;
             for (int i = 0; i < args.length; i++) {
                 if (args[i].equals("-w")) {
-                    f = true;
                     try {
                         weight = Double.parseDouble(args[++i]);
+                        f = true;
                     } catch (Exception e) { // It may be an InputMismatchException
-                        System.out.println("Invalid weight input");
+                        return;
                     }
                     break;
                 }
             }
             if (f) {
                 f = false;
-                int age;
-                char gender;
-            } else {
-                System.out.println("Invalid weight input");
+                int age = 0;
+                for (int i = 0; i < args.length; i++) {
+                    if (args[i].equals("-a")) {
+                        try {
+                            age = Integer.parseInt(args[++i]);
+                            f = true;
+                        } catch (Exception e) {
+                            System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
+                            return;
+                        }
+                        break;
+                    }
+                }
+                if (f) {
+                    f = false;
+                    char gender = '';
+                    for (int i = 0; i < args.length; i++) {
+                        if (args[i].equals("-g")) {
+                            gender = args[++i].toLowerCase().charAt(0);
+                            if (gender == 'm' || gender == 'f') {
+                                System.out.println("Total Calories: " + activity.getCal(weight, age, gender, activity.getTimeSeconds()));
+                            } else {
+                                System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
+                            }
+                        }
+                    }
+                }
             }
         }
     }
