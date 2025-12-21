@@ -7,62 +7,48 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class TCXParser {
-
-    //TODO
-    //arxikopoihsh me -1 klp an den uparxoun ta tags
-
-
     private String tcx = "no tcx name yet";
     //parsing related variable
     Document doc;
 
-    boolean exists = false;
+    boolean exists;
+
+    //maybe i do not need all these variables, they can get transferred directly in the setters
 
     //lap variables
-    private LocalDateTime startTime = LocalDateTime
-            .of(LocalDate.of(1, 1, 1), LocalTime.of(1, 1));
-    private double totalTimeSeconds = -1;
-    private double distanceMeters = -1;
-    private double maximumSpeed = -1;
-    private int calories = -1;
+    private LocalDateTime startTime;
+    private double totalTimeSeconds;
+    private double distanceMeters;
+    private double maximumSpeed;
+    private int calories;
 
     //running 2 does not have abpm and mbpm
 
-    private int ABPM = -1;
-    private int MBPM = -1;
-    private String intensity = "";
-    private String triggerMethod = "";;
-    private double avgSpeed = -1;
+    private int ABPM;
+    private int MBPM;
+    private String intensity;
+    private String triggerMethod;
+    private double avgSpeed;
 
     //cadence not in biking, swimming, running - only in walking
-    private int avgRunCadence = -1;
-    private int maxRunCadence = -1;
+    private int avgRunCadence;
+    private int maxRunCadence;
 
     //trackpoint variables
-    //private NodeList trackList;
-    private Element track;// = NULL;; // = (Element) t;
-    //private NodeList trackpointList; // = track.getElementsByTagName("Trackpoint");
-    private Node trckpt;// = NULL;; // = trackpointList.item(k);
-    private Element tp; // = NULL; // = (Element) trckpt;
-    private LocalDateTime time = LocalDateTime
-            .of(LocalDate.of(1, 1, 1), LocalTime.of(1, 1));
-    private double latitudeDegrees = -1;
-    private double longitudeDegrees = -1;
-    private double altitudeMeters = -1;
-    private double distanceMetersTrackpoint = -1;
+    private LocalDateTime time;
+    private double latitudeDegrees;
+    private double longitudeDegrees;
+    private double altitudeMeters;
+    private double distanceMetersTrackpoint;
 
     //running 2 does not have heart rate
-    private int HRB = -1;
+    private int HRB;
 
-    private double speed = -1;
-
-
+    private double speed;
 
 
 
@@ -79,20 +65,9 @@ public class TCXParser {
 
     public Activity parse () {
         //Node tcd = doc.getElementsByTagName("TrainingCenterDatabase");
-            /*NodeList activities = doc.getElementsByTagName("Activities");
-            for (int i = 0; i < activities.getLength(); i++) {
-                Node act = TCD.item(i);
-                if (act.getNodeType() == Node.ELEMENT_NODE) {
-                    Element activity = (Element) act;
-
-            if (activities.getNodeType() == Node.ELEMENT_NODE) {
-                Element activities = (Element) activities;
-
-            }*/
 
         //boolean exists = tagExists("Activity", doc);
         NodeList activityList = doc.getElementsByTagName("Activity"); //keep this in case there is more than one activity in a file
-        //System.out.println(activityList.getLength());
         for (int i = 0; i < activityList.getLength(); i++) {
 
 
