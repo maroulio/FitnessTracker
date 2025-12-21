@@ -25,8 +25,8 @@ public class Tracks {
         if (trackpoints.size() < 2) return 0;
 
         return Duration.between(
-                trackpoints.get(0).getTime(),
-                trackpoints.get(trackpoints.size() - 1).getTime()
+                trackpoints.get(0).getTimeStamp(),
+                trackpoints.get(trackpoints.size() - 1).getTimeStamp()
         ).toSeconds();
     }
 
@@ -37,7 +37,7 @@ public class Tracks {
     }
 
     public int getAHR() {
-        return trackpoints.stream()
+        return (int) trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
                 .average()
                 .orElse(0);

@@ -15,10 +15,8 @@ public class ActivityFactory {
             case "walking" -> new Walking();
             case "biking", "cycling" -> new Cycling();
             case "swimming" -> new Swimming();
-            default -> {
-                System.out.println("Unknown Activity: " + sport +
-                        ". Using default Activity (Running).");
-                yield new Running();
+            case "other", default -> {
+                new Other();
             }
         };
     }
