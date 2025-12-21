@@ -7,11 +7,11 @@ public class SimpleCaloriesCalculator implements CaloriesCalculator {
         double mu;
 
         switch (activity.getSport().toLowerCase()) {
-            case "walking":  mu = 0.06; break;
-            case "running":  mu = 0.12; break;
-            case "cycling":  mu = 0.09; break;
-            case "swimming": mu = 0.13; break;
-            default:         mu = 0.10;
+            case "walking":  mu =3.5; break;
+            case "running":  mu = 9.8; break;
+            case "cycling":  mu = 4.0; break;
+            case "swimming": mu = 6.0; break;
+            default:         mu =  1.0;
         }
 
         return (int) (mu * profile.getWeight()
