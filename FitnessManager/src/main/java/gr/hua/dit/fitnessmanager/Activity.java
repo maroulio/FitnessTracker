@@ -2,7 +2,7 @@ package gr.hua.dit.fitnessmanager;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
+//
 public abstract class Activity {
     private List<Laps> laps = new ArrayList<>();
     private String name;
