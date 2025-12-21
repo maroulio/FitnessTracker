@@ -2,6 +2,13 @@ package gr.hua.dit.fitnessmanager;
 //
 public class FitnessManager {
     public static void main(String[] args) {
+        //parser
+
+        String tcx = "walking_activity_1.tcx"; //μεχρι να μου δινετε το αρχειο απο τα args
+        TCXParser parser = new TCXParser(tcx);
+        parser.parse();
+
+
         ActivityFactory sport = new ActivityFactory();
         Activity activity = sport.createActivity(null);
         System.out.println("Activity: " + activity.getName());
