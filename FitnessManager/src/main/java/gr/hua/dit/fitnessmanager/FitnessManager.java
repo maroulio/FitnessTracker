@@ -1,12 +1,14 @@
 package gr.hua.dit.fitnessmanager;
 
+import java.util.ArrayList;
+
 public class FitnessManager {
     public static void main(String[] args) {
         //parser
 
         String tcx = "walking_activity_1.tcx"; //μεχρι να μου δινετε το αρχειο απο τα args
         TCXParser parser = new TCXParser(tcx);
-        Activity activity1 = parser.parse();
+        ArrayList<Activity> act = parser.parse();
 
 
 

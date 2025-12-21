@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.sound.midi.Track;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.time.LocalDateTime;
@@ -63,10 +64,11 @@ public class TCXParser {
         }
     }
 
-    public Activity parse () {
+    public ArrayList<Activity> parse () {
         //Node tcd = doc.getElementsByTagName("TrainingCenterDatabase");
 
         //boolean exists = tagExists("Activity", doc);
+        ArrayList<Activity> activities = new ArrayList<>();
         NodeList activityList = doc.getElementsByTagName("Activity"); //keep this in case there is more than one activity in a file
         for (int i = 0; i < activityList.getLength(); i++) {
 
@@ -79,7 +81,7 @@ public class TCXParser {
                 String sport = getTextAttr("Sport", act);
                 ActivityFactory factory = new ActivityFactory();
                 Activity activity = factory.createActivity(sport);
-
+                activities.set(i, activity);
 
                 //get id as a local date time not string
 
@@ -92,40 +94,40 @@ public class TCXParser {
                 ArrayList<Laps> laps = parseLaps(lapList);
                 activity.setLaps(laps);
 
-                return activity;
-
             }
         }
+        return activities;
     }
 
     private ArrayList<Laps> parseLaps (NodeList lapList) {
         ArrayList<Laps> laps = new ArrayList<>();
-        for (int j = 0; j < lapList.getLength(); j++) {
-            laps.add(j, new Laps());
-            Node l = lapList.item(j);
+        for (int i = 0; i < lapList.getLength(); i++) {
+            Laps lapObj = new Laps();
+            laps.set(i, lapObj);
+            Node l = lapList.item(i);
             if (l.getNodeType() == Node.ELEMENT_NODE) {
                 Element lap = (Element) l;
 
                 String temp = getTextAttr("StartTime", lap);
                 temp = temp.replace("Z", "");
                 LocalDateTime startTime = LocalDateTime.parse(temp);
-                laps.get(j).setStartTime() = startTime;
+                lapObj.setStartTime() = startTime;
 
                 totalTimeSeconds = Double.parseDouble(getText("TotalTimeSeconds", lap));
-                laps.get(j).setTotalTimeSeconds() = totalTimeSeconds;
+                lapObj.setTotalTimeSeconds() = totalTimeSeconds;
                 distanceMeters = Double.parseDouble(getText("DistanceMeters", lap));
-                laps.get(j).setDistanceMeters() = distanceMeters;
+                lapObj.setDistanceMeters() = distanceMeters;
                 maximumSpeed = Double.parseDouble(getText("MaximumSpeed", lap));
-                laps.get(j).setMaximumSpeed() = maximumSpeed;
+                lapObj.setMaximumSpeed() = maximumSpeed;
                 calories = Integer.parseInt(getText("Calories", lap));
-                laps.get(j).setCalories() = calories;
+                lapObj.setCalories() = calories;
 
 
                 //running 2 does not have abpm and mbpm
                 Element el = (Element) lap.getElementsByTagName("AverageHeartRateBpm").item(0);
                 if (tagExists("Value", el)) {
                     ABPM = Integer.parseInt(getText("Value", el));
-                    laps.get(j).setAHR() = ABPM;
+                    lapObj.setAHR() = ABPM;
                 }
 
 
@@ -133,7 +135,7 @@ public class TCXParser {
                 el = ((Element) lap.getElementsByTagName("MaximumHeartRateBpm").item(0));
                 if (tagExists("Value", el)) {
                     MBPM = Integer.parseInt(getText("Value", el));
-                    laps.get(j).setMHR() = MBPM;
+                    lapObj.setMHR() = MBPM;
                 }
 
                 /*MBPM = Integer.parseInt(((Element) lap.getElementsByTagName("MaximumHeartRateBpm")
@@ -141,17 +143,17 @@ public class TCXParser {
 
                 //the class does not have intensity?????
                 intensity = getText("Intensity", lap);
-                //laps.get(j).
+                //laps.get(i).
 
                 //the class does not have trigger method?????
                 triggerMethod = getText("TriggerMethod", lap);
-                //laps.get(j).
+                //laps.get(i).
 
                 Element extensions = (Element) ((Element) lap.getElementsByTagName("Extensions")
                         .item(lap.getElementsByTagName("Extensions").getLength() - 1)).getElementsByTagName("ns3:LX").item(0);
 
                 avgSpeed = Double.parseDouble(getText("ns3:AvgSpeed", extensions));
-                laps.get(j).setAverageSpeed() = avgSpeed;
+                lapObj.setAverageSpeed() = avgSpeed;
 
 
                 //run cadence in laps???????????????????????????????????
@@ -159,17 +161,17 @@ public class TCXParser {
                 //cadence not in biking, swimming, running - only in walking
                 if (tagExists("ns3:AvgRunCadence", extensions)) {
                     avgRunCadence = Integer.parseInt(getText("ns3:AvgRunCadence", extensions));
-                    //laps.get(j)
+                    //laps.get(i)
                 }
 
                 if (tagExists("ns3:MaxRunCadence", extensions)) {
                     maxRunCadence = Integer.parseInt(getText("ns3:MaxRunCadence", extensions));
-                   // laps.get(j)
+                   // laps.get(i)
                 }
 
                 NodeList trackList = lap.getElementsByTagName("Track");
                 ArrayList<Tracks> tracks = parseTracks(trackList);
-                laps.get(j).setTracksList(tracks);
+                lapObj.setTracksList(tracks);
             }
         }
         return laps;
@@ -177,15 +179,16 @@ public class TCXParser {
 
     private ArrayList<Tracks> parseTracks (NodeList trackList) {
         ArrayList<Tracks> tracks = new ArrayList<>();
-        for (int z = 0; z < trackList.getLength(); z++) {
-            tracks.add(z, new Tracks());
-            Node t = trackList.item(z);
+        for (int i = 0; i < trackList.getLength(); i++) {
+            Tracks trackObj = new Tracks();
+            tracks.set(i, trackObj);
+            Node t = trackList.item(i);
             if (t.getNodeType() == Node.ELEMENT_NODE) {
                 Element track = (Element) t;
 
                 NodeList trackpointList = track.getElementsByTagName("Trackpoint");
                 ArrayList<Trackpoints> trackpoints = parseTrackpoints(trackpointList);
-                tracks.get(z).setTrackpoints(trackpoints);
+                trackObj.setTrackpoints(trackpoints);
             }
         }
         return tracks;
@@ -193,27 +196,28 @@ public class TCXParser {
 
     private ArrayList<Trackpoints> parseTrackpoints (NodeList trackpointList) {
         ArrayList<Trackpoints> trackpoints = new ArrayList<>();
-        for (int k = 0; k < trackpointList.getLength(); k++) {
-            trackpoints.add(k, new Trackpoints());
-            Node trckpt = trackpointList.item(k);
+        for (int i = 0; i < trackpointList.getLength(); i++) {
+            Trackpoints trackptObj = new Trackpoints();
+            trackpoints.set(i, trackptObj);
+            Node trckpt = trackpointList.item(i);
             if (trckpt.getNodeType() == Node.ELEMENT_NODE) {
                 Element tp = (Element) trckpt;
 
                 String temp = getText("Time", tp);
                 temp = temp.replace("Z", "");
                 time = LocalDateTime.parse(temp);
-                trackpoints.get(k).setTimeStamp(time);
+                trackptObj.setTimeStamp(time);
 
                 Element position = (Element) tp.getElementsByTagName("Position").item(0);
 
                 latitudeDegrees = Double.parseDouble(getText("LatitudeDegrees", position));
-                trackpoints.get(k).setLatitudeDegrees(latitudeDegrees);
+                trackptObj.setLatitudeDegrees(latitudeDegrees);
                 longitudeDegrees = Double.parseDouble(getText("LongitudeDegrees", position));
-                trackpoints.get(k).setLongitudeDegrees(longitudeDegrees);
+                trackptObj.setLongitudeDegrees(longitudeDegrees);
                 altitudeMeters = Double.parseDouble(getText("AltitudeMeters", tp));
-                trackpoints.get(k).setAltitudeMeters(altitudeMeters);
+                trackptObj.setAltitudeMeters(altitudeMeters);
                 distanceMetersTrackpoint = Double.parseDouble(getText("DistanceMeters", tp));
-                trackpoints.get(k).setDistanceMeters(distanceMetersTrackpoint);
+                trackptObj.setDistanceMeters(distanceMetersTrackpoint);
 
                 System.out.println(distanceMetersTrackpoint);
 
@@ -221,7 +225,7 @@ public class TCXParser {
                 Element el = (Element) tp.getElementsByTagName("HeartRateBpm").item(0);
                 if (tagExists("Value", el)) {
                     HRB = Integer.parseInt(getText("Value", el));
-                    trackpoints.get(k).setHeartRate(HRB);
+                    trackptObj.setHeartRate(HRB);
                 }
 
 
@@ -230,10 +234,11 @@ public class TCXParser {
 
 
                 speed = Double.parseDouble(getText("ns3:Speed", extensionsTp));
-                trackpoints.get(k).setSpeed(speed);
+                trackptObj.setSpeed(speed);
                 System.out.println("i am buying time");
             }
         }
+        return trackpoints;
     }
 
     private String getTextAttr (String attr,Element e) {
