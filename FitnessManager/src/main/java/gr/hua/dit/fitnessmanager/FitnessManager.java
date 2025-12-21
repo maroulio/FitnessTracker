@@ -8,6 +8,10 @@ public class FitnessManager {
         TCXParser parser = new TCXParser(tcx);
         parser.parse();
 
+        //ActivityFactory fact = new ActivityFactory();
+        //Activity act1 = fact.createActivity(parser.getSport());
+
+
 
         ActivityFactory sport = new ActivityFactory();
         Activity activity = sport.createActivity(null);

@@ -220,9 +220,9 @@ public class TCXParser {
         return e.getAttribute(attr);
     }
 
-    private String getText (String tag, Document d) {
+    /*private String getText (String tag, Document d) {
         return "here?";
-    }
+    }*/
 
     private String getText (String tag, Element e) {
         return e.getElementsByTagName(tag).item(0).getTextContent();
