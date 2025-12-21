@@ -6,10 +6,7 @@ public class FitnessManager {
 
         String tcx = "walking_activity_1.tcx"; //μεχρι να μου δινετε το αρχειο απο τα args
         TCXParser parser = new TCXParser(tcx);
-        parser.parse();
-
-        //ActivityFactory fact = new ActivityFactory();
-        //Activity act1 = fact.createActivity(parser.getSport());
+        Activity activity1 = parser.parse();
 
 
 
