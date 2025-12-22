@@ -116,7 +116,11 @@ public abstract class Activity {
         }
         return cal = c.calculate(activity, u);
     }
+    NodeList laps = activityEl.getElementsByTagName("Lap");
 
+for (int i = 0; i < laps.getLength(); i++) {
+        Element lapEl = (Element) laps.item(i);
+    }
     public String getSport() {
         return sport;
     }
