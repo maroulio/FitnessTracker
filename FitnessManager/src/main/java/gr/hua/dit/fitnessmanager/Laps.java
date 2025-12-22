@@ -3,7 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-ppublic class Laps {
+public class Laps {
 
     private List<Tracks> tracks = new ArrayList<>();
     private Double totalTimeSeconds;   // μπορεί να είναι null
