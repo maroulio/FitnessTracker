@@ -13,7 +13,11 @@ public class Laps {
     private Double distanceMeters;
     private Integer avgHR;
     private Integer maxHR;
+NodeList tracks = lapEl.getElementsByTagName("Track");
 
+for (int i = 0; i < tracks.getLength(); i++) {
+    Element trackEl = (Element) tracks.item(i);
+}
     // --------------------
     public void addTrack(Tracks track) {
         tracks.add(track);
