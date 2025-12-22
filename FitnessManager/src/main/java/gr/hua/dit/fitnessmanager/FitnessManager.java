@@ -81,9 +81,9 @@ public class FitnessManager {
                                         if (j + 1 < args.length) {
                                             gender = args[++j].toLowerCase().charAt(0);
                                             if (gender == 'm' || gender == 'f') {
-                                                System.out.println("cal += activity.getCal(weight, age, gender, activity.getTimeSeconds())");
+                                                cal += activity.getCal(weight, age, gender, activity.getTimeSeconds());
                                             } else {
-                                                System.out.println("cal += activity.getCal(weight, activity.getTimeSeconds())");
+                                                cal += activity.getCal(weight, activity.getTimeSeconds());
                                             }
                                             f = true;
                                             break;
@@ -91,10 +91,10 @@ public class FitnessManager {
                                     }
                                 }
                                 if (!f) {
-                                    System.out.println("cal += activity.getCal(weight, activity.getTimeSeconds())");
+                                    cal += activity.getCal(weight, activity.getTimeSeconds());
                                 }
                             } else {
-                                System.out.println("cal += activity.getCal(weight, activity.getTimeSeconds())");
+                                cal += activity.getCal(weight, activity.getTimeSeconds());
                             }
                         }
                         if (cal != 0) {
@@ -115,7 +115,7 @@ public class FitnessManager {
                                     if (j + 1 < args.length) {
                                         try {
                                             weight = Double.parseDouble(args[++j]);
-                                        } catch (Exception e) { // It may be an InputMismatchException
+                                        } catch (Exception e) {
                                             return;
                                         }
                                         break;
@@ -131,7 +131,7 @@ public class FitnessManager {
                                             age = Integer.parseInt(args[++j]);
                                             f = true;
                                         } catch (Exception e) {
-                                            System.out.println("Total Calories: + activity.getCal(weight, activity.getTimeSeconds())");
+                                            System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
                                             return;
                                         }
                                         break;
@@ -145,18 +145,18 @@ public class FitnessManager {
                                         if (j + 1 < args.length) {
                                             gender = args[++j].toLowerCase().charAt(0);
                                             if (gender == 'm' || gender == 'f') {
-                                                System.out.println("Total Calories: + activity.getCal(weight, age, gender, activity.getTimeSeconds())");
+                                                System.out.println("Total Calories: " + activity.getCal(weight, age, gender, activity.getTimeSeconds()));
                                             } else {
-                                                System.out.println("Total Calories: + activity.getCal(weight, activity.getTimeSeconds())");
+                                                System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
                                             }
                                             return;
                                         }
                                     }
                                 }
-                                System.out.println("Total Calories: + activity.getCal(weight, activity.getTimeSeconds())");
+                                System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
                                 return;
                             }
-                            System.out.println("Total Calories: + activity.getCal(weight, activity.getTimeSeconds())");
+                            System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
                         }
                     }
                 }
