@@ -3,23 +3,39 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Laps {
+ppublic class Laps {
+
     private List<Tracks> tracks = new ArrayList<>();
+    private Double totalTimeSeconds;   // μπορεί να είναι null
+    private Double distanceMeters;
+    private int avgHR;
+    private int maxHR;
 
     public void addTrack(Tracks track) {
         tracks.add(track);
     }
 
+    public double getTimeSeconds() {
+        if (totalTimeSeconds != null) {
+            return totalTimeSeconds;
+        }
+        return tracks.stream().mapToDouble(Tracks::getTimeSeconds).sum();
+    }
+
+    public int getAHR() {
+        if (avgHR != null) {
+            return avgHR;
+        }
     public LocalDateTime getStartTime() {
         if (tracks.isEmpty()) return null;
         return tracks.get(0).getStartTime();
     }
 
-    public double getTimeSeconds() {
+    /*public double getTimeSeconds() {
         return tracks.stream()
                 .mapToDouble(Tracks::getTimeSeconds)
                 .sum();
-    }
+    }*/
 
     public double getDistanceMeters() {
         return tracks.stream()
@@ -33,7 +49,7 @@ public class Laps {
         return getDistanceMeters() / t;
     }
 
-    public int getAHR() {
+   /* public int getAHR() {
         double sum = 0;
         int count = 0;
 
@@ -43,7 +59,7 @@ public class Laps {
             count += n;
         }
         return count == 0 ? 0 : (int) (sum / count);
-    }
+    }*/
 
     public int getMHR() {
         return tracks.stream()
@@ -51,13 +67,15 @@ public class Laps {
                 .max()
                 .orElse(0);
     }
+    public void setTimeSeconds(double t) {
+        this.totalTimeSeconds = t;
+    }
 
-    public void setTracks(List<Tracks> tracks) {
-        this.tracks = tracks;
+    public void setAvgHR(int hr) {
+        this.avgHR = hr;
     }
 
     public List<Tracks> getTracksList() {
         return tracks;
     }
-
 }
