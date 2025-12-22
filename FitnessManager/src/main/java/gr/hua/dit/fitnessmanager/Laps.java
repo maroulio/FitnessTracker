@@ -1,4 +1,5 @@
 package gr.hua.dit.fitnessmanager;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,37 +7,37 @@ import java.util.List;
 public class Laps {
 
     private List<Tracks> tracks = new ArrayList<>();
-    private Double totalTimeSeconds;   // μπορεί να είναι null
-    private Double distanceMeters;
-    private int avgHR;
-    private int maxHR;
-    private double averagespeed;
-    private LocalDateTime StartTime;
-    private int calories;
 
+    // optional XML values
+    private Double totalTimeSeconds;
+    private Double distanceMeters;
+    private Integer avgHR;
+    private Integer maxHR;
+
+    // --------------------
     public void addTrack(Tracks track) {
         tracks.add(track);
+    }
+
+    // --------------------
+    public LocalDateTime getStartTime() {
+        if (tracks.isEmpty()) return null;
+        return tracks.get(0).getStartTime();
     }
 
     public double getTimeSeconds() {
         if (totalTimeSeconds != null) {
             return totalTimeSeconds;
         }
-        return tracks.stream().mapToDouble(Tracks::getTimeSeconds).sum();
+        return tracks.stream()
+                .mapToDouble(Tracks::getTimeSeconds)
+                .sum();
     }
-
-
-    public int getAHR() {
-        return avgHR;
-    }
-
-    public LocalDateTime getStartTime() {
-        if (tracks.isEmpty()) return null;
-        return tracks.get(0).getStartTime();
-    }
-
 
     public double getDistanceMeters() {
+        if (distanceMeters != null) {
+            return distanceMeters;
+        }
         return tracks.stream()
                 .mapToDouble(Tracks::getDistanceMeters)
                 .sum();
@@ -48,53 +49,49 @@ public class Laps {
         return getDistanceMeters() / t;
     }
 
+    public int getAHR() {
+
+
+        double sum = 0;
+        int count = 0;
+        for (Tracks t : tracks) {
+            int n = t.getTrackpoints().size();
+            sum += t.getAHR() * n;
+            count += n;
+        }
+        return count == 0 ? 0 : (int) (sum / count);
+    }
 
     public int getMHR() {
+
         return tracks.stream()
                 .mapToInt(Tracks::getMHR)
                 .max()
                 .orElse(0);
     }
 
-    //SETTERS
+    // --------------------
+    // setters ONLY for XML
+    // --------------------
     public void setTimeSeconds(double t) {
         this.totalTimeSeconds = t;
     }
 
-    public void setAHR(int hr) {
+    public void setDistanceMeters(double d) {
+        this.distanceMeters = d;
+    }
+
+    public void setAvgHR(int hr) {
         this.avgHR = hr;
     }
 
-
-    public void setDistanceMeters(Double distanceMeters) {
-        this.distanceMeters = distanceMeters;
-    }
-
-    public void setMaxHR(int maxHR) {
-        this.maxHR = maxHR;
-    }
-
-    public void setAveragespeed(double averagespeed) {
-        this.averagespeed = averagespeed;
-    }
-
-    public void setTracks(List<Tracks> tracks) {
-        this.tracks = tracks;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        StartTime = startTime;
+    public void setMaxHR(int hr) {
+        this.maxHR = hr;
     }
 
     public List<Tracks> getTracksList() {
         return tracks;
     }
-
-    public int getCalories() {
-        CaloriesFactory calories = new CaloriesFactory();
-    }
-
-    public void setCalories(int calories) {
-        this.calories = calories;
-    }
 }
+
+
