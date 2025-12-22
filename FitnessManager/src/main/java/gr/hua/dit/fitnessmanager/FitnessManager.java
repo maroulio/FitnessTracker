@@ -18,6 +18,7 @@ public class FitnessManager {
                 file[k++] = new File(args[i]);
             }
         }
+        UserProfile u = new UserProfile();
         for (int i = 0; i < file.length; i++) {
             if (file[i].exists() && file[i].isFile()) {
                 //parser
@@ -35,129 +36,50 @@ public class FitnessManager {
                     System.out.println("Avg Pace: " + activity.getAveragePace() + " min/km");
                     System.out.println("Avg Heart Rate: " + activity.getAHR() + " bpm");
                     System.out.println("Avg Speed: " + activity.getAverageSpeed() + " km/h");
-                    if (file.length > 1) {
-                        int cal = 0;
-                        boolean f = false;
+                    boolean f = false;
+                    for (int j = 0; j < args.length; j++) {
+                        if (args[j].startsWith("-")) {
+                            f = true;
+                            break;
+                        }
+                    }
+                    if (f) {
+                        double weight = 0;
+                        int age = 0;
+                        char gender = ' ';
                         for (int j = 0; j < args.length; j++) {
-                            if (args[j].startsWith("-")) {
-                                f = true;
-                                break;
+                            if (args[j].equals("-w")) {
+                                if (j + 1 < args.length) {
+                                    try {
+                                        weight = Double.parseDouble(args[++j]);
+                                        u.setWeight(weight);
+                                    } catch (Exception e) { // It may be an InputMismatchException
+                                        return;
+                                    }
+                                }
+                            }
+                            if (args[j].equals("-a")) {
+                                if (j + 1 < args.length) {
+                                    try {
+                                        age = Integer.parseInt(args[++j]);
+                                        u.setAge(age);
+                                    } catch (Exception e) {
+                                        return;
+                                    }
+                                }
+                            }
+                            if (args[j].equals("-g")) {
+                                if (j + 1 < args.length) {
+                                    try {
+                                        gender = args[++j].toLowerCase().charAt(0);
+                                        u.setGender(gender);
+                                    } catch (Exception e) {
+                                        return;
+                                    }
+                                }
                             }
                         }
-                        if (f) {
-                            double weight = 0;
-                            for (int j = 0; j < args.length; j++) {
-                                if (args[j].equals("-w")) {
-                                    if (j + 1 < args.length) {
-                                        try {
-                                            weight = Double.parseDouble(args[++j]);
-                                        } catch (Exception e) { // It may be an InputMismatchException
-                                            return;
-                                        }
-                                        break;
-                                    }
-                                }
-                            }
-                            f = false;
-                            int age = 0;
-                            for (int j = 0; j < args.length; j++) {
-                                if (args[j].equals("-a")) {
-                                    if (j + 1 < args.length) {
-                                        try {
-                                            age = Integer.parseInt(args[++j]);
-                                        } catch (Exception e) {
-                                            System.out.println("cal += activity.getCal(weight, activity.getTimeSeconds())");
-                                            f = true;
-                                        }
-                                        break;
-                                    }
-                                }
-                            }
-                            if (!f) {
-                                f = false;
-                                char gender;
-                                for (int j = 0; j < args.length; j++) {
-                                    if (args[j].equals("-g")) {
-                                        if (j + 1 < args.length) {
-                                            gender = args[++j].toLowerCase().charAt(0);
-                                            if (gender == 'm' || gender == 'f') {
-                                                cal += activity.getCal(weight, age, gender, activity.getTimeSeconds());
-                                            } else {
-                                                cal += activity.getCal(weight, activity.getTimeSeconds());
-                                            }
-                                            f = true;
-                                            break;
-                                        }
-                                    }
-                                }
-                                if (!f) {
-                                    cal += activity.getCal(weight, activity.getTimeSeconds());
-                                }
-                            } else {
-                                cal += activity.getCal(weight, activity.getTimeSeconds());
-                            }
-                        }
-                        if (cal != 0) {
-                            System.out.println("Total Calories: " + cal);
-                        }
-                    } else {
-                        boolean f = false;
-                        for (int j = 0; j < args.length; j++) {
-                            if (args[j].startsWith("-")) {
-                                f = true;
-                                break;
-                            }
-                        }
-                        if (f) {
-                            double weight = 0;
-                            for (int j = 0; j < args.length; j++) {
-                                if (args[j].equals("-w")) {
-                                    if (j + 1 < args.length) {
-                                        try {
-                                            weight = Double.parseDouble(args[++j]);
-                                        } catch (Exception e) {
-                                            return;
-                                        }
-                                        break;
-                                    }
-                                }
-                            }
-                            f = false;
-                            int age = 0;
-                            for (int j = 0; j < args.length; j++) {
-                                if (args[j].equals("-a")) {
-                                    if (j + 1 < args.length) {
-                                        try {
-                                            age = Integer.parseInt(args[++j]);
-                                            f = true;
-                                        } catch (Exception e) {
-                                            System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
-                                            return;
-                                        }
-                                        break;
-                                    }
-                                }
-                            }
-                            if (f) {
-                                char gender = ' ';
-                                for (int j = 0; j < args.length; j++) {
-                                    if (args[j].equals("-g")) {
-                                        if (j + 1 < args.length) {
-                                            gender = args[++j].toLowerCase().charAt(0);
-                                            if (gender == 'm' || gender == 'f') {
-                                                System.out.println("Total Calories: " + activity.getCal(weight, age, gender, activity.getTimeSeconds()));
-                                            } else {
-                                                System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
-                                            }
-                                            return;
-                                        }
-                                    }
-                                }
-                                System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
-                                return;
-                            }
-                            System.out.println("Total Calories: " + activity.getCal(weight, activity.getTimeSeconds()));
-                        }
+                        System.out.println("Total Calories: " + activity.getCal(activity, u));
                     }
                 }
             }

@@ -106,12 +106,14 @@ public abstract class Activity {
         return averagespeed = s / laps.size();
     }
 
-    public int getCal(double weight, int age, char gender, double timeseconds) {
+    public int getCal(Activity activity, UserProfile u) {
         CaloriesFactory calories = new CaloriesFactory();
-    }
-
-    public int getCal(double weight, double timeseconds) {
-        CaloriesFactory calories = new CaloriesFactory();
+        if (u.getWeight() != 0 && u.getAge() != 0 && u.getGender() != ' ') {
+            calories.createCalculator(HEART_RATE);
+        } else {
+            calories.createCalculator(SIMPLE);
+        }
+        return cal = calculate(activity, u);
     }
 
     public String getSport() {

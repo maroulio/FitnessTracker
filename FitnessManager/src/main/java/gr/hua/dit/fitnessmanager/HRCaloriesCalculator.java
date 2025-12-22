@@ -9,7 +9,7 @@ public class HRCaloriesCalculator implements CaloriesCalculator {
         int a = profile.getAge();
         double t = activity.getTimeSeconds() / 60.0; // λεπτά
 
-        if (profile.getGender().equalsIgnoreCase("male")) {
+        if (profile.getGender().equalsIgnoreCase('m')) {
             return (int) (
                     (-55.0969 + (0.6309 * h) + (0.1966 * w) + (0.2017 * a))
                             * t / 4.184

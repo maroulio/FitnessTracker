@@ -2,17 +2,16 @@ package gr.hua.dit.fitnessmanager;
 
 public class UserProfile {
 
-    private String gender; // "male" / "female"
+    private char gender; // "male" / "female"
     private int age;
     private double weight;
 
-    public UserProfile(String gender, int age, double weight) {
-        this.gender = gender;
-        this.age = age;
-        this.weight = weight;
-    }
+    public UserProfile() {}
 
-    public String getGender() { return gender; }
+    public char getGender() { return gender; }
     public int getAge() { return age; }
     public double getWeight() { return weight; }
+    public void setGender(char gender) { this.gender = gender; }
+    public void setAge(int age) { this.age = age; }
+    public void setWeight(double weight) { this.weight = weight; }
 }
