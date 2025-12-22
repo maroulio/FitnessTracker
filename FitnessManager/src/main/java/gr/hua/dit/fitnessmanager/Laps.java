@@ -27,9 +27,7 @@ public class Laps {
 
 
     public int getAHR() {
-        if (avgHR != null) {
-            return avgHR;
-        }
+        return avgHR;
     }
 
     public LocalDateTime getStartTime() {
@@ -100,5 +98,3 @@ public class Laps {
         this.calories = calories;
     }
 }
-
-
