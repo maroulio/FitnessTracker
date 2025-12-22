@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tracks {
-   // public LocalDateTime StartTime;
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
     public void addTrackpoint(Trackpoints tp) {
@@ -13,27 +12,30 @@ public class Tracks {
     }
 
     public LocalDateTime getStartTime() {
-        return trackpoints.isEmpty() ? null : trackpoints.get(0).getTime();
-    }
-
-    public double getDistanceMeters() {
-        if (trackpoints.isEmpty()) return 0;
-        return trackpoints.get(trackpoints.size() - 1).getDistanceMeters();
+        return trackpoints.isEmpty() ? null : trackpoints.get(0).getTimeStamp();
     }
 
     public double getTimeSeconds() {
         if (trackpoints.size() < 2) return 0;
-
         return Duration.between(
                 trackpoints.get(0).getTimeStamp(),
                 trackpoints.get(trackpoints.size() - 1).getTimeStamp()
         ).toSeconds();
     }
 
+    public double getDistanceMeters() {
+        if (trackpoints.size() < 2) return 0;
+
+        double first = trackpoints.get(0).getDistanceMeters();
+        double last  = trackpoints.get(trackpoints.size() - 1).getDistanceMeters();
+
+        return Math.max(0, last - first);
+    }
+
     public double getAverageSpeed() {
         double t = getTimeSeconds();
         if (t == 0) return 0;
-        return getDistanceMeters() / t;  // m/s
+        return getDistanceMeters() / t;
     }
 
     public int getAHR() {
@@ -50,7 +52,12 @@ public class Tracks {
                 .orElse(0);
     }
 
+    public void setTrackpoints(List<Trackpoints> trackpoints) {
+        this.trackpoints = trackpoints;
+    }
+
     public List<Trackpoints> getTrackpoints() {
         return trackpoints;
     }
+
 }

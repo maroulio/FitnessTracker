@@ -6,15 +6,10 @@ import java.util.List;
 public class Laps {
     private List<Tracks> tracks = new ArrayList<>();
 
-    public Laps() {
-        this.tracks = tracks;
-    }
-
     public void addTrack(Tracks track) {
         tracks.add(track);
     }
 
-    // ώρα πρώτου trackpoint του πρώτου track
     public LocalDateTime getStartTime() {
         if (tracks.isEmpty()) return null;
         return tracks.get(0).getStartTime();
@@ -33,9 +28,9 @@ public class Laps {
     }
 
     public double getAverageSpeed() {
-        double time = getTimeSeconds();
-        if (time == 0) return 0;
-        return getDistanceMeters() / time;
+        double t = getTimeSeconds();
+        if (t == 0) return 0;
+        return getDistanceMeters() / t;
     }
 
     public int getAHR() {
@@ -43,8 +38,9 @@ public class Laps {
         int count = 0;
 
         for (Tracks t : tracks) {
-            sum += t.getAHR() * t.getTrackpoints().size();
-            count += t.getTrackpoints().size();
+            int n = t.getTrackpoints().size();
+            sum += t.getAHR() * n;
+            count += n;
         }
         return count == 0 ? 0 : (int) (sum / count);
     }
@@ -54,6 +50,10 @@ public class Laps {
                 .mapToInt(Tracks::getMHR)
                 .max()
                 .orElse(0);
+    }
+
+    public void setTracks(List<Tracks> tracks) {
+        this.tracks = tracks;
     }
 
     public List<Tracks> getTracksList() {
