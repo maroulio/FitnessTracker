@@ -10,6 +10,8 @@ ppublic class Laps {
     private Double distanceMeters;
     private int avgHR;
     private int maxHR;
+    private double averagespeed;
+    private LocalDateTime StartTime;
 
     public void addTrack(Tracks track) {
         tracks.add(track);
@@ -22,60 +24,72 @@ ppublic class Laps {
         return tracks.stream().mapToDouble(Tracks::getTimeSeconds).sum();
     }
 
+
+
+
     public int getAHR() {
         if (avgHR != null) {
             return avgHR;
         }
-    public LocalDateTime getStartTime() {
-        if (tracks.isEmpty()) return null;
-        return tracks.get(0).getStartTime();
-    }
-
-    /*public double getTimeSeconds() {
-        return tracks.stream()
-                .mapToDouble(Tracks::getTimeSeconds)
-                .sum();
-    }*/
-
-    public double getDistanceMeters() {
-        return tracks.stream()
-                .mapToDouble(Tracks::getDistanceMeters)
-                .sum();
-    }
-
-    public double getAverageSpeed() {
-        double t = getTimeSeconds();
-        if (t == 0) return 0;
-        return getDistanceMeters() / t;
-    }
-
-   /* public int getAHR() {
-        double sum = 0;
-        int count = 0;
-
-        for (Tracks t : tracks) {
-            int n = t.getTrackpoints().size();
-            sum += t.getAHR() * n;
-            count += n;
+        public LocalDateTime getStartTime () {
+            if (tracks.isEmpty()) return null;
+            return tracks.get(0).getStartTime();
         }
-        return count == 0 ? 0 : (int) (sum / count);
-    }*/
 
-    public int getMHR() {
-        return tracks.stream()
-                .mapToInt(Tracks::getMHR)
-                .max()
-                .orElse(0);
-    }
-    public void setTimeSeconds(double t) {
-        this.totalTimeSeconds = t;
+
+
+        public double getDistanceMeters () {
+            return tracks.stream()
+                    .mapToDouble(Tracks::getDistanceMeters)
+                    .sum();
+        }
+
+        public double getAverageSpeed () {
+            double t = getTimeSeconds();
+            if (t == 0) return 0;
+            return getDistanceMeters() / t;
+        }
+
+
+        public int getMHR () {
+            return tracks.stream()
+                    .mapToInt(Tracks::getMHR)
+                    .max()
+                    .orElse(0);
+        }
+        //SETTERS
+        public void setTimeSeconds ( double t){
+            this.totalTimeSeconds = t;
+        }
+
+        public void setAHR ( int hr){
+            this.avgHR = hr;
+        }
+
+
+        public void setDistanceMeters(Double distanceMeters) {
+            this.distanceMeters = distanceMeters;
+        }
+
+        public void setMaxHR(int maxHR) {
+            this.maxHR = maxHR;
+        }
+
+        public void setAveragespeed(double averagespeed) {
+            this.averagespeed = averagespeed;
+        }
+
+        public void setTracks(List<Tracks> tracks) {
+            this.tracks = tracks;
+        }
+        public void setStartTime(LocalDateTime startTime) {
+            StartTime = startTime;
+        }
+
+        public List<Tracks> getTracksList () {
+            return tracks;
+        }
     }
 
-    public void setAvgHR(int hr) {
-        this.avgHR = hr;
-    }
 
-    public List<Tracks> getTracksList() {
-        return tracks;
-    }
 }
