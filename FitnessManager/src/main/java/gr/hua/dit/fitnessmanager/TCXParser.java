@@ -4,17 +4,16 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import javax.sound.midi.Track;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class TCXParser {
-    private String tcx = "no tcx name yet";
+    //private String tcx = "no tcx name yet";
     //parsing related variable
-    Document doc;
+    //Document doc;
 
     boolean exists;
 
@@ -53,12 +52,12 @@ public class TCXParser {
 
 
 
-    public TCXParser(String tcx) {
-        this.tcx = tcx;
+    public TCXParser(File tcx) {
+        //this.tcx = tcx;
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            doc = builder.parse(tcx);
+            Document doc = builder.parse(tcx);
         } catch (Exception e) {                                    //(ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);
         }
