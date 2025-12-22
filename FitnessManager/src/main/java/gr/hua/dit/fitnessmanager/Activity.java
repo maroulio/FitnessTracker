@@ -108,12 +108,13 @@ public abstract class Activity {
 
     public int getCal(Activity activity, UserProfile u) {
         CaloriesFactory calories = new CaloriesFactory();
+        CaloriesCalculator c;
         if (u.getWeight() != 0 && u.getAge() != 0 && u.getGender() != ' ') {
-            calories.createCalculator(HEART_RATE);
+            c = calories.createCalculator(CaloriesFactory.CalorieType.HEART_RATE);
         } else {
-            calories.createCalculator(SIMPLE);
+            c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);
         }
-        return cal = calculate(activity, u);
+        return cal = c.calculate(activity, u);
     }
 
     public String getSport() {

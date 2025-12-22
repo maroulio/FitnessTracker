@@ -23,11 +23,11 @@ public class FitnessManager {
             if (file[i].exists() && file[i].isFile()) {
                 //parser
 
-                String tcx = file[i].getAbsolutePath(); //μεχρι να μου δινετε το αρχειο απο τα args
+                File tcx = file[i]; //μεχρι να μου δινετε το αρχειο απο τα args
                 TCXParser parser = new TCXParser(tcx);
                 ArrayList<Activity> act = parser.parse();
 
-                for (int k = 0; k < act.toArray().length; k++) {
+                for (int l = 0; l < act.toArray().length; l++) {
                     ActivityFactory sport = new ActivityFactory();
                     Activity activity = sport.createActivity(null);
                     System.out.println("Activity: " + activity.getName());
@@ -53,7 +53,7 @@ public class FitnessManager {
                                     try {
                                         weight = Double.parseDouble(args[++j]);
                                         u.setWeight(weight);
-                                    } catch (Exception e) { // It may be an InputMismatchException
+                                    } catch (Exception e) {
                                         return;
                                     }
                                 }

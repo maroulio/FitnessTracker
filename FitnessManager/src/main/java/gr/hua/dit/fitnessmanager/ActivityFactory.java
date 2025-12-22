@@ -15,9 +15,8 @@ public class ActivityFactory {
             case "walking" -> new Walking();
             case "biking", "cycling" -> new Cycling();
             case "swimming" -> new Swimming();
-            case "other", default -> {
-                new Other();
-            }
+            case "other" -> new Other();
+            default -> new Other();
         };
     }
 }

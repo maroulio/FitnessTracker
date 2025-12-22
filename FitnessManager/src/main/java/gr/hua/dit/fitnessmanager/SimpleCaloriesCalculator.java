@@ -1,6 +1,6 @@
 package gr.hua.dit.fitnessmanager;
 
-public class SimpleCaloriesCalculator implements CaloriesCalculator {
+public class SimpleCaloriesCalculator extends CaloriesCalculator {
     @Override
     public int calculate(Activity activity, UserProfile profile) {
 
