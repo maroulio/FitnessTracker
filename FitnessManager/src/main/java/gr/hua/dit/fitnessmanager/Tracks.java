@@ -52,6 +52,10 @@ public class Tracks {
                 .orElse(0);
     }
 
+    public void setTrackpoints(List<Trackpoints> trackpoints) {
+        this.trackpoints = trackpoints;
+    }
+
     public List<Trackpoints> getTrackpoints() {
         return trackpoints;
     }

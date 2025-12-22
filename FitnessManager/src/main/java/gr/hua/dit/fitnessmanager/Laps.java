@@ -52,6 +52,10 @@ public class Laps {
                 .orElse(0);
     }
 
+    public void setTracks(List<Tracks> tracks) {
+        this.tracks = tracks;
+    }
+
     public List<Tracks> getTracksList() {
         return tracks;
     }
