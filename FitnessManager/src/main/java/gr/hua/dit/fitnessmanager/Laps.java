@@ -12,6 +12,7 @@ public class Laps {
     private int maxHR;
     private double averagespeed;
     private LocalDateTime StartTime;
+    private int calories;
 
     public void addTrack(Tracks track) {
         tracks.add(track);
@@ -89,6 +90,14 @@ public class Laps {
 
     public List<Tracks> getTracksList() {
         return tracks;
+    }
+
+    public int getCalories() {
+        CaloriesFactory calories = new CaloriesFactory();
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
     }
 }
 
