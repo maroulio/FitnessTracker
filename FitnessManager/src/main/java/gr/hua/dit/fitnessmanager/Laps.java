@@ -1,5 +1,7 @@
 package gr.hua.dit.fitnessmanager;
 
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +15,11 @@ public class Laps {
     private Double distanceMeters;
     private Integer avgHR;
     private Integer maxHR;
-NodeList tracks = lapEl.getElementsByTagName("Track");
+    NodeList tracks = lapEl.getElementsByTagName("Track");
 
-for (int i = 0; i < tracks.getLength(); i++) {
-    Element trackEl = (Element) tracks.item(i);
-}
+    for (int i = 0; i < tracks.getLength(); i++) {
+        Element trackEl = (Element) tracks.item(i);
+    }
     // --------------------
     public void addTrack(Tracks track) {
         tracks.add(track);

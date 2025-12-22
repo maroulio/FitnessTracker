@@ -1,4 +1,7 @@
 package gr.hua.dit.fitnessmanager;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ public class Tracks {
     private List<Trackpoints> trackpoints = new ArrayList<>();
     NodeList tps = trackEl.getElementsByTagName("Trackpoint");
 
-for (int i = 0; i < tps.getLength(); i++) {
+    for (int i = 0; i < tps.getLength(); i++) {
         Element tpEl = (Element) tps.item(i);
     }
     public void addTrackpoint(Trackpoints tp) {

@@ -1,4 +1,7 @@
 package gr.hua.dit.fitnessmanager;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -116,10 +119,11 @@ public abstract class Activity {
         }
         return cal = c.calculate(activity, u);
     }
-    NodeList laps = activityEl.getElementsByTagName("Lap");
 
-for (int i = 0; i < laps.getLength(); i++) {
-        Element lapEl = (Element) laps.item(i);
+    NodeList lap = activityEl.getElementsByTagName("Lap");
+
+    for (int i = 0; i < lap.getLength(); i++) {
+        Element lapEl = (Element) lap.item(i);
     }
     public String getSport() {
         return sport;
