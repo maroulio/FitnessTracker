@@ -111,23 +111,23 @@ public class TCXParser {
                 String temp = getTextAttr("StartTime", lap);
                 temp = temp.replace("Z", "");
                 LocalDateTime startTime = LocalDateTime.parse(temp);
-                lapObj.setStartTime() = startTime;
+                lapObj.setStartTime(startTime);
 
                 totalTimeSeconds = Double.parseDouble(getText("TotalTimeSeconds", lap));
-                lapObj.setTotalTimeSeconds() = totalTimeSeconds;
+                lapObj.setTimeSeconds(totalTimeSeconds);
                 distanceMeters = Double.parseDouble(getText("DistanceMeters", lap));
-                lapObj.setDistanceMeters() = distanceMeters;
-                maximumSpeed = Double.parseDouble(getText("MaximumSpeed", lap));
-                lapObj.setMaximumSpeed() = maximumSpeed;
+                lapObj.setDistanceMeters(distanceMeters);
+                //maximumSpeed = Double.parseDouble(getText("MaximumSpeed", lap));
+                //lapObj.set.setMaximumSpeed(maximumSpeed);
                 calories = Integer.parseInt(getText("Calories", lap));
-                lapObj.setCalories() = calories;
+                lapObj.setCalories(calories);
 
 
                 //running 2 does not have abpm and mbpm
                 Element el = (Element) lap.getElementsByTagName("AverageHeartRateBpm").item(0);
                 if (tagExists("Value", el)) {
                     ABPM = Integer.parseInt(getText("Value", el));
-                    lapObj.setAHR() = ABPM;
+                    lapObj.setAHR(ABPM);
                 }
 
 
@@ -135,7 +135,7 @@ public class TCXParser {
                 el = ((Element) lap.getElementsByTagName("MaximumHeartRateBpm").item(0));
                 if (tagExists("Value", el)) {
                     MBPM = Integer.parseInt(getText("Value", el));
-                    lapObj.setMHR() = MBPM;
+                    lapObj.setMaxHR(MBPM);
                 }
 
                 /*MBPM = Integer.parseInt(((Element) lap.getElementsByTagName("MaximumHeartRateBpm")
@@ -153,7 +153,7 @@ public class TCXParser {
                         .item(lap.getElementsByTagName("Extensions").getLength() - 1)).getElementsByTagName("ns3:LX").item(0);
 
                 avgSpeed = Double.parseDouble(getText("ns3:AvgSpeed", extensions));
-                lapObj.setAverageSpeed() = avgSpeed;
+                lapObj.setAveragespeed(avgSpeed);
 
 
                 //run cadence in laps???????????????????????????????????
@@ -171,7 +171,7 @@ public class TCXParser {
 
                 NodeList trackList = lap.getElementsByTagName("Track");
                 ArrayList<Tracks> tracks = parseTracks(trackList);
-                lapObj.setTracksList(tracks);
+                lapObj.setTracks(tracks);
             }
         }
         return laps;
