@@ -13,7 +13,7 @@ public class Tracks {
     }
 
     public LocalDateTime getStartTime() {
-        return trackpoints.isEmpty() ? null : trackpoints.get(0).getTime();
+        return trackpoints.isEmpty() ? null : trackpoints.get(0).getTimeStamp();
     }
 
     public double getDistanceMeters() {
