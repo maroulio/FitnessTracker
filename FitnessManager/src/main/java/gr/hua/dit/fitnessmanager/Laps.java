@@ -73,9 +73,19 @@ public class Laps {
                 .orElse(0);
     }
 
+
+
     // --------------------
     // setters ONLY for XML
     // --------------------
+     public int getCalories() {
+            CaloriesFactory calories = new CaloriesFactory();;
+            return calories;
+       }
+
+        public Double getTotalTimeSeconds() {
+           return totalTimeSeconds;
+       }
     public void setTimeSeconds(double t) {
         this.totalTimeSeconds = t;
     }
@@ -98,4 +108,11 @@ public class Laps {
         return tracks;
     }
 
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+
+    public void setTotalTimeSeconds(Double totalTimeSeconds) {
+        this.totalTimeSeconds = totalTimeSeconds;
+    }
 }
