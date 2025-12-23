@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class TCXParser {
     //private String tcx = "no tcx name yet";
     //parsing related variable
-    //Document doc;
+    Document doc;
 
     boolean exists;
 
@@ -57,7 +57,7 @@ public class TCXParser {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(tcx);
+            doc = builder.parse(tcx);
         } catch (Exception e) {                                    //(ParserConfigurationException | IOException | SAXException e) {
             throw new RuntimeException(e);
         }
@@ -110,7 +110,7 @@ public class TCXParser {
                 String temp = getTextAttr("StartTime", lap);
                 temp = temp.replace("Z", "");
                 LocalDateTime startTime = LocalDateTime.parse(temp);
-                lapObj.setStartTime(startTime);
+                //lapObj.setStartTime(startTime);
 
                 totalTimeSeconds = Double.parseDouble(getText("TotalTimeSeconds", lap));
                 lapObj.setTimeSeconds(totalTimeSeconds);
@@ -126,7 +126,7 @@ public class TCXParser {
                 Element el = (Element) lap.getElementsByTagName("AverageHeartRateBpm").item(0);
                 if (tagExists("Value", el)) {
                     ABPM = Integer.parseInt(getText("Value", el));
-                    lapObj.setAHR(ABPM);
+                    lapObj.setAvgHR(ABPM);
                 }
 
 
