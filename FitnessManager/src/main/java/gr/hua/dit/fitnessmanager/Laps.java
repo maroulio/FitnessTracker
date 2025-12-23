@@ -15,11 +15,8 @@ public class Laps {
     private Double distanceMeters;
     private Integer avgHR;
     private Integer maxHR;
-    NodeList tracks = lapEl.getElementsByTagName("Track");
-
-    for (int i = 0; i < tracks.getLength(); i++) {
-        Element trackEl = (Element) tracks.item(i);
-    }
+    private int calories;
+     private LocalDateTime StartTime;
     // --------------------
     public void addTrack(Tracks track) {
         tracks.add(track);
@@ -94,7 +91,9 @@ public class Laps {
     public void setMaxHR(int hr) {
         this.maxHR = hr;
     }
-
+  public void setTracks(List<Tracks> tracks) {
+        this.tracks = tracks;
+  }
     public List<Tracks> getTracksList() {
         return tracks;
     }
