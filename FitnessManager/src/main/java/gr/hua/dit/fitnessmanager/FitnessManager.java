@@ -48,19 +48,11 @@ public class FitnessManager {
                     System.out.println("Activity: " + activity.getSport());
                     System.out.println("Total Time: " + activity.getTimeSeconds() / 60 + ":" + activity.getTimeSeconds() % 60);
                     System.out.println("Total Distance: " + activity.getDistanceMeters() / 1000);
-                    if (activity.getAverageSpeed() != 0) {
-                        System.out.println("Avg Speed: " + activity.getAverageSpeed() + " km/h");
-                    }
-                    if (activity.getAveragePace() != 0) {
-                        System.out.println("Avg Pace: " + activity.getAveragePace() + " min/km");
-                    }
-                    if (activity.getAHR() != 0) {
-                        System.out.println("Avg Heart Rate: " + activity.getAHR() + " bpm");
-                    }
+                    if (activity.getAverageSpeed() != 0) {System.out.println("Avg Speed: " + activity.getAverageSpeed() + " km/h");}
+                    if (activity.getAveragePace() != 0) {System.out.println("Avg Pace: " + activity.getAveragePace() + " min/km");}
+                    if (activity.getAHR() != 0) {System.out.println("Avg Heart Rate: " + activity.getAHR() + " bpm");}
                     // TODO: cal should only be calculated if -w is passed, fix getCal's bugs
-                    if (activity.getCal(activity, u) != 0) {
-                        System.out.println("Total calories burned: " + activity.getCal(activity, u) + " cal");
-                    }
+                    if (activity.getCal(activity, u) != 0) {System.out.println("Total calories burned: " + activity.getCal(activity, u) + " cal");}
                 }
             }
         }
