@@ -6,8 +6,13 @@ public class UserProfile {
     private int age;
     private double weight;
 
-    public UserProfile() {}
+    public UserProfile() {
+        this.gender ='male';
+        this.age = 20;
+        this.weight = 73.5;
+    }
 
+    public UserProfile() {}
     public char getGender() { return gender; }
     public int getAge() { return age; }
     public double getWeight() { return weight; }
