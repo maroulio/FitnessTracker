@@ -18,9 +18,9 @@ public class Laps {
     private int calories;
      private LocalDateTime StartTime;
     // --------------------
-    public void addTrack(Tracks track) {
-        tracks.add(track);
-    }
+ //   public void addTrack(Tracks track) {
+//        tracks.add(track);
+   // }
 
     // --------------------
     public LocalDateTime getStartTime() {
@@ -28,7 +28,7 @@ public class Laps {
         return tracks.get(0).getStartTime();
     }
 
-    public double getTimeSeconds() {
+    public double gettotalTimeSeconds() {
         if (totalTimeSeconds != null) {
             return totalTimeSeconds;
         }
@@ -52,7 +52,7 @@ public class Laps {
         return getDistanceMeters() / t;
     }
 
-    public int getAHR() {
+    public int getAvgHR() {
 
 
         double sum = 0;
@@ -65,7 +65,7 @@ public class Laps {
         return count == 0 ? 0 : (int) (sum / count);
     }
 
-    public int getMHR() {
+    public int getMaxHR() {
 
         return tracks.stream()
                 .mapToInt(Tracks::getMHR)
@@ -82,37 +82,30 @@ public class Laps {
             CaloriesFactory calories = new CaloriesFactory();;
             return calories;
        }
-
-        public Double getTotalTimeSeconds() {
-           return totalTimeSeconds;
-       }
-    public void setTimeSeconds(double t) {
-        this.totalTimeSeconds = t;
-    }
-
-    public void setDistanceMeters(double d) {
-        this.distanceMeters = d;
-    }
-
-    public void setAvgHR(int hr) {
-        this.avgHR = hr;
-    }
-
-    public void setMaxHR(int hr) {
-        this.maxHR = hr;
-    }
-  public void setTracks(List<Tracks> tracks) {
-        this.tracks = tracks;
-  }
     public List<Tracks> getTracksList() {
         return tracks;
     }
 
+    public void settotalTimeSeconds(double t) {
+        this.totalTimeSeconds = t;
+    }
+    public void setDistanceMeters(double d) {
+        this.distanceMeters = d;
+    }
+    public void setAvgHR(int hr) {
+        this.avgHR = hr;
+    }
+    public void setMaxHR(int hr) {
+        this.maxHR = hr;
+    }
+    public void setTracks(List<Tracks> tracks) {
+        this.tracks = tracks;
+    }
     public void setCalories(int calories) {
         this.calories = calories;
     }
-
-    public void setTotalTimeSeconds(Double totalTimeSeconds) {
-        this.totalTimeSeconds = totalTimeSeconds;
+    public void setStartTime(LocalDateTime startTime) {
+        this.StartTime = startTime;
     }
+
 }

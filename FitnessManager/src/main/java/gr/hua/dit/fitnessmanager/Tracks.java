@@ -9,14 +9,7 @@ import java.util.List;
 
 public class Tracks {
     private List<Trackpoints> trackpoints = new ArrayList<>();
-    NodeList tps = trackEl.getElementsByTagName("Trackpoint");
 
-    for (int i = 0; i < tps.getLength(); i++) {
-        Element tpEl = (Element) tps.item(i);
-    }
-    public void addTrackpoint(Trackpoints tp) {
-        trackpoints.add(tp);
-    }
 
     public LocalDateTime getStartTime() {
         return trackpoints.isEmpty() ? null : trackpoints.get(0).getTimeStamp();
