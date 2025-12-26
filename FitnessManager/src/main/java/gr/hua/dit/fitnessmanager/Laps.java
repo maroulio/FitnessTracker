@@ -17,10 +17,9 @@ public class Laps {
     private Integer maxHR;
     private int calories;
      private LocalDateTime StartTime;
+    private Double avgSpeed;
+
     // --------------------
- //   public void addTrack(Tracks track) {
-//        tracks.add(track);
-   // }
 
     // --------------------
     public LocalDateTime getStartTime() {
@@ -46,15 +45,19 @@ public class Laps {
                 .sum();
     }
 
-    public double getAverageSpeed() {
-        double t = getTimeSeconds();
-        if (t == 0) return 0;
+    public double getavgSpeed() {
+        if (avgSpeed != null) {
+            return avgSpeed;
+        }
+        double t = gettotalTimeSeconds();
+        if (t == 0) {return 0;}
         return getDistanceMeters() / t;
     }
 
     public int getAvgHR() {
-
-
+        if (avgHR != null) {
+            return avgHR;
+        }
         double sum = 0;
         int count = 0;
         for (Tracks t : tracks) {
@@ -66,22 +69,25 @@ public class Laps {
     }
 
     public int getMaxHR() {
-
+        if (maxHR != null) {
+            return maxHR;
+        }
         return tracks.stream()
                 .mapToInt(Tracks::getMHR)
                 .max()
                 .orElse(0);
     }
-
+    public int getCalories() {
+        if (calories != null){return calories }
+        CaloriesFactory calories = new CaloriesFactory();;
+        return calories;
+    }
 
 
     // --------------------
     // setters ONLY for XML
     // --------------------
-     public int getCalories() {
-            CaloriesFactory calories = new CaloriesFactory();;
-            return calories;
-       }
+
     public List<Tracks> getTracksList() {
         return tracks;
     }
@@ -107,5 +113,5 @@ public class Laps {
     public void setStartTime(LocalDateTime startTime) {
         this.StartTime = startTime;
     }
-
+    public void setAvgSpeed(double speed) {this.avgSpeed = speed;}
 }

@@ -33,8 +33,27 @@ public class Tracks {
     }
 
     public double getAverageSpeed() {
+
+        // 1. Try to compute from trackpoint speeds
+        double sum = 0;
+        int count = 0;
+
+        for (Trackpoints tp : trackpoints) {
+            Double s = tp.getSpeed();
+            if (s != null && s > 0) {
+                sum += s;
+                count++;
+            }
+        }
+
+        if (count > 0) {
+            return sum / count;   // m/s
+        }
+
+        // 2. Fallback: distance / time
         double t = getTimeSeconds();
         if (t == 0) return 0;
+
         return getDistanceMeters() / t;
     }
 
