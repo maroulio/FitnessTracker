@@ -78,8 +78,8 @@ public class Laps {
                 .orElse(0);
     }
     public int getCalories() {
-        if (calories != null){return calories }
-        CaloriesFactory calories = new CaloriesFactory();;
+        if (calories != null){return calories; }
+        CaloriesFactory calories = new CaloriesFactory();
         return calories;
     }
 

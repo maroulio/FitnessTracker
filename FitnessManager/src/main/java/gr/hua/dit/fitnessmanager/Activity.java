@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class Activity {
     private List<Laps> laps = new ArrayList<>();
-    private String name;
+    protected String sport;
     private LocalDateTime starttime;
     private double timeseconds;
     private double distance;
@@ -17,28 +17,12 @@ public abstract class Activity {
     private int mhr;
     private double averagespeed;
     private int cal;
-    protected String sport;
 
-    public Activity() {
-        this.laps = laps;
-        this.name = name;
-        this.starttime = starttime;
-        this.timeseconds = timeseconds;
-        this.distance = distance;
-        this.averagepace = averagepace;
-        this.ahr = ahr;
-        this.mhr = mhr;
-        this.averagespeed = averagespeed;
-        this.cal = cal;
-        this.sport = sport;
-    }
 
-    public List<Laps> getLaps() {
-        return laps;
-    }
+    public Activity() {}
 
-    public String getName() {
-        return name;
+    public String getSport() {
+        return sport;
     }
 
     public LocalDateTime getStartTime() {
@@ -120,56 +104,8 @@ public abstract class Activity {
         return cal = c.calculate(activity, u);
     }
 
-    NodeList lap = activityEl.getElementsByTagName("Lap");
-
-    for (int i = 0; i < lap.getLength(); i++) {
-        Element lapEl = (Element) lap.item(i);
-    }
-    public String getSport() {
-        return sport;
-    }
-
     public void setLaps(List<Laps> laps) {
         this.laps = laps;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setStartTime(LocalDateTime starttime) {
-        this.starttime = starttime;
-    }
-
-    public void setTimeseconds(double timeseconds) {
-        this.timeseconds = timeseconds;
-    }
-
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
-
-    public void setAveragePace(double averagepace) {
-        this.averagepace = averagepace;
-    }
-
-    public void setAHR(int ahr) {
-        this.ahr = ahr;
-    }
-
-    public void setMHR(int mhr) {
-        this.mhr = mhr;
-    }
-
-    public void setAverageSpeed(double averagespeed) {
-        this.averagespeed = averagespeed;
-    }
-
-    public void setCal(double weight, int age, char gender, double timeseconds) {
-        this.cal = cal;
-    }
-
-    public void setSport(String sport) {
-        this.sport = sport;
-    }
 }
