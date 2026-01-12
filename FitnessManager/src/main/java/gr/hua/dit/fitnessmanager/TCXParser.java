@@ -38,7 +38,7 @@ public class TCXParser {
                 activities.set(i, activity);
 
                 //get id as a local date time not string maybe
-                String id = getText("Id", act);
+                //String id = getText("Id", act);
                 NodeList lapList = act.getElementsByTagName("Lap");
 
                 ArrayList<Laps> laps = parseLaps(lapList);
@@ -61,10 +61,10 @@ public class TCXParser {
                 String temp = getTextAttr("StartTime", lap);
                 temp = temp.replace("Z", "");
                 LocalDateTime startTime = LocalDateTime.parse(temp);
-                //lapObj.setStartTime(startTime);
+                lapObj.setStartTime(startTime);
 
                 double totalTimeSeconds = Double.parseDouble(getText("TotalTimeSeconds", lap));
-                lapObj.setTimeSeconds(totalTimeSeconds);
+                lapObj.settotalTimeSeconds(totalTimeSeconds);
                 double distanceMeters = Double.parseDouble(getText("DistanceMeters", lap));
                 lapObj.setDistanceMeters(distanceMeters);
 
@@ -90,24 +90,24 @@ public class TCXParser {
                 }
 
                 //the class does not have intensity?????
-                String intensity = getText("Intensity", lap);
+                //String intensity = getText("Intensity", lap);
                 //laps.get(i).
 
                 //the class does not have trigger method?????
-                String triggerMethod = getText("TriggerMethod", lap);
+                //String triggerMethod = getText("TriggerMethod", lap);
                 //laps.get(i).
 
                 Element extensions = (Element) ((Element) lap.getElementsByTagName("Extensions")
                         .item(lap.getElementsByTagName("Extensions").getLength() - 1)).getElementsByTagName("ns3:LX").item(0);
 
                 double avgSpeed = Double.parseDouble(getText("ns3:AvgSpeed", extensions));
-                lapObj.setAveragespeed(avgSpeed);
+                lapObj.setAvgSpeed(avgSpeed);
 
 
                 //run cadence in laps???????????????????????????????????
 
                 //cadence not in biking, swimming, running - only in walking
-                if (tagExists("ns3:AvgRunCadence", extensions)) {
+                /*if (tagExists("ns3:AvgRunCadence", extensions)) {
                     //cadence not in biking, swimming, running - only in walking
                     int avgRunCadence = Integer.parseInt(getText("ns3:AvgRunCadence", extensions));
                     //laps.get(i)
@@ -116,7 +116,7 @@ public class TCXParser {
                 if (tagExists("ns3:MaxRunCadence", extensions)) {
                     int maxRunCadence = Integer.parseInt(getText("ns3:MaxRunCadence", extensions));
                    // laps.get(i)
-                }
+                }*/
 
                 NodeList trackList = lap.getElementsByTagName("Track");
                 ArrayList<Tracks> tracks = parseTracks(trackList);
