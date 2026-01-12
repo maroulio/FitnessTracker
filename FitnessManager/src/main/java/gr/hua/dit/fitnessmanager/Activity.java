@@ -35,7 +35,7 @@ public abstract class Activity {
         }
         double s = 0;
         for (Laps lap: laps) {
-            s += lap.getTimeSeconds();
+            s += lap.gettotalTimeSeconds();
         }
         return timeseconds = s;
     }
@@ -64,7 +64,7 @@ public abstract class Activity {
         }
         int sum = 0;
         for (Laps lap: laps) {
-            sum += lap.getAHR();
+            sum += lap.getAvgHR();
         }
         return ahr = sum / laps.size();
     }
@@ -75,8 +75,8 @@ public abstract class Activity {
         }
         int m = 0;
         for (Laps lap: laps) {
-            if (lap.getMHR() > m) {
-                m = lap.getMHR();
+            if (lap.getMaxHR() > m) {
+                m = lap.getMaxHR();
             }
         }
         return mhr = m;
@@ -88,7 +88,7 @@ public abstract class Activity {
         }
         double s = 0;
         for (Laps lap: laps) {
-            s += lap.getAverageSpeed();
+            s += lap.getavgSpeed();
         }
         return averagespeed = s / laps.size();
     }
@@ -96,12 +96,15 @@ public abstract class Activity {
     public int getCal(Activity activity, UserProfile u) {
         CaloriesFactory calories = new CaloriesFactory();
         CaloriesCalculator c;
-        if (u.getWeight() != 0 && u.getAge() != 0 && u.getGender() != ' ') {
-            c = calories.createCalculator(CaloriesFactory.CalorieType.HEART_RATE);
-        } else {
-            c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);
+        if (u.getWeight() != 0) {
+            if (u.getAge() != 0 && u.getGender() != ' ') {
+                c = calories.createCalculator(CaloriesFactory.CalorieType.HEART_RATE);
+            } else {
+                c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);
+            }
+            return cal = c.calculate(activity, u);
         }
-        return cal = c.calculate(activity, u);
+        return 0;
     }
 
     public void setLaps(List<Laps> laps) {
