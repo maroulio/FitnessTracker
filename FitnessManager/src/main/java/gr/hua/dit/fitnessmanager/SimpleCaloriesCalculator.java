@@ -1,20 +1,26 @@
 package gr.hua.dit.fitnessmanager;
 
 public class SimpleCaloriesCalculator extends CaloriesCalculator {
+
     @Override
     public int calculate(Activity activity, UserProfile profile) {
+
+        if (!profile.isValidForCalories()) {
+            throw new IllegalStateException("Incomplete user profile");
+        }
 
         double mu;
 
         switch (activity.getSport().toLowerCase()) {
-            case "walking":  mu =3.5; break;
+            case "walking":  mu = 3.5; break;
             case "running":  mu = 9.8; break;
             case "cycling":  mu = 4.0; break;
             case "swimming": mu = 6.0; break;
-            default:         mu =  1.0;
+            default:         mu = 1.0;
         }
 
-        return (int) (mu * profile.getWeight()
-                * activity.getTimeSeconds());
+        double t = activity.getTimeSeconds() / 3600.0; // ώρες
+
+        return (int) Math.round(mu * profile.getWeight() * t);
     }
 }
