@@ -39,7 +39,7 @@ public class Tracks {
         int count = 0;
 
         for (Trackpoints tp : trackpoints) {
-            Double s = tp.getSpeed();
+            double s = tp.getSpeed();
             if (s != null && s > 0) {
                 sum += s;
                 count++;
