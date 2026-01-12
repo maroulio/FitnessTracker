@@ -18,7 +18,6 @@ public abstract class Activity {
     private double averagespeed;
     private int cal;
 
-
     public Activity() {}
 
     public String getSport() {
