@@ -35,7 +35,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                gr.hua.dit.main.FitnessManager
+                                gr.hua.dit.fitnessmanager.FitnessManager
                             </mainClass>
                         </manifest>
                     </archive>

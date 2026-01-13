@@ -4,4 +4,5 @@ public class Walking extends Activity {
     public Walking() {
         super();
     }
+            this.sport = "walking";
 }

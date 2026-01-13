@@ -40,7 +40,7 @@ public class Tracks {
 
         for (Trackpoints tp : trackpoints) {
             double s = tp.getSpeed();
-            if (s != null && s > 0) {
+            if ( s > 0) {
                 sum += s;
                 count++;
             }
@@ -60,6 +60,7 @@ public class Tracks {
     public int getAHR() {
         return (int) trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
+                .filter(hr -> hr > 0)
                 .average()
                 .orElse(0);
     }
@@ -67,10 +68,10 @@ public class Tracks {
     public int getMHR() {
         return trackpoints.stream()
                 .mapToInt(Trackpoints::getHeartRate)
+                .filter(hr -> hr > 0)
                 .max()
                 .orElse(0);
     }
-
     public void setTrackpoints(List<Trackpoints> trackpoints) {
         this.trackpoints = trackpoints;
     }

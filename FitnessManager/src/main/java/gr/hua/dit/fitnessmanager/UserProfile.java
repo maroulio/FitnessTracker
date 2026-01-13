@@ -18,7 +18,7 @@ public class UserProfile {
 
     public void setGender(char gender) {
         if (gender != 'm' && gender != 'f') {
-            throw new IllegalArgumentException("Gender must be 'M' or 'F'");
+            throw new IllegalArgumentException("Gender must be 'm' or 'f'");
         }
         this.gender = gender;
     }
