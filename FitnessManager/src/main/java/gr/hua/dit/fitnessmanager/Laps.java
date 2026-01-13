@@ -77,11 +77,11 @@ public class Laps {
                 .max()
                 .orElse(0);
     }
-    public int getCalories() {
-        if (calories != null){return calories; }
-        CaloriesFactory calories = new CaloriesFactory();
-        return calories;
-    }
+  //  public int getCalories() {
+      //  if (calories != null){return calories; }
+    //    CaloriesFactory calories = new CaloriesFactory();
+      //  return calories;
+   // }
 
 
     // --------------------
@@ -107,7 +107,7 @@ public class Laps {
     public void setTracks(List<Tracks> tracks) {
         this.tracks = tracks;
     }
-    public void setCalories(int calories) {
+   // public void setCalories(int calories) {
         this.calories = calories;
     }
     public void setStartTime(LocalDateTime startTime) {
