@@ -45,4 +45,3 @@ public class UserProfile {
         return (gender == 'm' || gender == 'f') && age > 0 && weight > 0;
     }
 }
-}

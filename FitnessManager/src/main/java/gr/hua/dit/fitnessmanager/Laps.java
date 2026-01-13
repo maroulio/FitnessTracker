@@ -107,7 +107,7 @@ public class Laps {
     public void setTracks(List<Tracks> tracks) {
         this.tracks = tracks;
     }
-   // public void setCalories(int calories) {
+   public void setCalories(int calories) {
         this.calories = calories;
     }
     public void setStartTime(LocalDateTime startTime) {
