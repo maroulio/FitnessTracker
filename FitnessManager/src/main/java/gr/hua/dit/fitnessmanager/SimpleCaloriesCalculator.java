@@ -14,7 +14,7 @@ public class SimpleCaloriesCalculator extends CaloriesCalculator {
         switch (activity.getSport().toLowerCase()) {
             case "walking":  mu = 3.5; break;
             case "running":  mu = 9.8; break;
-            case "cycling":  mu = 4.0; break;
+            case "cycling", "biking":  mu = 4.0; break;
             case "swimming": mu = 6.0; break;
             default:         mu = 1.0;
         }

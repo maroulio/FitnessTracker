@@ -16,7 +16,7 @@ public class HRCaloriesCalculator extends CaloriesCalculator {
 
         double calories;
 
-        if (profile.getGender() == 'M') {
+        if (profile.getGender() == 'm') {
             calories =
                     (-55.0969 + (0.6309 * h) + (0.1966 * w) + (0.2017 * a))
                             * t / 4.184;

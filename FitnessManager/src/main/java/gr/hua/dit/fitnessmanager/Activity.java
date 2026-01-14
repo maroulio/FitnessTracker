@@ -1,7 +1,5 @@
 package gr.hua.dit.fitnessmanager;
 
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +106,10 @@ public abstract class Activity {
 
     public void setLaps(List<Laps> laps) {
         this.laps = laps;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
     }
 
 }
