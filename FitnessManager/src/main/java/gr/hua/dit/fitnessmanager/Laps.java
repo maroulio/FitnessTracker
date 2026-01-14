@@ -13,11 +13,11 @@ public class Laps {
     private Double distanceMeters;
     private Integer avgHR;
     private Integer maxHR;
-    private int calories;
+    private Integer calories;
     private LocalDateTime StartTime;
     private Double avgSpeed;
 
-    // --------------------
+    public Laps() {}
 
     // --------------------
     public LocalDateTime getStartTime() {
@@ -75,11 +75,13 @@ public class Laps {
                 .max()
                 .orElse(0);
     }
-    //  public int getCalories() {
-    //  if (calories != null){return calories; }
-    //    CaloriesFactory calories = new CaloriesFactory();
-    //  return calories;
-    // }
+
+    public Integer getCalories() {
+        if (calories != null) {
+          return calories;
+        }
+        return null;
+    }
 
 
     // --------------------
