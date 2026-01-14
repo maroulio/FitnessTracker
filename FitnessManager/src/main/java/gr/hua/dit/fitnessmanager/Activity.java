@@ -95,7 +95,7 @@ public abstract class Activity {
     public int getCal(Activity activity, UserProfile u) {
         CaloriesFactory calories = new CaloriesFactory();
         CaloriesCalculator c;
-        if (u.getWeight() != 0) {
+        if (u.getWeight() != 0.0) {
             if (u.getAge() != 0 && u.getGender() != ' ') {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.HEART_RATE);
             } else {

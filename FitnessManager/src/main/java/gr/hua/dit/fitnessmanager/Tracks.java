@@ -10,7 +10,6 @@ import java.util.List;
 public class Tracks {
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
-
     public LocalDateTime getStartTime() {
         return trackpoints.isEmpty() ? null : trackpoints.get(0).getTimeStamp();
     }
@@ -40,7 +39,7 @@ public class Tracks {
 
         for (Trackpoints tp : trackpoints) {
             double s = tp.getSpeed();
-            if ( s > 0) {
+            if (s > 0) {
                 sum += s;
                 count++;
             }
