@@ -35,7 +35,8 @@ public class TCXParser {
                 String sport = getTextAttr("Sport", act);
                 ActivityFactory factory = new ActivityFactory();
                 Activity activity = factory.createActivity(sport);
-                activities.set(i, activity);
+                activities.add(activity);
+                activity.setSport(sport);
 
                 //get id as a local date time not string maybe
                 //String id = getText("Id", act);
