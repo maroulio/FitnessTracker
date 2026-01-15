@@ -48,7 +48,7 @@ public class FitnessManager {
                     for (Activity activity : act) {
                         if (activity.getSport() != null) {
                             System.out.println("Activity: " + activity.getSport());
-                            System.out.println("Total Time: " + activity.getTimeSeconds() / 60 + ":" + activity.getTimeSeconds() % 60);
+                            System.out.println("Total Time: " + activity.getTimeSeconds() / 3600 + ":" + activity.getTimeSeconds() % 3600 / 60);
                             System.out.println("Total Distance: " + activity.getDistanceMeters() / 1000);
                             if (activity.getAverageSpeed() != 0) {System.out.println("Avg Speed: " + activity.getAverageSpeed() + " km/h");}
                             if (activity.getAveragePace() != 0) {System.out.println("Avg Pace: " + activity.getAveragePace() + " min/km");}
