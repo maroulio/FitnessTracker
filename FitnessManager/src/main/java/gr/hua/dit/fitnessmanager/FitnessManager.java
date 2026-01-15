@@ -48,6 +48,7 @@ public class FitnessManager {
                     for (Activity activity : act) {
                         // if (activity.getSport() != null) {
                             System.out.println("Activity: " + activity.getSport());
+                            System.out.print("Total Time: ");
                             if ((int) activity.getTimeSeconds() / 3600 >= 0 && (int) activity.getTimeSeconds() / 3600 <= 9) {
                                 System.out.print('0');
                             }
