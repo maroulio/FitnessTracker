@@ -54,7 +54,7 @@ public class TCXParser {
         ArrayList<Laps> laps = new ArrayList<>();
         for (int i = 0; i < lapList.getLength(); i++) {
             Laps lapObj = new Laps();
-            laps.set(i, lapObj);
+            laps.add(lapObj);
             Node l = lapList.item(i);
             if (l.getNodeType() == Node.ELEMENT_NODE) {
                 Element lap = (Element) l;
@@ -131,7 +131,7 @@ public class TCXParser {
         ArrayList<Tracks> tracks = new ArrayList<>();
         for (int i = 0; i < trackList.getLength(); i++) {
             Tracks trackObj = new Tracks();
-            tracks.set(i, trackObj);
+            tracks.add(trackObj);
             Node t = trackList.item(i);
             if (t.getNodeType() == Node.ELEMENT_NODE) {
                 Element track = (Element) t;
@@ -148,7 +148,7 @@ public class TCXParser {
         ArrayList<Trackpoints> trackpoints = new ArrayList<>();
         for (int i = 0; i < trackpointList.getLength(); i++) {
             Trackpoints trackptObj = new Trackpoints();
-            trackpoints.set(i, trackptObj);
+            trackpoints.add(trackptObj);
             Node trckpt = trackpointList.item(i);
             if (trckpt.getNodeType() == Node.ELEMENT_NODE) {
                 Element tp = (Element) trckpt;
