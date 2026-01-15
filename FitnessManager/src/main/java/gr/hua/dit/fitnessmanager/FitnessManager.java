@@ -46,7 +46,7 @@ public class FitnessManager {
 
                 if (!act.isEmpty()) {
                     for (Activity activity : act) {
-                        if (activity.getSport() != null) {
+                        // if (activity.getSport() != null) {
                             System.out.println("Activity: " + activity.getSport());
                             System.out.println("Total Time: " + activity.getTimeSeconds() / 3600 + ":" + activity.getTimeSeconds() % 3600 / 60);
                             System.out.println("Total Distance: " + activity.getDistanceMeters() / 1000);
@@ -55,7 +55,7 @@ public class FitnessManager {
                             if (activity.getAHR() != 0) {System.out.println("Avg Heart Rate: " + activity.getAHR() + " bpm");}
                             // TODO: cal should only be calculated if -w is passed, fix getCal's bugs
                             if (activity.getCal(activity, u) != 0) {System.out.println("Total calories burned: " + activity.getCal(activity, u) + " cal");}
-                        }
+                        // }
                     }
                 }
             }
