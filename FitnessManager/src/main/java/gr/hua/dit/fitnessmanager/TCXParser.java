@@ -185,7 +185,7 @@ public class TCXParser {
 
                 double speed = Double.parseDouble(getText("ns3:Speed", extensionsTp));
                 trackptObj.setSpeed(speed);
-                System.out.println("i am buying time");
+                // System.out.println("i am buying time");
             }
         }
         return trackpoints;
