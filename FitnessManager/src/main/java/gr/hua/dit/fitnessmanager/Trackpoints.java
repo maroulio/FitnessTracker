@@ -14,8 +14,7 @@ public class Trackpoints {
 
     private double speed;
 
-    public Trackpoints() {
-    }
+    public Trackpoints() {}
 
     public Trackpoints(LocalDateTime timeStamp, double latitudeDegrees, double longitudeDegrees, double altitudeMeters, double distanceMeters, int heartRate, double speed) {
         this.timeStamp = timeStamp;

@@ -8,6 +8,8 @@ import java.util.List;
 public class Tracks {
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
+    public Tracks() {}
+
     public LocalDateTime getStartTime() {
         return trackpoints.isEmpty() ? null : trackpoints.get(0).getTimeStamp();
     }
