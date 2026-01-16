@@ -132,4 +132,35 @@ public abstract class Activity {
         this.sport = sport;
     }
 
+    public void setStartTime(LocalDateTime starttime) {
+        this.starttime = starttime;
+    }
+
+    public void setTimeSeconds(double timeseconds) {
+        this.timeseconds = timeseconds;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public void setAveragePace(double averagepace) {
+        this.averagepace = averagepace;
+    }
+
+    public void setAHR(int ahr) {
+        this.ahr = ahr;
+    }
+
+    public void setMHR(int mhr) {
+        this.mhr = mhr;
+    }
+
+    public void setAverageSpeed(double averagespeed) {
+        this.averagespeed = averagespeed;
+    }
+
+    public void setCal(int cal) {
+        this.cal = cal;
+    }
 }
