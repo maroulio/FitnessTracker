@@ -15,7 +15,7 @@ public class SimpleCaloriesCalculator extends CaloriesCalculator {
             default:         mu = 1.0;
         }
 
-        double t = activity.getTimeSeconds() / 3600.0; // ώρες
+        double t = activity.getTimeSeconds() / 3600.0;
         if (profile.getWeight() > 0) {
             return (int) Math.round(mu * profile.getWeight() * t);
         }

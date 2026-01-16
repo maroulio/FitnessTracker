@@ -48,7 +48,9 @@ public class Laps {
             return avgSpeed;
         }
         double t = gettotalTimeSeconds();
-        if (t == 0) {return 0;}
+        if (t == 0) {
+            return 0;
+        }
         return getDistanceMeters() / t;
     }
 

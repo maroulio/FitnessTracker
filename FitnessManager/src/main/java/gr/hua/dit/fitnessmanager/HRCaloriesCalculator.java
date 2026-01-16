@@ -7,19 +7,19 @@ public class HRCaloriesCalculator extends CaloriesCalculator {
 
         double h = 0;
         if (activity.getAHR() > 0) {
-            h = activity.getAHR();              // avg heart rate
+            h = activity.getAHR();
         }
         double w = 0;
         if (profile.getWeight() > 0) {
-            w = profile.getWeight();             // weight (kg)
+            w = profile.getWeight();
         }
         int a = 0;
         if (profile.getAge() > 0) {
-            a = profile.getAge();                   // age (years)
+            a = profile.getAge();
         }
         double t = 0;
         if (activity.getTimeSeconds() / 60.0 > 0) {
-            t = activity.getTimeSeconds() / 60.0; // time (minutes)
+            t = activity.getTimeSeconds() / 60.0;
         }
 
         double calories = 0;
