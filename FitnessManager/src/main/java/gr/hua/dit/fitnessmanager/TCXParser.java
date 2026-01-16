@@ -62,7 +62,7 @@ public class TCXParser {
                 Laps lapObj = new Laps();
                 laps.add(lapObj);
                 Node l = lapList.item(i);
-                if (l.getNodeType() == Node.ELEMENT_NODE) {
+                if (l != null && l.getNodeType() == Node.ELEMENT_NODE) {
                     Element lap = (Element) l;
 
                     String temp = getTextAttr("StartTime", lap);
@@ -155,7 +155,7 @@ public class TCXParser {
                 Tracks trackObj = new Tracks();
                 tracks.add(trackObj);
                 Node t = trackList.item(i);
-                if (t.getNodeType() == Node.ELEMENT_NODE) {
+                if (t != null && t.getNodeType() == Node.ELEMENT_NODE) {
                     Element track = (Element) t;
 
                     NodeList trackpointList = track.getElementsByTagName("Trackpoint");
@@ -174,7 +174,7 @@ public class TCXParser {
                 Trackpoints trackptObj = new Trackpoints();
                 trackpoints.add(trackptObj);
                 Node trckpt = trackpointList.item(i);
-                if (trckpt.getNodeType() == Node.ELEMENT_NODE) {
+                if (trckpt != null && trckpt.getNodeType() == Node.ELEMENT_NODE) {
                     Element tp = (Element) trckpt;
 
                     String temp = getText("Time", tp);
