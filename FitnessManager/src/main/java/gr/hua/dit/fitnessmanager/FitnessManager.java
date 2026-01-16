@@ -65,16 +65,16 @@ public class FitnessManager {
                             System.out.println((int) activity.getTimeSeconds() % 60);
                         }
                         if (activity.getDistanceMeters() != 0) {
-                            System.out.println("Total Distance: " + activity.getDistanceMeters() / 1000 + " km");
+                            System.out.printf("Total Distance: %.2f km\n", activity.getDistanceMeters() / 1000);
                         }
                         if (activity.getAverageSpeed() != 0) {
-                            System.out.println("Avg Speed: " + activity.getAverageSpeed() + " km/h");
+                            System.out.printf("Avg Speed: %.2f km/h\n", activity.getAverageSpeed());
                         }
                         if (activity.getAveragePace() != 0) {
-                            System.out.println("Avg Pace: " + activity.getAveragePace() + " min/km");
+                            System.out.printf("Avg Pace: %.2f min/km\n", activity.getAveragePace());
                         }
                         if (activity.getAHR() != 0) {
-                            System.out.println("Avg Heart Rate: " + activity.getAHR() + " bpm");
+                            System.out.printf("Avg Heart Rate: " + activity.getAHR() + " bpm\n");
                         }
                         // TODO: cal should only be calculated if -w is passed, fix getCal's bugs
                         if (activity.getCal(activity, u) != 0) {
