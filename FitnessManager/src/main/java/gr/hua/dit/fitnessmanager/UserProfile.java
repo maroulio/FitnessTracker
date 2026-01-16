@@ -9,7 +9,7 @@ public class UserProfile {
     public UserProfile() {
         this.gender = ' ';   // not set
         this.age = 0;        // not set
-        this.weight = 0.0;   // not set
+        this.weight = 0;   // not set
     }
 
     public char getGender() { return gender; }

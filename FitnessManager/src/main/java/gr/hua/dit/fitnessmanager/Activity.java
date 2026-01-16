@@ -91,7 +91,7 @@ public abstract class Activity {
     }
 
     public int getCal(Activity activity, UserProfile u) {
-        if (u.getWeight() != 0.0) {
+        if (u.getWeight() > 0) {
             if (laps.isEmpty()) {
                 return 0;
             }
@@ -110,7 +110,7 @@ public abstract class Activity {
             }
             CaloriesFactory calories = new CaloriesFactory();
             CaloriesCalculator c;
-            if (u.getAge() != 0 && u.getGender() != ' ') {
+            if (u.getAge() > 0 && u.getGender() == 'm' || u.getGender() == 'f') {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.HEART_RATE);
             } else {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);

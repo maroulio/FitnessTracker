@@ -14,25 +14,31 @@ public class FitnessManager {
         for (int i = 0; i < args.length; i++) {
             switch (args[i]) {
                 case "-a" -> {
-                    age = Integer.parseInt(args[++i]);
-                    // TODO: initialise attributes in user profile
-                    u.setAge(age);
-                    if (age < 0) {
-                        System.out.printf("Invalid age provided: `%d`", age);
+                    if (i + 1 < args.length) {
+                        age = Integer.parseInt(args[++i]);
+                        // TODO: initialise attributes in user profile
+                        u.setAge(age);
+                        if (age < 0) {
+                            System.out.printf("Invalid age provided: `%d`", age);
+                        }
                     }
                 }
                 case "-g" -> {
-                    gender = args[++i].toLowerCase().strip().charAt(0);
-                    u.setGender(gender);
-                    if ((gender != 'm') && (gender != 'f')) {
-                        System.out.printf("Invalid gender provided: `%c`", gender);
+                    if (i + 1 < args.length) {
+                        gender = args[++i].toLowerCase().strip().charAt(0);
+                        u.setGender(gender);
+                        if ((gender != 'm') && (gender != 'f')) {
+                            System.out.printf("Invalid gender provided: `%c`", gender);
+                        }
                     }
                 }
                 case "-w" -> {
-                    weight = Double.parseDouble(args[++i]);
-                    u.setWeight(weight);
-                    if (weight < 0) {
-                        System.out.printf("Invalid weight provided: `%f`", weight);
+                    if (i + 1 < args.length) {
+                        weight = Double.parseDouble(args[++i]);
+                        u.setWeight(weight);
+                        if (weight < 0) {
+                            System.out.printf("Invalid weight provided: `%f`", weight);
+                        }
                     }
                 }
             }
@@ -77,7 +83,6 @@ public class FitnessManager {
                         if (activity.getAHR() != 0) {
                             System.out.printf("Avg Heart Rate: " + activity.getAHR() + " bpm\n");
                         }
-                        // TODO: cal should only be calculated if -w is passed, fix getCal's bugs
                         if (activity.getCal(activity, u) != 0) {
                             System.out.println("Total calories burned: " + activity.getCal(activity, u) + " cal");
                         }
