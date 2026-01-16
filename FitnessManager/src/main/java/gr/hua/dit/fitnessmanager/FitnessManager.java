@@ -46,6 +46,7 @@ public class FitnessManager {
 
                 if (!act.isEmpty()) {
                     for (Activity activity : act) {
+                        System.out.println("--------------------------------------------------------------------------------");
                         if (activity.getSport() != null) {
                             System.out.println("Activity: " + activity.getSport());
                         }
@@ -80,6 +81,7 @@ public class FitnessManager {
                         if (activity.getCal(activity, u) != 0) {
                             System.out.println("Total calories burned: " + activity.getCal(activity, u) + " cal");
                         }
+                        System.out.println("--------------------------------------------------------------------------------");
                     }
                 }
             }
