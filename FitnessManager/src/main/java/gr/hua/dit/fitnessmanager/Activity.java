@@ -92,30 +92,34 @@ public abstract class Activity {
 
     public int getCal(Activity activity, UserProfile u) {
         if (u.getWeight() > 0) {
-            if (laps.isEmpty()) {
-                return 0;
-            }
-            int sum = 0;
-            boolean f = false;
-            for (Laps lap: laps) {
-                if (lap.getCalories() == null) {
-                    f = true;
-                    break;
-                } else {
-                    sum += lap.getCalories();
-                }
-            }
-            if (!f) {
-                return sum;
-            }
             CaloriesFactory calories = new CaloriesFactory();
             CaloriesCalculator c;
-            if (u.getAge() > 0 && u.getGender() == 'm' || u.getGender() == 'f') {
+            if (u.getAge() > 0 && (u.getGender() == 'm' || u.getGender() == 'f')) {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.HEART_RATE);
             } else {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);
             }
-            return cal = c.calculate(activity, u);
+            this.cal = c.calculate(activity, u);
+            if (this.cal == 0) {
+                if (laps.isEmpty()) {
+                    return 0;
+                }
+                int sum = 0;
+                boolean f = false;
+                for (Laps lap: laps) {
+                    if (lap.getCalories() == null) {
+                        f = true;
+                        break;
+                    } else {
+                        sum += lap.getCalories();
+                    }
+                }
+                if (!f) {
+                    return sum;
+                }
+            } else {
+                return cal;
+            }
         }
         return 0;
     }

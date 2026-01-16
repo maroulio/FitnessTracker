@@ -5,10 +5,6 @@ public class SimpleCaloriesCalculator extends CaloriesCalculator {
     @Override
     public int calculate(Activity activity, UserProfile profile) {
 
-        if (!profile.isValidForCalories()) {
-            throw new IllegalStateException("Incomplete user profile");
-        }
-
         double mu;
 
         switch (activity.getSport().toLowerCase()) {
@@ -20,7 +16,9 @@ public class SimpleCaloriesCalculator extends CaloriesCalculator {
         }
 
         double t = activity.getTimeSeconds() / 3600.0; // ώρες
-
-        return (int) Math.round(mu * profile.getWeight() * t);
+        if (profile.getWeight() > 0) {
+            return (int) Math.round(mu * profile.getWeight() * t);
+        }
+        return 0;
     }
 }

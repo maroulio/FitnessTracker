@@ -15,16 +15,6 @@ public class Trackpoints {
 
     public Trackpoints() {}
 
-    public Trackpoints(LocalDateTime timeStamp, double latitudeDegrees, double longitudeDegrees, double altitudeMeters, double distanceMeters, int heartRate, double speed) {
-        this.timeStamp = timeStamp;
-        this.latitudeDegrees = latitudeDegrees;
-        this.longitudeDegrees = longitudeDegrees;
-        this.altitudeMeters = altitudeMeters;
-        this.distanceMeters = distanceMeters;
-        this.heartRate = heartRate;
-        this.speed = speed;
-    }
-
     public LocalDateTime getTimeStamp() {
         return timeStamp;
     }
