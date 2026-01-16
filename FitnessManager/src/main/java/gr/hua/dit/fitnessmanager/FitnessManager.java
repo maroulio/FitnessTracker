@@ -15,29 +15,33 @@ public class FitnessManager {
             switch (args[i]) {
                 case "-a" -> {
                     if (i + 1 < args.length) {
-                        age = Integer.parseInt(args[++i]);
-                        // TODO: initialise attributes in user profile
-                        u.setAge(age);
-                        if (age < 0) {
-                            System.out.printf("Invalid age provided: `%d`", age);
+                        try {
+                            age = Integer.parseInt(args[++i]);
+                            if (age > 0) {
+                                u.setAge(age);
+                            }
+                        } catch (NumberFormatException e) {
+                            u.setAge(0);
                         }
                     }
                 }
                 case "-g" -> {
                     if (i + 1 < args.length) {
                         gender = args[++i].toLowerCase().strip().charAt(0);
-                        u.setGender(gender);
-                        if ((gender != 'm') && (gender != 'f')) {
-                            System.out.printf("Invalid gender provided: `%c`", gender);
+                        if (gender == 'm' || gender == 'f') {
+                            u.setGender(gender);
                         }
                     }
                 }
                 case "-w" -> {
                     if (i + 1 < args.length) {
-                        weight = Double.parseDouble(args[++i]);
-                        u.setWeight(weight);
-                        if (weight < 0) {
-                            System.out.printf("Invalid weight provided: `%f`", weight);
+                        try {
+                            weight = Double.parseDouble(args[++i]);
+                            if (weight > 0) {
+                                u.setWeight(weight);
+                            }
+                        } catch (NumberFormatException e) {
+                            u.setWeight(0);
                         }
                     }
                 }
