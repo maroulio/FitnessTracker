@@ -11,7 +11,6 @@ public class Trackpoints {
 
     //running 2 does not have heart rate
     private int heartRate;
-
     private double speed;
 
     public Trackpoints() {}

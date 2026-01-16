@@ -14,16 +14,19 @@ public class TCXParser {
     Document doc;
 
     public TCXParser(File tcx) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        if (tcx == null || !tcx.exists() || !tcx.isFile()) {
+            throw new IllegalArgumentException();
+        }
         try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
-            doc = builder.parse(tcx);
+            this.doc = builder.parse(tcx);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ArrayList<Activity> parse () {
+    public ArrayList<Activity> parse() {
         ArrayList<Activity> activities = new ArrayList<>();
         NodeList activityList = doc.getElementsByTagName("Activity");
         for (int i = 0; i < activityList.getLength(); i++) {
@@ -50,7 +53,7 @@ public class TCXParser {
         return activities;
     }
 
-    private ArrayList<Laps> parseLaps (NodeList lapList) {
+    private ArrayList<Laps> parseLaps(NodeList lapList) {
         ArrayList<Laps> laps = new ArrayList<>();
         for (int i = 0; i < lapList.getLength(); i++) {
             Laps lapObj = new Laps();
@@ -60,34 +63,46 @@ public class TCXParser {
                 Element lap = (Element) l;
 
                 String temp = getTextAttr("StartTime", lap);
-                temp = temp.replace("Z", "");
-                LocalDateTime startTime = LocalDateTime.parse(temp);
-                lapObj.setStartTime(startTime);
-
-                double totalTimeSeconds = Double.parseDouble(getText("TotalTimeSeconds", lap));
-                lapObj.settotalTimeSeconds(totalTimeSeconds);
-                double distanceMeters = Double.parseDouble(getText("DistanceMeters", lap));
-                lapObj.setDistanceMeters(distanceMeters);
+                if (temp != null && !temp.isBlank()) {
+                    temp = temp.replace("Z", "");
+                    LocalDateTime startTime = LocalDateTime.parse(temp);
+                    lapObj.setStartTime(startTime);
+                }
+                if (getText("TotalTimeSeconds", lap) != null && !getText("TotalTimeSeconds", lap).isBlank()) {
+                    double totalTimeSeconds = Double.parseDouble(getText("TotalTimeSeconds", lap));
+                    lapObj.settotalTimeSeconds(totalTimeSeconds);
+                }
+                if (getText("DistanceMeters", lap) != null && !getText("DistanceMeters", lap).isBlank()) {
+                    double distanceMeters = Double.parseDouble(getText("DistanceMeters", lap));
+                    lapObj.setDistanceMeters(distanceMeters);
+                }
 
                 //double maximumSpeed = Double.parseDouble(getText("MaximumSpeed", lap));
                 //lapObj.set.setMaximumSpeed(maximumSpeed);
-                int calories = Integer.parseInt(getText("Calories", lap));
-                lapObj.setCalories(calories);
-
-
-                //running 2 does not have abpm and mbpm
-                Element el = (Element) lap.getElementsByTagName("AverageHeartRateBpm").item(0);
-                if (tagExists("Value", el)) {
-                    int ABPM = Integer.parseInt(getText("Value", el));
-                    lapObj.setAvgHR(ABPM);
+                if (getText("Calories", lap) != null && !getText("Calories", lap).isBlank()) {
+                    int calories = Integer.parseInt(getText("Calories", lap));
+                    lapObj.setCalories(calories);
                 }
 
-
+                //running_activity_2.tcx does not have abpm and mbpm
+                Element el = (Element) lap.getElementsByTagName("AverageHeartRateBpm").item(0);
+                if (el != null) {
+                    if (tagExists("Value", el)) {
+                        if (getText("Value", el) != null && !getText("Value", el).isBlank()) {
+                            int ABPM = Integer.parseInt(getText("Value", el));
+                            lapObj.setAvgHR(ABPM);
+                        }
+                    }
+                }
 
                 el = ((Element) lap.getElementsByTagName("MaximumHeartRateBpm").item(0));
-                if (tagExists("Value", el)) {
-                    int MBPM = Integer.parseInt(getText("Value", el));
-                    lapObj.setMaxHR(MBPM);
+                if (el != null) {
+                    if (tagExists("Value", el)) {
+                        if (getText("Value", el) != null && !getText("Value", el).isBlank()) {
+                            int MBPM = Integer.parseInt(getText("Value", el));
+                            lapObj.setMaxHR(MBPM);
+                        }
+                    }
                 }
 
                 //the class does not have intensity?????
@@ -100,10 +115,12 @@ public class TCXParser {
 
                 Element extensions = (Element) ((Element) lap.getElementsByTagName("Extensions")
                         .item(lap.getElementsByTagName("Extensions").getLength() - 1)).getElementsByTagName("ns3:LX").item(0);
-
-                double avgSpeed = Double.parseDouble(getText("ns3:AvgSpeed", extensions));
-                lapObj.setAvgSpeed(avgSpeed);
-
+                if (extensions != null) {
+                    if (getText("ns3:AvgSpeed", extensions) != null && !getText("ns3:AvgSpeed", extensions).isBlank()) {
+                        double avgSpeed = Double.parseDouble(getText("ns3:AvgSpeed", extensions));
+                        lapObj.setAvgSpeed(avgSpeed);
+                    }
+                }
 
                 //run cadence in laps???????????????????????????????????
 
@@ -154,49 +171,75 @@ public class TCXParser {
                 Element tp = (Element) trckpt;
 
                 String temp = getText("Time", tp);
-                temp = temp.replace("Z", "");
-                LocalDateTime time = LocalDateTime.parse(temp);
-                trackptObj.setTimeStamp(time);
-
-                Element position = (Element) tp.getElementsByTagName("Position").item(0);
-
-                double latitudeDegrees = Double.parseDouble(getText("LatitudeDegrees", position));
-                trackptObj.setLatitudeDegrees(latitudeDegrees);
-                double longitudeDegrees = Double.parseDouble(getText("LongitudeDegrees", position));
-                trackptObj.setLongitudeDegrees(longitudeDegrees);
-                double altitudeMeters = Double.parseDouble(getText("AltitudeMeters", tp));
-                trackptObj.setAltitudeMeters(altitudeMeters);
-                double distanceMetersTrackpoint = Double.parseDouble(getText("DistanceMeters", tp));
-                trackptObj.setDistanceMeters(distanceMetersTrackpoint);
-
-                System.out.println(distanceMetersTrackpoint);
-
-                Element el = (Element) tp.getElementsByTagName("HeartRateBpm").item(0);
-                if (tagExists("Value", el)) {
-                    //running 2 does not have heart rate
-                    int HRB = Integer.parseInt(getText("Value", el));
-                    trackptObj.setHeartRate(HRB);
+                if (temp != null && !temp.isBlank()) {
+                    temp = temp.replace("Z", "");
+                    LocalDateTime time = LocalDateTime.parse(temp);
+                    trackptObj.setTimeStamp(time);
                 }
 
+                Element position = (Element) tp.getElementsByTagName("Position").item(0);
+                if (position != null) {
+                    if (getText("LatitudeDegrees", position) != null && !getText("LatitudeDegrees", position).isBlank()) {
+                        double latitudeDegrees = Double.parseDouble(getText("LatitudeDegrees", position));
+                        trackptObj.setLatitudeDegrees(latitudeDegrees);
+                    }
+                    if (getText("LongitudeDegrees", position) != null && !getText("LongitudeDegrees", position).isBlank()) {
+                        double longitudeDegrees = Double.parseDouble(getText("LongitudeDegrees", position));
+                        trackptObj.setLongitudeDegrees(longitudeDegrees);
+                    }
+                }
+                if (getText("AltitudeMeters", tp) != null && !getText("AltitudeMeters", tp).isBlank()) {
+                    double altitudeMeters = Double.parseDouble(getText("AltitudeMeters", tp));
+                    trackptObj.setAltitudeMeters(altitudeMeters);
+                }
+                if (getText("DistanceMeters", tp) != null && !getText("DistanceMeters", tp).isBlank()) {
+                    double distanceMetersTrackpoint = Double.parseDouble(getText("DistanceMeters", tp));
+                    trackptObj.setDistanceMeters(distanceMetersTrackpoint);
+                }
+
+                // System.out.println(distanceMetersTrackpoint);
+
+                Element el = (Element) tp.getElementsByTagName("HeartRateBpm").item(0);
+                if (el != null) {
+                    if (tagExists("Value", el)) {
+                        //running 2 does not have heart rate
+                        if (getText("Value", el) != null && !getText("Value", el).isBlank()) {
+                            int HRB = Integer.parseInt(getText("Value", el));
+                            trackptObj.setHeartRate(HRB);
+                        }
+                    }
+                }
 
                 Element extensionsTp = (Element)((Element) tp.getElementsByTagName("Extensions").item(0))
                         .getElementsByTagName("ns3:TPX").item(0);
 
-
-                double speed = Double.parseDouble(getText("ns3:Speed", extensionsTp));
-                trackptObj.setSpeed(speed);
+                if (extensionsTp != null) {
+                    if (getText("ns3:Speed", extensionsTp) != null && !getText("ns3:Speed", extensionsTp).isBlank()) {
+                        double speed = Double.parseDouble(getText("ns3:Speed", extensionsTp));
+                        trackptObj.setSpeed(speed);
+                    }
+                }
                 // System.out.println("i am buying time");
             }
         }
         return trackpoints;
     }
 
-    private String getTextAttr (String attr,Element e) {
-        return e.getAttribute(attr);
+    private String getTextAttr(String attr, Element e) {
+        if (e == null) {
+            return null;
+        }
+        return e.getAttribute(attr).isBlank() ? null : e.getAttribute(attr);
     }
 
-    private String getText (String tag, Element e) {
-        return e.getElementsByTagName(tag).item(0).getTextContent();
+    private String getText(String tag, Element e) {
+        if (e == null) {
+            return null;
+        }
+        if (e.getElementsByTagName(tag).item(0) == null) {
+            return null;
+        }
+        return e.getElementsByTagName(tag).item(0).getTextContent().isBlank() ? null : e.getElementsByTagName(tag).item(0).getTextContent();
     }
 
     /*private boolean attributeExists (String attr,Element e) {
@@ -208,6 +251,9 @@ public class TCXParser {
     }*/
 
     private boolean tagExists (String tag, Element e) {
+        if (e == null) {
+            return false;
+        }
         return (e.getElementsByTagName(tag).getLength() != 0);
     }
 }
