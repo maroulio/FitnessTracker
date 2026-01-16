@@ -30,6 +30,8 @@ public class FitnessManager {
                         gender = args[++i].toLowerCase().strip().charAt(0);
                         if (gender == 'm' || gender == 'f') {
                             u.setGender(gender);
+                        } else {
+                            u.setGender(' ');
                         }
                     }
                 }
