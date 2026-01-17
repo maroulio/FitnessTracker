@@ -8,6 +8,7 @@ public abstract class Activity {
     private List<Laps> laps = new ArrayList<>();
     protected String sport;
     private LocalDateTime starttime;
+    // Cached values (calculated on demand)
     private double timeseconds;
     private double distance;
     private double averagepace;
@@ -17,15 +18,26 @@ public abstract class Activity {
     private int cal;
 
     public Activity() {}
-
+    /** List of laps that belong to this activity */
     public String getSport() {
         return sport;
     }
-
+    /**
+     * Returns the sport type of the activity.
+     *
+     * @return sport name
+     */
     public LocalDateTime getStartTime() {
         return starttime;
     }
-
+    /**
+     * Calculates and returns the total duration of the activity in seconds.
+     *
+     * The total time is calculated as the sum of the durations
+     * of all laps.
+     *
+     * @return total time in seconds
+     */
     public double getTimeSeconds() {
         if (laps.isEmpty()) {
             return 0;

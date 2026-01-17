@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-
+// Class
 public class CaloriesFactory {
     public enum CalorieType {
         SIMPLE,
@@ -9,12 +9,9 @@ public class CaloriesFactory {
     public CaloriesFactory() {}
 
     public CaloriesCalculator createCalculator(CalorieType type) {
-        switch (type) {
-            case HEART_RATE:
-                return new HRCaloriesCalculator();
-            case SIMPLE:
-            default:
-                return new SimpleCaloriesCalculator();
-        }
+        return switch (type) {
+            case HEART_RATE -> new HRCaloriesCalculator();
+            default -> new SimpleCaloriesCalculator();
+        };
     }
 }

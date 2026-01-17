@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-
+// Class that calculates the calories if -w is typed but not -a and -g
 public class SimpleCaloriesCalculator extends CaloriesCalculator {
 
     @Override
