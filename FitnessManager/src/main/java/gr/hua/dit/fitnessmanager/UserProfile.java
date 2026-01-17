@@ -1,7 +1,7 @@
 package gr.hua.dit.fitnessmanager;
-
+///  A class that describes a user.
 public class UserProfile {
-
+/// Gender ,age and weight attributes of  the user
     private char gender;
     private int age;
     private double weight;
@@ -11,7 +11,7 @@ public class UserProfile {
         this.age = 0;
         this.weight = 0;
     }
-
+///  Getters and Setters for these attributes
     public char getGender() {
         return gender;
     }
