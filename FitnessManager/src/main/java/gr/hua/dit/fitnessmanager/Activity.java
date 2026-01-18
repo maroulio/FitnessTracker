@@ -47,7 +47,9 @@ public abstract class Activity {
      * @return total time in seconds or 0 if no laps exist
      */
     public double getTimeSeconds() {
-        if (laps.isEmpty()) {
+        if (timeseconds != 0) {
+            return timeseconds;
+        } else if (laps.isEmpty()) {
             return 0;
         }
         double s = 0;
@@ -66,7 +68,9 @@ public abstract class Activity {
      * @return total distance in meters or 0 if no laps exist
      */
     public double getDistanceMeters() {
-        if (laps.isEmpty()) {
+        if (distance != 0) {
+            return distance;
+        } else if (laps.isEmpty()) {
             return 0;
         }
         double s = 0;
@@ -85,7 +89,9 @@ public abstract class Activity {
      * @return average pace in minutes per kilometer or 0 if distance is zero
      */
     public double getAveragePace() {
-        if (distance == 0) {
+        if (averagepace != 0) {
+            return averagepace;
+        }else if (distance == 0) {
             return 0;
         }
         return averagepace = timeseconds / 60 / (distance / 1000);
@@ -100,7 +106,9 @@ public abstract class Activity {
      * @return average heart rate in beats per minute or 0 if no laps exist
      */
     public int getAHR() {
-        if (laps.isEmpty()) {
+        if (ahr != 0) {
+            return ahr;
+        }else if (laps.isEmpty()) {
             return 0;
         }
         int sum = 0;
@@ -118,7 +126,9 @@ public abstract class Activity {
      * @return maximum heart rate in beats per minute or 0 if no laps exist
      */
     public int getMHR() {
-        if (laps.isEmpty()) {
+        if (mhr != 0) {
+            return mhr;
+        }else if (laps.isEmpty()) {
             return 0;
         }
         int m = 0;
@@ -139,7 +149,9 @@ public abstract class Activity {
      * @return average speed in meters per second or 0 if no laps exist
      */
     public double getAverageSpeed() {
-        if (laps.isEmpty()) {
+        if (averagespeed != 0) {
+            return averagespeed;
+        }else if (laps.isEmpty()) {
             return 0;
         }
         double s = 0;
