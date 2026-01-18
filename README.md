@@ -2,7 +2,7 @@
 
     Attention! Open this .md file by IntelliJ IDEA application or Notepad with Formatted Markdown View, please!
 
-## Compilation instructions
+## Compilation Instructions
 
 1. Open a terminal or CLI (Command Line Interface)
 2. Go to ~/FitnessTracker/FitnessManager directory
@@ -11,7 +11,7 @@
 
    And the code would be compiled successfully!
 
-## Execution instructions
+## Execution Instructions
 
 1. Type 'java -jar ./target/FitnessManager-1.0.0.jar' command
 2. Add at least one .tcx file from the existing ones in ~/FitnessTracker/FitnessManager directory after inserting a space (SPACE) next to the command, for instance:
@@ -36,7 +36,7 @@
 
    And the code would run successfully!
 
-## Assignment application implementation
+## Assignment Application Implementation
 
 Part 1:
 
@@ -50,7 +50,7 @@ Part 2:
 
 1. ...
 
-## Program separation - Classes functionality
+## Program Separation - Classes Functionality
 
 1. Activity.java
 
@@ -135,7 +135,7 @@ Part 2:
 
 * Constructs a new Walking.java object by calling the superclass Activity.java constructor
 
-## Program use successful scenarios
+## Program Use Successful Scenarios
 
   After compilation, some scenarios in which the program code runs with success are the following:
 
@@ -147,7 +147,7 @@ Part 2:
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g m cycling_activity_1.tcx running_activity_1.tcx
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g f cycling_activity_1.tcx running_activity_1.tcx
 
-## Auxiliary .tcx files examples
+## Auxiliary .tcx Files Examples
 
   Auxiliary .tcx files the program code executes successfully with, can be found in ~/FitnessTracker/FitnessManager directory and by default, are the following:
 

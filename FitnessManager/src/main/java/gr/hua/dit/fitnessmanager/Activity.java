@@ -91,7 +91,7 @@ public abstract class Activity {
     public double getAveragePace() {
         if (averagepace != 0) {
             return averagepace;
-        }else if (distance == 0) {
+        } else if (distance == 0) {
             return 0;
         }
         return averagepace = timeseconds / 60 / (distance / 1000);
@@ -108,7 +108,7 @@ public abstract class Activity {
     public int getAHR() {
         if (ahr != 0) {
             return ahr;
-        }else if (laps.isEmpty()) {
+        } else if (laps.isEmpty()) {
             return 0;
         }
         int sum = 0;
@@ -128,7 +128,7 @@ public abstract class Activity {
     public int getMHR() {
         if (mhr != 0) {
             return mhr;
-        }else if (laps.isEmpty()) {
+        } else if (laps.isEmpty()) {
             return 0;
         }
         int m = 0;
@@ -151,7 +151,7 @@ public abstract class Activity {
     public double getAverageSpeed() {
         if (averagespeed != 0) {
             return averagespeed;
-        }else if (laps.isEmpty()) {
+        } else if (laps.isEmpty()) {
             return 0;
         }
         double s = 0;
