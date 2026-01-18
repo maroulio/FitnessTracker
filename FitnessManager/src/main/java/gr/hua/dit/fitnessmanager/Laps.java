@@ -15,7 +15,7 @@ public class Laps {
 
     private List<Tracks> tracks = new ArrayList<>();
 
-    // optional XML values
+    /// optional XML values
     private Double totalTimeSeconds;
     private Double distanceMeters;
     private Integer avgHR;
@@ -25,8 +25,6 @@ public class Laps {
     private Double avgSpeed;
 
     public Laps() {}
-
-
 
     /**
      * Returns the start time of the lap.
@@ -41,6 +39,7 @@ public class Laps {
         }
         return tracks.get(0).getStartTime();
     }
+
     /**
      * Returns the total duration of the lap in seconds.
      *
@@ -81,6 +80,7 @@ public class Laps {
         }
         return sum;
     }
+
     /**
      * Calculates the average speed of the lap.
      *
@@ -88,7 +88,7 @@ public class Laps {
      * Otherwise, it is calculated using:
      *      distance / time
      *
-     * @return average speed in meters per second, or 0 if time is zero
+     * @return average speed in meters per second or 0 if time is zero
      */
     public double getavgSpeed() {
         if (avgSpeed != null) {
@@ -100,6 +100,7 @@ public class Laps {
         }
         return getDistanceMeters() / t;
     }
+
     /**
      * Returns the average heart rate of the lap.
      *
@@ -126,6 +127,7 @@ public class Laps {
         }
         return count == 0 ? 0: sum / count;
     }
+
     /**
      * Returns the maximum heart rate of the lap.
      *
@@ -146,9 +148,9 @@ public class Laps {
                 max = hr;
             }
         }
-
         return max;
     }
+
     /**
      * Returns the calories burned in this lap if provided by the XML.
      *
@@ -162,9 +164,9 @@ public class Laps {
     }
 
 
-    // --------------------
-    // setters ONLY for XML
-    // --------------------
+    /// --------------------
+    /// setters ONLY for XML
+    /// --------------------
 
     public List<Tracks> getTracksList() {
         return tracks;

@@ -1,7 +1,7 @@
 package gr.hua.dit.fitnessmanager;
 
 public class HRCaloriesCalculator extends CaloriesCalculator {
-///Class that calculates calories if all arguments are typed (-w -a -g )
+/// Class that calculates calories if all arguments are typed (-w -a -g)
 
     @Override
     public int calculate(Activity activity, UserProfile profile) {

@@ -16,11 +16,12 @@ import java.util.List;
  */
 
 public class Tracks {
-    /** List of trackpoints that belong to tracks */
+    /// List of trackpoints that belong to tracks
 
     private List<Trackpoints> trackpoints = new ArrayList<>();
 
     public Tracks() {}
+
     /**
      * Returns the start time of the track.
      *
@@ -48,6 +49,7 @@ public class Tracks {
                 trackpoints.get(trackpoints.size() - 1).getTimeStamp()
         ).toSeconds();
     }
+
     /**
      * Calculates the total distance of the track in meters.
      *
@@ -66,6 +68,7 @@ public class Tracks {
 
         return Math.max(0, last - first);
     }
+
     /**
      * Calculates the average speed of the track.
      *
@@ -79,7 +82,7 @@ public class Tracks {
      */
     public double getAverageSpeed() {
 
-        // 1. Try to compute from trackpoint speeds
+        /// 1. Try to compute from trackpoint speeds
         double sum = 0;
         int count = 0;
 
@@ -92,15 +95,16 @@ public class Tracks {
         }
 
         if (count > 0) {
-            return sum / count;   // m/s
+            return sum / count;
         }
 
-        // 2. Fallback: distance / time
+        /// 2. Fallback: distance / time
         double t = getTimeSeconds();
         if (t == 0) return 0;
 
         return getDistanceMeters() / t;
     }
+
     /**
      * Calculates the average heart rate of the track.
      *
@@ -122,6 +126,7 @@ public class Tracks {
 
         return count == 0 ? 0 : sum / count;
     }
+
     /**
      * Returns the maximum heart rate recorded in the track.
      *
@@ -138,9 +143,9 @@ public class Tracks {
                 max = hr;
             }
         }
-
         return max;
     }
+
     /**
      * Sets the list of trackpoints for this track.
      *
@@ -149,6 +154,7 @@ public class Tracks {
     public void setTrackpoints(List<Trackpoints> trackpoints) {
         this.trackpoints = trackpoints;
     }
+
     /**
      * Returns the list of trackpoints of this track.
      *

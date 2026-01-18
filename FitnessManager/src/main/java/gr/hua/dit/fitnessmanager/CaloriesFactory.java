@@ -1,5 +1,5 @@
 package gr.hua.dit.fitnessmanager;
-// Class
+
 public class CaloriesFactory {
     public enum CalorieType {
         SIMPLE,

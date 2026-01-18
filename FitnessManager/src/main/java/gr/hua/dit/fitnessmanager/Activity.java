@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Activity {
+    /// List of laps that belong to this activity
     private List<Laps> laps = new ArrayList<>();
-    protected String sport;
+    private String sport;
+    private String name;
     private LocalDateTime starttime;
-    // Cached values (calculated on demand)
+    /// Cached values (calculated on demand)
     private double timeseconds;
     private double distance;
     private double averagepace;
@@ -18,25 +20,31 @@ public abstract class Activity {
     private int cal;
 
     public Activity() {}
-    /** List of laps that belong to this activity */
-    public String getSport() {
-        return sport;
-    }
+
     /**
      * Returns the sport type of the activity.
      *
      * @return sport name
      */
+    public String getSport() {
+        return sport;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public LocalDateTime getStartTime() {
         return starttime;
     }
+
     /**
      * Calculates and returns the total duration of the activity in seconds.
      *
      * The total time is calculated as the sum of the durations
      * of all laps.
      *
-     * @return total time in seconds
+     * @return total time in seconds or 0 if no laps exist
      */
     public double getTimeSeconds() {
         if (laps.isEmpty()) {
@@ -49,6 +57,14 @@ public abstract class Activity {
         return timeseconds = s;
     }
 
+    /**
+     * Calculates and returns the total distance of the activity in meters.
+     *
+     * The total distance is calculated as the sum of the distances
+     * of all laps.
+     *
+     * @return total distance in meters or 0 if no laps exist
+     */
     public double getDistanceMeters() {
         if (laps.isEmpty()) {
             return 0;
@@ -60,13 +76,29 @@ public abstract class Activity {
         return distance = s;
     }
 
-    public double getAveragePace() {    // It may not be returned with 2 decimal digits
+    /**
+     * Calculates and returns the average pace of the activity in minutes per kilometer.
+     *
+     * It is computed using time in minutes and distance in kilometers as:
+     *      time / distance
+     *
+     * @return average pace in minutes per kilometer or 0 if distance is zero
+     */
+    public double getAveragePace() {
         if (distance == 0) {
             return 0;
         }
         return averagepace = timeseconds / 60 / (distance / 1000);
     }
 
+    /**
+     * Calculates and returns the average heart rate of the activity in beats per minute.
+     *
+     * It is computed using the sum of the average heart rates of all laps and the number of laps as:
+     *      sum / number of laps
+     *
+     * @return average heart rate in beats per minute or 0 if no laps exist
+     */
     public int getAHR() {
         if (laps.isEmpty()) {
             return 0;
@@ -78,6 +110,13 @@ public abstract class Activity {
         return ahr = sum / laps.size();
     }
 
+    /**
+     * Returns the maximum heart rate of the activity in beats per minute.
+     *
+     * The maximum heart rate among all laps is used.
+     *
+     * @return maximum heart rate in beats per minute or 0 if no laps exist
+     */
     public int getMHR() {
         if (laps.isEmpty()) {
             return 0;
@@ -91,6 +130,14 @@ public abstract class Activity {
         return mhr = m;
     }
 
+    /**
+     * Calculates and returns the average speed of the activity in meters per second.
+     *
+     * It is computed using the sum of the average speeds of all laps and the number of laps as:
+     *      sum / number of laps
+     *
+     * @return average speed in meters per second or 0 if no laps exist
+     */
     public double getAverageSpeed() {
         if (laps.isEmpty()) {
             return 0;
@@ -142,6 +189,10 @@ public abstract class Activity {
 
     public void setSport(String sport) {
         this.sport = sport;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setStartTime(LocalDateTime starttime) {
