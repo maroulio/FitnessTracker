@@ -26,7 +26,6 @@
 
    java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g f cycling_activity_1.tcx running_activity_1.tcx
 
-   
 
     Attention!
     For the calories to show up on the screen, at least the feature of a positive valid weight is
@@ -39,15 +38,15 @@
 
 ## Assignment application implementation
 
-   Part 1:
+Part 1:
 
 1. The retrieval of data by the .tcx files and their forwarding to the program code is done!
 2. The presentation of the total statistics of every different activity imported by the .tcx files is done!
 3. The calculation and presentation of every activity's burned calories in the occasion of at least the weight feature insertion is done!
 
     Consequently, the whole Part 1 of the assignment is successfully completed and the requests are all done!
-
-    Part 2:
+   
+Part 2:
 
 1. ...
 
