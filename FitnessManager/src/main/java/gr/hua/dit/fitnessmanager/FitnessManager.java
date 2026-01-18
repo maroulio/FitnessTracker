@@ -89,7 +89,7 @@ public class FitnessManager {
                         if (activity.getAHR() != 0) {
                             System.out.printf("Avg Heart Rate: " + activity.getAHR() + " bpm\n");
                         }
-                        if (activity.getCal(activity, u) != 0) {
+                        if (activity.getCal(activity, u) > 0) {
                             System.out.println("Total calories burned: " + activity.getCal(activity, u) + " cal");
                         }
                         System.out.println("--------------------------------------------------------------------------------");

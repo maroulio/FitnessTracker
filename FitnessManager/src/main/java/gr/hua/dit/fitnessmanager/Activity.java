@@ -171,7 +171,7 @@ public abstract class Activity {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);
             }
             this.cal = c.calculate(activity, u);
-            if (this.cal == 0) {
+            if (this.cal <= 0) {
                 if (laps.isEmpty()) {
                     return 0;
                 }
