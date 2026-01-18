@@ -14,7 +14,7 @@
 ## Execution Instructions
 
 1. Type 'java -jar ./target/FitnessManager-1.0.0.jar' command
-2. Add at least one .tcx file from the existing ones in ~/FitnessTracker/FitnessManager directory after inserting a space (SPACE) next to the command, for instance:
+2. Add at least one .tcx file after inserting a space (SPACE) next to the command, for instance:
 
    java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx
 
@@ -28,9 +28,12 @@
 
 
     Attention!
-    For the calories to show up on the screen, at least the feature of a positive valid weight is
+    - For the calories to show up on the screen, at least the feature of a positive valid weight is
     required! Nevertheless, in case it is crucial that the calories computation is as precise as possible,
     the addition of the features of age and gender is highly recommended!
+    - For the .tcx files to be correctly imported in the execution command line, it is compulsory that the
+    absolute directory path where they can be found needs to be indicated! All the execution commands in the
+    present file, by default, have no specific path defined!
 
 3. Press 'ENTER'
 
@@ -149,7 +152,7 @@ Part 2:
 
 ## Auxiliary .tcx Files Examples
 
-  Auxiliary .tcx files the program code executes successfully with, can be found in ~/FitnessTracker/FitnessManager directory and by default, are the following:
+  Auxiliary .tcx files the program code executes successfully with, by default, are the following:
 
 * cycling_activity_1.tcx
 * pool_swim-activity_1.tcx
