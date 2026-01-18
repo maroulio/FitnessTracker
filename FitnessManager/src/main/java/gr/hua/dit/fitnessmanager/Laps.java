@@ -114,7 +114,7 @@ public class Laps {
         if (avgHR != null) {
             return avgHR;
         }
-       int sum = 0;
+        int sum = 0;
         int count = 0;
         for (Tracks t : tracks) {
             int n = t.getTrackpoints().size();
@@ -163,7 +163,6 @@ public class Laps {
         return null;
     }
 
-
     /// --------------------
     /// setters ONLY for XML
     /// --------------------
@@ -193,5 +192,7 @@ public class Laps {
     public void setStartTime(LocalDateTime startTime) {
         this.StartTime = startTime;
     }
-    public void setAvgSpeed(double speed) {this.avgSpeed = speed;}
+    public void setAvgSpeed(double speed) {
+        this.avgSpeed = speed;
+    }
 }
