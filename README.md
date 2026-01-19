@@ -1,7 +1,7 @@
 # FitnessTracker
 
     Attention! Open this .md file by IntelliJ IDEA application or Notepad with Formatted Markdown View, please!
-//
+
 ## Compilation Instructions
 
 1. Open a terminal or CLI (Command Line Interface)
