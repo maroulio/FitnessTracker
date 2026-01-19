@@ -12,7 +12,7 @@
    And the code would be compiled successfully!
 
 ## Execution Instructions
-
+Part 1
 1. Type 'java -jar ./target/FitnessManager-1.0.0.jar' command
 2. Add at least one .tcx file after inserting a space (SPACE) next to the command, for instance:
 
@@ -39,9 +39,14 @@
 
    And the code would run successfully!
 
+Part 2
+1. Type 'java -cp ./target/classes/gr.hua.dit.fitnessmanager.GUI' command
+2. Press 'ENTER'
+
+    And the window would open successfully!
 ## Assignment Application Implementation
 
-Part 1:
+Part 1
 
 1. The retrieval of data by the .tcx files and their forwarding to the program code is done!
 2. The presentation of the total statistics of every different activity imported by the .tcx files is done!
@@ -49,7 +54,7 @@ Part 1:
 
     Consequently, the whole Part 1 of the assignment is successfully completed and the requests are all done!
 
-Part 2:
+Part 2
 
 1. ...
 
