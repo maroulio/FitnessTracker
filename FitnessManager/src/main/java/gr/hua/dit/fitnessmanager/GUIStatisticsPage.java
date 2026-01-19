@@ -57,7 +57,8 @@ public class GUIStatisticsPage {
         JLabel calorieProgressLabel = new JLabel(temp);
         calorieProgressLabel.setBounds(150, 140, 300, 15);
 
-        bar.setBounds(new Rectangle());
+
+        //progress bar setup
         bar.setStringPainted(true);
         bar.setFont(new Font("MV Boli", Font.BOLD, 25));
         bar.setForeground(new Color(192, 213, 232));
@@ -68,12 +69,15 @@ public class GUIStatisticsPage {
 
         Activity activity = GUI.inputHandler.getActivity(0);
 
+        //time format
         duration = (int) activity.getTimeSeconds();
         hours = duration / (60 * 60);
         duration = duration % (60 * 60);
         mins = duration / 60;
         duration = duration % 60;
         secs = duration;
+
+        //statistics for the chosen activity setup
         JLabel label8 = new JLabel("Total time: " + hours + ":" + mins + ":" + secs);
         JLabel label9 = new JLabel("Total distance: " + String.format("%.3f", activity.getDistanceMeters() / 1000) + " km");
         JLabel label10 = new JLabel("Average pace: " + String.format("%.2f",activity.getAveragePace()) + " min/km");
@@ -81,10 +85,14 @@ public class GUIStatisticsPage {
         JLabel label12 = new JLabel("Average heart rate: " + activity.getAHR() + " bpm");
         JLabel label13 = new JLabel("Total calories burned: " + activity.getCal(GUI.inputHandler.getUserProfile()));
 
+
+        //setup disclaimer labels
         JLabel disclaimerLabel1 = new JLabel("if you want to calculate calories, ");
         disclaimerLabel1.setBounds(100, 160, 300, 15);
         JLabel disclaimerLabel2 = new JLabel("make sure user profile has the necessary data");
         disclaimerLabel2.setBounds(100, 180, 300, 15);
+
+
 
         nameList.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {

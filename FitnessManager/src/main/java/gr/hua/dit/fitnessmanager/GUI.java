@@ -1,11 +1,5 @@
 package gr.hua.dit.fitnessmanager;
 
-//TODO:
-// make sure that the calorie goal i just put 0 to on input handler does not cause any problems
-// souloupoma
-// readme
-// last visual details for GUI
-
 import javax.swing.*;
 
 public class GUI {
