@@ -150,7 +150,6 @@ Part 2
 ![](-w%2065.9%20-a%2020%20-g%20f%20cycling_activity_1%20running_activity_1.png)
 * java -cp ./target/classes/ gr.hua.dit.fitnessmanager.GUI
 
-![](GUI.png)
 ## Auxiliary .tcx Files Examples
 
 Auxiliary .tcx files the program code executes successfully with, by default, are the following:
