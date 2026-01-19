@@ -22,7 +22,7 @@ public class HRCaloriesCalculator extends CaloriesCalculator {
         if (activity.getTimeSeconds() / 60.0 > 0) {
             t = activity.getTimeSeconds() / 60.0;
         }
-
+/// Type selection depended on gender
         double calories = 0;
         if (profile.getGender() == 'm' || profile.getGender() == 'f') {
             if (profile.getGender() == 'm') {
