@@ -4,7 +4,7 @@ public class SimpleCaloriesCalculator extends CaloriesCalculator {
 
     @Override
     public int calculate(Activity activity, UserProfile profile) {
-/// mu  types
+/// mu types
         double mu;
 
         switch (activity.getSport().toLowerCase()) {

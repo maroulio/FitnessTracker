@@ -143,7 +143,11 @@ Part 2:
   After compilation, some scenarios in which the program code runs with success are the following:
 
 * java -jar ./target/FitnessManager-1.0.0.jar running_activity_2.tcx
+
+![](2026-01-19_123558.png)
 * java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx
+
+![](C:\Users\stacy\IdeaProjects\FitnessTracker\2026-01-19_123558.png)
 * java -jar ./target/FitnessManager-1.0.0.jar swim_activity_1.tcx pool_swim-activity_1.tcx
 * java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx running_activity_2.tcx pool_swim-activity_1.tcx swim_activity_1.tcx walking_activity_1.tcx
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 walking_activity_1.tcx running_activity_2.tcx
