@@ -144,10 +144,10 @@ Part 2:
 
 * java -jar ./target/FitnessManager-1.0.0.jar running_activity_2.tcx
 
-![](running_activity_2.tcx.png)
+![](running_activity_2.png)
 * java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx
 
-![](cycling_activity_1 running_activity_1.png)
+![](cycling_activity_1%20running_activity_1.png)
 * java -jar ./target/FitnessManager-1.0.0.jar swim_activity_1.tcx pool_swim-activity_1.tcx
 * java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx running_activity_2.tcx pool_swim-activity_1.tcx swim_activity_1.tcx walking_activity_1.tcx
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 walking_activity_1.tcx running_activity_2.tcx
