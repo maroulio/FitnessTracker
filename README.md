@@ -168,3 +168,15 @@ Auxiliary .tcx files the program code executes successfully with, by default, ar
 * running_activity_2.tcx
 * swim_activity_1.tcx
 * walking_activity_1.tcx
+
+## Classes Division
+Maria Stavrou - 2024090
+* ...
+* ...
+
+Manousos Fountoulakis - 2024109
+* ...
+* ...
+
+Anastasia Ntoutsi - 2024073
+* 
