@@ -161,7 +161,7 @@ public abstract class Activity {
         return averagespeed = s / laps.size();
     }
 
-    public int getCal(Activity activity, UserProfile u) {
+    public int getCal(UserProfile u) {
         if (u.getWeight() > 0) {
             CaloriesFactory calories = new CaloriesFactory();
             CaloriesCalculator c;
@@ -170,29 +170,27 @@ public abstract class Activity {
             } else {
                 c = calories.createCalculator(CaloriesFactory.CalorieType.SIMPLE);
             }
-            this.cal = c.calculate(activity, u);
+            this.cal = c.calculate(this, u);
             if (this.cal <= 0) {
                 if (laps.isEmpty()) {
                     return 0;
                 }
                 int sum = 0;
-                boolean f = false;
-                for (Laps lap: laps) {
-                    if (lap.getCalories() == null) {
-                        f = true;
-                        break;
-                    } else {
+                for (Laps lap : laps) {
+                    if (lap.getCalories() != null) {
                         sum += lap.getCalories();
                     }
                 }
-                if (!f) {
-                    return sum;
-                }
+                return sum;
             } else {
                 return cal;
             }
         }
         return 0;
+    }
+
+    public int getCal() {
+        return cal;
     }
 
     public void setLaps(List<Laps> laps) {

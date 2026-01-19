@@ -36,6 +36,7 @@ public class GUIUserProfilePage {
         weightLabel.setBounds(starting_x, 250, 100, 30);
         weight = new JTextField();
         weight.setBounds(starting_x, 280, 100, 50);
+        weight.addFocusListener(new DoubleParseFocusListener(weight));
 
         JLabel calorieGoalLabel = new JLabel("set daily calorie goal");
         calorieGoalLabel.setBounds(starting_x, 70, 150, 30);
@@ -60,10 +61,10 @@ public class GUIUserProfilePage {
 
             GUI.setPanel(GUI.landingPage.getPanel());
             GUI.inputHandler.setUserProfile(
-                    age.getText().trim().isBlank() ? 0 : Integer.parseInt(age.getText().trim()),
+                    age.getText().trim().isBlank() ? 0 : Integer.parseInt(age.getText().trim().replaceAll(",", "")),
                     (Character) gender.getSelectedItem(),
                     weight.getText().trim().isBlank() ? 0 : Double.parseDouble(weight.getText().trim()),
-                    cal.getText().trim().isBlank() ? 0 : Integer.parseInt(cal.getText().trim()),
+                    cal.getText().trim().isBlank() ? 0 : Integer.parseInt(cal.getText().trim().replaceAll(",", "")),
                     (String) typeList.getSelectedItem());
         });
 
@@ -91,7 +92,6 @@ public class GUIUserProfilePage {
         RPanel.add(disclaimerLabel3);
 
 
-
         panel.add(LPanel);
         panel.add(RPanel);
         panel.setSize(GUI.WINDOW_WIDTH, GUI.WINDOW_HEIGHT);
@@ -102,7 +102,7 @@ public class GUIUserProfilePage {
         return panel;
     }
 
-    public void setProfile(UserProfile u,int calGoal,String calculationType) {
+    public void setProfile(UserProfile u, int calGoal, String calculationType) {
         if (u == null) {
             return;
         }

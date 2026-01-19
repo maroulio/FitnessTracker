@@ -41,9 +41,6 @@ public class TCXParser {
                     Activity activity = factory.createActivity(sport);
                     activities.add(activity);
                     activity.setSport(sport);
-
-                    //get id as a local date time not string maybe
-                    //String id = getText("Id", act);
                     NodeList lapList = act.getElementsByTagName("Lap");
 
                     ArrayList<Laps> laps = parseLaps(lapList);
@@ -80,14 +77,12 @@ public class TCXParser {
                         lapObj.setDistanceMeters(distanceMeters);
                     }
 
-                    //double maximumSpeed = Double.parseDouble(getText("MaximumSpeed", lap));
-                    //lapObj.set.setMaximumSpeed(maximumSpeed);
+
                     if (getText("Calories", lap) != null && !getText("Calories", lap).isBlank()) {
                         int calories = Integer.parseInt(getText("Calories", lap));
                         lapObj.setCalories(calories);
                     }
 
-                    //running_activity_2.tcx does not have abpm and mbpm
                     Element el = (Element) lap.getElementsByTagName("AverageHeartRateBpm").item(0);
                     if (el != null) {
                         if (tagExists("Value", el)) {
@@ -108,14 +103,6 @@ public class TCXParser {
                         }
                     }
 
-                    //the class does not have intensity?????
-                    //String intensity = getText("Intensity", lap);
-                    //laps.get(i).
-
-                    //the class does not have trigger method?????
-                    //String triggerMethod = getText("TriggerMethod", lap);
-                    //laps.get(i).
-
                     Element extensions = (Element) ((Element) lap.getElementsByTagName("Extensions")
                             .item(lap.getElementsByTagName("Extensions").getLength() - 1)).getElementsByTagName("ns3:LX").item(0);
                     if (extensions != null) {
@@ -124,20 +111,6 @@ public class TCXParser {
                             lapObj.setAvgSpeed(avgSpeed);
                         }
                     }
-
-                    //run cadence in laps???????????????????????????????????
-
-                    //cadence not in biking, swimming, running - only in walking
-                /*if (tagExists("ns3:AvgRunCadence", extensions)) {
-                    //cadence not in biking, swimming, running - only in walking
-                    int avgRunCadence = Integer.parseInt(getText("ns3:AvgRunCadence", extensions));
-                    //laps.get(i)
-                }
-
-                if (tagExists("ns3:MaxRunCadence", extensions)) {
-                    int maxRunCadence = Integer.parseInt(getText("ns3:MaxRunCadence", extensions));
-                   // laps.get(i)
-                }*/
 
                     NodeList trackList = lap.getElementsByTagName("Track");
                     ArrayList<Tracks> tracks = parseTracks(trackList);
@@ -246,14 +219,6 @@ public class TCXParser {
         }
         return e.getElementsByTagName(tag).item(0).getTextContent().isBlank() ? null : e.getElementsByTagName(tag).item(0).getTextContent();
     }
-
-    /*private boolean attributeExists (String attr,Element e) {
-        return (e.hasAttribute(attr));
-    }*/
-
-    /*private boolean tagExists (String tag, Document d) {
-        return (d.getElementsByTagName(tag).getLength() != 0);
-    }*/
 
     private boolean tagExists (String tag, Element e) {
         if (e == null) {
