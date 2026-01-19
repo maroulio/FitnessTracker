@@ -92,7 +92,7 @@ Part 2
 9. GUIActivitiesPage.java
 * Handles activity page panel and components
 10. GUIInputHandler.java
-* Handles input and nescessary calculations for the interface
+* Handles input and necessary calculations for the interface
 11. GUILandingPage.java
 * Handles landing page panel and components
 12. GUIStatisticsPage.java
@@ -192,13 +192,24 @@ Maria Stavrou - 2024090
 * contributed to FintessManager (main)
 
 Manousos Fountoulakis - 2024109
-Activityfactory,other,Laps,Tracks,CaloryFactory,Userprofile,HRCaloriesCalculator,SimpleCaloriesCalculator,CaloriesCalculator
-
-
+* ActivityFactory
+* Other
+* Laps
+* Tracks
+* CaloryFactory
+* UserProfile
+* HRCaloriesCalculator
+* SimpleCaloriesCalculator
+* CaloriesCalculator
 
 Anastasia Ntoutsi - 2024073
-
-* 
-
-
-
+* Activity
+* Cycling
+* FitnessManager
+* Running
+* Swimming
+* Walking
+* contributed to CaloriesCalculator
+* contributed to CaloriesFactory
+* contributed to HRCaloriesCalculator
+* contributed to SimpleCaloriesCalculator
