@@ -61,100 +61,68 @@ Part 2
 ## Program Separation - Classes Functionality
 
 1. Activity.java
-
 * Contains the activity's name every time a new Activity.java object is created in TCXParser.java
 * Computes the total statistics of every activity by Laps.java and forwards them to main class FitnessManager.java
 * Returns total calories burnt if asked
-
 2. ActivityFactory.java
-
 * Creates and returns a new object which type is one of the Activity.java subclasses, Cycling.java, Other.java, Running.java, Swimming.java or Walking.java, for every new activity
-
 3. CaloriesCalculator.java
-
 * Serves mostly as an interface to support one same method that is used both in SimpleCaloriesCalculator.java and HRCaloriesCalculator.java
-
 4. CaloriesFactory.java
-
 * Consists of an enumeration for the specification of the calories calculation kind in accordance with the command flags values
 * Creates and returns a new object which type is one of the CaloriesCalculator.java subclasses, HRCaloriesCalculator.java or SimpleCaloriesCalculator.java, for every new calories calculation needed
-
 5. Cycling.java
-
 * Constructs a new Cycling.java object by calling the superclass Activity.java constructor
-
-6. FitnessManager.java
-
+6. DoubleParseFocusListener.java
+* 
+7. FitnessManager.java
 * Creates a new UserProfile.java object
 * Implements necessary checks for the flags -w, -a, -g in args table and args table contents respectively
 * Forwards the values of flags into UserProfile.java
 * Creates a new File.java object for every new existing .tcx file in the command executed
 * Creates a new TCXParser.java object to forward for parsing every new existing .tcx file in the command
 * Display the activity's statistics and calories burned if requested and available
-
-7. GUI.java
+8. GUI.java
 * 
-8. GUIActivitiesPage.java
+9. GUIActivitiesPage.java
 * 
-9. GUIInputHandler.java
+10. GUIInputHandler.java
 * 
-10. GUILandingPage.java
+11. GUILandingPage.java
 * 
-11. GUIStatisticsPage.java
+12. GUIStatisticsPage.java
 * 
-12. GUIUserProfilePage.java
+13. GUIUserProfilePage.java
 *
-13. HRCaloriesCalculator.java
-
+14. HRCaloriesCalculator.java
 * Calculates total calories burnt by using the relation which has a higher precision where not only weight but also age and gender are required
-
-14. Laps.java
-
+15. Laps.java
 * Retrieves the necessary statistics by TCXParser.java
 * Computes the statistics of every lap by Tracks.java and forwards them to Activity.java
 * Returns every lap's calories burned if needed
-
-15. Other.java
-
+16. Other.java
 * Constructs a new Other.java object by calling the superclass Activity.java constructor
-
-16. Running.java
-
+17. Running.java
 * Constructs a new Running.java object by calling the superclass Activity.java constructor
-
-17. SimpleCaloriesCalculator.java
-
+18. SimpleCaloriesCalculator.java
 * Defines the value of the multiplier needed for the computation
 * Calculates total calories burnt by using the relation which has a lower accuracy where only weight is used
-
-18. Swimming.java
-
+19. Swimming.java
 * Constructs a new Swimming.java object by calling the superclass Activity.java constructor
-
-19. TCXParser.java
-
+20. TCXParser.java
 * Receives a .tcx file
 * Checks the existence and validity of the file received
 * Parse the existent data from the .tcx file
 * Forward the useful data to the suitable classes every time, that is into Activity.java, Laps.java, Tracks.java & Trackpoints.java
-
-20. Trackpoints.java
-
+21. Trackpoints.java
 * Retrieves basically the appropriate statistics by TCXParser.java
-
-21. Tracks.java
-
+22. Tracks.java
 * Computes the statistics of every track by Trackpoints.java and forwards them to Laps.java
-
-22. UserProfile.java
-
+23. UserProfile.java
 * Contains the attributes weight, age & gender received from the command line
 * Initializes the attributes provided from the command line by incorrect default values so as to be manageable
-
-23. Walking.java
-
+24. Walking.java
 * Constructs a new Walking.java object by calling the superclass Activity.java constructor
-
 ## Program Use Successful Scenarios
 
   After compilation, some scenarios in which the program code runs with success are the following:
