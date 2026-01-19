@@ -56,7 +56,10 @@ Part 1
 
 Part 2
 
-1. ...
+1. The application allows users to upload one or multiple .tcx files and view detailed statistics for each activity along with aggregated results.
+2. Users can manually add new activities by providing the necessary information through the interface.
+3. The interface also enables users to input personal data such as age and gender, as well as select their preferred calorie calculation method.
+4. Additionally, users can set a daily calorie target, and the application tracks whether the goal is met each day, identifies missed targets, and shows the remaining calories needed to reach the goal for the current day.
 
 ## Program Separation - Classes Functionality
 
@@ -74,7 +77,7 @@ Part 2
 5. Cycling.java
 * Constructs a new Cycling.java object by calling the superclass Activity.java constructor
 6. DoubleParseFocusListener.java
-* 
+* Makes sure that the input from the useer is of double format
 7. FitnessManager.java
 * Creates a new UserProfile.java object
 * Implements necessary checks for the flags -w, -a, -g in args table and args table contents respectively
@@ -150,13 +153,13 @@ Part 2
 ![](-w%2065.9%20-a%2020%20-g%20f%20cycling_activity_1%20running_activity_1.png)
 * java -cp ./target/classes/ gr.hua.dit.fitnessmanager.GUI
 
-![](Screenshot 2026-01-19 224416.png)
+![](Screenshot%202026-01-19%20224416.png)
 
-![](Screenshot 2026-01-19 224145.png)
+![](Screenshot%202026-01-19%20224145.png)
 
-![](Screenshot 2026-01-19 224155.png)
+![](Screenshot%202026-01-19%20224155.png)
 
-![](Screenshot 2026-01-19 224205.png)
+![](Screenshot%202026-01-19%20224205.png)
 
 ## Auxiliary .tcx Files Examples
 
@@ -179,4 +182,5 @@ Manousos Fountoulakis - 2024109
 * ...
 
 Anastasia Ntoutsi - 2024073
+
 * 
