@@ -162,7 +162,7 @@ Part 2:
 ![](-w%2065.9%20-a%2020%20-g%20m%20cycling_activity_1%20running_activity_1.png)
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g f cycling_activity_1.tcx running_activity_1.tcx
 
-![](-w%2065.9%20-a%2020-g%20f%20cycling_activity_1%20running_activity_1.png)
+![](-w%2065.9%20-a%2020%20-g%20f%20cycling_activity_1%20running_activity_1.png)
 ## Auxiliary .tcx Files Examples
 
 Auxiliary .tcx files the program code executes successfully with, by default, are the following:
