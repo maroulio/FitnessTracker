@@ -11,23 +11,25 @@ public class GUILandingPage {
     private JPanel panel = new JPanel();
 
     public GUILandingPage() {
-        panel.setLayout(null);
-
         int starting_x = 20;
 
-        JLabel dateLabel = new JLabel("Please insert a date to add activities (day/month/year format)");
+
+        //date input labels and field setup
+        JLabel dateLabel = new JLabel("Please insert a date to add activities (ex. 01/01/2026)");
+        dateLabel.setBounds(starting_x, 280, 350, 15);
         JFormattedTextField dateInput = new JFormattedTextField(new SimpleDateFormat("dd/MM/yyyy"));
+        dateInput.setBounds(starting_x, 300, 400 - (2 * starting_x), 30);
 
+
+        //next button setup
         JButton nextButton = new JButton("NEXT");
-
-
+        nextButton.setBounds(0, 380, 400, 70);
         nextButton.addActionListener(e -> {
             Object val = dateInput.getValue();
             if (val == null) {
                 JOptionPane.showConfirmDialog(GUI.getFrame(), "Please input a correct date", "Invalid date", JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            System.out.printf("Got date: %s", val);
             LocalDate selectedDate = ((Date) val).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             GUI.inputHandler.setActiveDay(selectedDate);
             if (GUI.activitiesPage == null) {
@@ -38,36 +40,20 @@ public class GUILandingPage {
             GUI.setPanel(activitiesPagePanel);
         });
 
+
+        //miscellaneous components of landing page setup
         JEditorPane FMLabel = new JEditorPane("text/plain", "FM");
         Font customFont
                 = new Font("Serif", Font.BOLD, 60);
         FMLabel.setFont(customFont);
         FMLabel.setBackground(new Color(238, 238, 238));
-        JLabel fitnessManagerLabel = new JLabel("Fitness Manager");
-
-        JPanel LPanel = new JPanel();
-        LPanel.setLayout(null);
-        LPanel.setBounds(0, 0, 250, GUI.WINDOW_HEIGHT - 200);
-        JPanel MPanel = new JPanel();
-        MPanel.setLayout(null);
-
-        MPanel.setBounds(250, 0, 400, GUI.WINDOW_HEIGHT - 200);
         FMLabel.setBounds(145, 85, 110, 80);
-        MPanel.add(FMLabel);
+
+        JLabel fitnessManagerLabel = new JLabel("Fitness Manager");
         fitnessManagerLabel.setBounds(147, 160, 150, 30);
-        MPanel.add(fitnessManagerLabel);
-        dateLabel.setBounds(starting_x, 280, 350, 15);
-        MPanel.add(dateLabel);
-        dateInput.setBounds(starting_x, 300, 400 - (2 * starting_x), 30);
-        MPanel.add(dateInput);
-        nextButton.setBounds(0, 380, 400, 70);
-        MPanel.add(nextButton);
 
-
-        JPanel RPanel = new JPanel();
-        RPanel.setLayout(null);
-        RPanel.setBounds(650, 0, 250, GUI.WINDOW_HEIGHT - 200);
         JButton userProfileButton = new JButton("User Profile");
+        userProfileButton.setBounds(starting_x, 115, 140, 30);
         userProfileButton.addActionListener(e -> {
             if (GUI.userProfilePage == null) {
                 GUI.userProfilePage = new GUIUserProfilePage();
@@ -79,10 +65,36 @@ public class GUILandingPage {
 
         JLabel caloriesTextLabel1 = new JLabel("For calorie calculation,");
         caloriesTextLabel1.setBounds(starting_x, 80, 350, 15);
+
         JLabel caloriesTextLabel2 = new JLabel("please enter your personal information on your profile:");
         caloriesTextLabel2.setBounds(starting_x, 95, 350, 15);
-        userProfileButton.setBounds(starting_x, 115, 140, 30);
-        JPanel DPanel = new JPanel(); //down panel
+
+
+        //left panel setup
+        JPanel LPanel = new JPanel();
+        LPanel.setLayout(null);
+        LPanel.setBounds(0, 0, 250, GUI.WINDOW_HEIGHT - 200);
+
+
+        //middle panel setup and component additions
+        JPanel MPanel = new JPanel();
+        MPanel.setLayout(null);
+        MPanel.setBounds(250, 0, 400, GUI.WINDOW_HEIGHT - 200);
+        MPanel.add(FMLabel);
+        MPanel.add(fitnessManagerLabel);
+        MPanel.add(dateLabel);
+        MPanel.add(dateInput);
+        MPanel.add(nextButton);
+
+
+        //right  panel setup
+        JPanel RPanel = new JPanel();
+        RPanel.setLayout(null);
+        RPanel.setBounds(650, 0, 250, GUI.WINDOW_HEIGHT - 200);
+
+
+        //down panel setup and component additions
+        JPanel DPanel = new JPanel();
         DPanel.setLayout(null);
         DPanel.setBounds(0, GUI.WINDOW_HEIGHT - 200, GUI.WINDOW_WIDTH, 200);
         DPanel.add(caloriesTextLabel1);
@@ -90,6 +102,8 @@ public class GUILandingPage {
         DPanel.add(userProfileButton);
 
 
+        //panel setup and component additions
+        panel.setLayout(null);
         panel.add(LPanel);
         panel.add(MPanel);
         panel.add(RPanel);

@@ -1,11 +1,7 @@
 package gr.hua.dit.fitnessmanager;
 
 //TODO:
-// fix output format
 // make sure that the calorie goal i just put 0 to on input handler does not cause any problems
-// remove prints on terminal for part 2
-// add a date example like 01/01/2001 to the landing page
-// make disclaimers on profile page lower so that the user can have the dropdown open and read
 // souloupoma
 // readme
 // last visual details for GUI

@@ -14,7 +14,7 @@ public class GUIInputHandler {
     private HashMap<LocalDate, ArrayList<Activity>> activities = new HashMap<LocalDate, ArrayList<Activity>>();
     private TCXParser parser;
     private UserProfile u = new UserProfile();
-    private int calGoal = 0;
+    private int calGoal = 1;
     private String calorieCalculationType = "Simple";
     private LocalDate activeDay;
 
@@ -51,9 +51,6 @@ public class GUIInputHandler {
             averagePace += activity.getAveragePace();
             averageHR += activity.getAHR();
             cal += activity.getCal(u);
-
-            System.out.println("seconds, meters, avg speed, avg pace, avg heart rate:");
-            System.out.println(activity.getTimeSeconds() + activity.getDistanceMeters() + activity.getAverageSpeed() + activity.getAveragePace() + activity.getAHR());
         }
 
         int actSize = activities.size();

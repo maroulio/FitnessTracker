@@ -18,34 +18,44 @@ public class GUIStatisticsPage {
     }
 
     public void refreshStats() {
-        panel = new JPanel();
-        panel.setLayout(null);
+
+        //back button setup
         JButton backButton = new JButton("<--");
         backButton.setBounds(0, 0, 50, 20);
         backButton.addActionListener(e -> {
             GUI.setPanel(GUI.activitiesPage.getPanel());
         });
 
+
+        //statistic and calorie setup
         Activity stats = GUI.inputHandler.allActivityStatistics();
         bar.setMaximum(GUI.inputHandler.getCaloriesGoal());
         bar.setValue(stats.getCal());
+        bar.setBounds(100, 100, 300, 35);
 
+
+        //time format
+        int duration = (int) stats.getTimeSeconds();
+        int hours = duration / (60 * 60);
+        duration = duration % (60 * 60);
+        int mins = duration / 60;
+        duration = duration % 60;
+        int secs = duration;
+
+
+        //statistics for all the activities setup
         JLabel label1 = new JLabel("All of the activity statistics:");
-
-        //TODO fix time format
-        int h;
-        int mins;
-        int secs;
-
-        JLabel label2 = new JLabel("Total time: " +  stats.getTimeSeconds());
+        JLabel label2 = new JLabel("Total time: " + hours + ":" + mins + ":" + secs);
         JLabel label3 = new JLabel("Total distance: " + String.format("%.3f",stats.getDistanceMeters() / 1000) + " km");
         JLabel label4 = new JLabel("Average pace: " + String.format("%.2f", stats.getAveragePace()) + " min/km");
         JLabel label5 = new JLabel("Average speed: " + String.format("%.2f", stats.getAverageSpeed()) + " km/h");
         JLabel label6 = new JLabel("Average heart rate: " + stats.getAHR() + " bpm");
         JLabel label7 = new JLabel("Total calories burned: " + stats.getCal());
 
+
         String temp = (GUI.inputHandler.getCaloriesGoal() - stats.getCal()) + " calories left to reach daily goal!!!";
         JLabel calorieProgressLabel = new JLabel(temp);
+        calorieProgressLabel.setBounds(150, 140, 300, 15);
 
         bar.setBounds(new Rectangle());
         bar.setStringPainted(true);
@@ -57,7 +67,14 @@ public class GUIStatisticsPage {
         JComboBox nameList = new JComboBox(actNameStrings);
 
         Activity activity = GUI.inputHandler.getActivity(0);
-        JLabel label8 = new JLabel("Total time: " + activity.getTimeSeconds());
+
+        duration = (int) activity.getTimeSeconds();
+        hours = duration / (60 * 60);
+        duration = duration % (60 * 60);
+        mins = duration / 60;
+        duration = duration % 60;
+        secs = duration;
+        JLabel label8 = new JLabel("Total time: " + hours + ":" + mins + ":" + secs);
         JLabel label9 = new JLabel("Total distance: " + String.format("%.3f", activity.getDistanceMeters() / 1000) + " km");
         JLabel label10 = new JLabel("Average pace: " + String.format("%.2f",activity.getAveragePace()) + " min/km");
         JLabel label11 = new JLabel("Avg Speed: " + String.format("%.2f", activity.getAverageSpeed()) + " km/h");
@@ -74,7 +91,6 @@ public class GUIStatisticsPage {
                 String nameOfActivity = e.getItem().toString();
                 int indexOfActivity = Arrays.asList(actNameStrings).indexOf(nameOfActivity);
                 Activity act = GUI.inputHandler.getActivity(indexOfActivity);
-                System.out.printf("Got item: %s\n", nameOfActivity);
 
                 label8.setText("Total time: " + act.getTimeSeconds());
                 label9.setText("Total distance: " + act.getDistanceMeters() + " km");
@@ -85,22 +101,17 @@ public class GUIStatisticsPage {
             }
         });
 
+
+        //upper panel setup and additions
         JPanel UPanel = new JPanel();
         UPanel.setLayout(null);
         UPanel.setBounds(0, 0, GUI.WINDOW_WIDTH, 30);
-
         UPanel.add(backButton);
 
+
+        //left panel setup and additions
         JPanel LPanel = new JPanel();
-        JPanel RPanel = new JPanel();
-        JPanel DLPanel = new JPanel();
-        JPanel DRPanel = new JPanel();
-
         LPanel.setBounds(0, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 280);
-        RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 30, (GUI.WINDOW_WIDTH / 2) - 20, GUI.WINDOW_HEIGHT - 280);
-        DLPanel.setBounds(0, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
-        DRPanel.setBounds(GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
-
         LPanel.setLayout(new GridLayout(7, 1));
         LPanel.add(label1);
         LPanel.add(label2);
@@ -110,15 +121,11 @@ public class GUIStatisticsPage {
         LPanel.add(label6);
         LPanel.add(label7);
 
-        //progress bar
-        bar.setBounds(100, 100, 300, 35);
-        DLPanel.add(bar);
-        calorieProgressLabel.setBounds(150, 140, 300, 15);
-        DLPanel.add(calorieProgressLabel);
-        DLPanel.setLayout(null);
 
+        //right panel setup and additions
+        JPanel RPanel = new JPanel();
+        RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 30, (GUI.WINDOW_WIDTH / 2) - 20, GUI.WINDOW_HEIGHT - 280);
         RPanel.setLayout(new GridLayout(7, 1));
-
         RPanel.add(nameList);
         RPanel.add(label8);
         RPanel.add(label9);
@@ -127,11 +134,26 @@ public class GUIStatisticsPage {
         RPanel.add(label12);
         RPanel.add(label13);
 
+
+        //down right panel setup and additions
+        JPanel DLPanel = new JPanel();
+        DLPanel.setBounds(0, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
+        DLPanel.add(bar);
+        DLPanel.add(calorieProgressLabel);
+        DLPanel.setLayout(null);
+
+
+        //down right panel setup and additions
+        JPanel DRPanel = new JPanel();
+        DRPanel.setBounds(GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
         DRPanel.setLayout(null);
         DRPanel.add(disclaimerLabel1);
         DRPanel.add(disclaimerLabel2);
 
 
+        //panel setup and component additions
+        panel = new JPanel();
+        panel.setLayout(null);
         panel.add(new JSeparator(SwingConstants.VERTICAL));
         panel.add(UPanel);
         panel.add(LPanel);
