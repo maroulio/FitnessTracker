@@ -184,10 +184,12 @@ Maria Stavrou - 2024090
 * ...
 
 Manousos Fountoulakis - 2024109
-* ...
-* ...
+Activityfactory,other,Laps,Tracks,CaloryFactory,Userprofile,HRCaloriesCalculator,SimpleCaloriesCalculator,CaloriesCalculator
+
+
 
 Anastasia Ntoutsi - 2024073
 
 * 
+
 
