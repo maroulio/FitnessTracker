@@ -165,7 +165,7 @@ Part 2
 
 *the initial interface design
 
-![]()
+![](interface_design.png)
 
 ## Auxiliary .tcx Files Examples
 
@@ -180,8 +180,16 @@ Auxiliary .tcx files the program code executes successfully with, by default, ar
 
 ## Classes Division
 Maria Stavrou - 2024090
-* ...
-* ...
+* DoubleParseFocusListener
+* GUI
+* GUIActivitiesPage
+* GUIInputHandler
+* GUILandingPage
+* GUIStatisticsPage
+* GUIUserProfilePage
+* TCXParser
+* Trackpoints
+* contributed to FintessManager (main)
 
 Manousos Fountoulakis - 2024109
 Activityfactory,other,Laps,Tracks,CaloryFactory,Userprofile,HRCaloriesCalculator,SimpleCaloriesCalculator,CaloriesCalculator
@@ -191,5 +199,6 @@ Activityfactory,other,Laps,Tracks,CaloryFactory,Userprofile,HRCaloriesCalculator
 Anastasia Ntoutsi - 2024073
 
 * 
+
 
 
