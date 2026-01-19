@@ -16,15 +16,15 @@
 1. Type 'java -jar ./target/FitnessManager-1.0.0.jar' command
 2. Add at least one .tcx file after inserting a space (SPACE) next to the command, for instance:
 
-   java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx
+    java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx
 
-   Or add more .tcx files by inserting spaces (SPACE) between them, as follows:
+    Or add more .tcx files by inserting spaces (SPACE) between them, as follows:
 
-   java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx
+    java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx
 
-   Or insert diverse features, such as the weight, the age or the gender, by adding flags to the command, flag -w for weight, flag -a for age, flag -g for gender, which by default can only take the values of 'm' & 'f', and inserting spaces (SPACE) between them, so that the total calories burnt by an activity are calculated and popped onto the screen, as follows:
+    Or insert diverse features, such as the weight, the age or the gender, by adding flags to the command, flag -w for weight, flag -a for age, flag -g for gender, which by default can only take the values of 'm' & 'f', and inserting spaces (SPACE) between them, so that the total calories burnt by an activity are calculated and popped onto the screen, as follows:
 
-   java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g f cycling_activity_1.tcx running_activity_1.tcx
+    java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g f cycling_activity_1.tcx running_activity_1.tcx
 
 
     Attention!
@@ -48,7 +48,7 @@ Part 1:
 3. The calculation and presentation of every activity's burned calories in the occasion of at least the weight feature insertion is done!
 
     Consequently, the whole Part 1 of the assignment is successfully completed and the requests are all done!
-   
+
 Part 2:
 
 1. ...
@@ -149,14 +149,23 @@ Part 2:
 
 ![](cycling_activity_1%20running_activity_1.png)
 * java -jar ./target/FitnessManager-1.0.0.jar swim_activity_1.tcx pool_swim-activity_1.tcx
+
+![](swim_activity_1%20pool_swim-activity_1.png)
 * java -jar ./target/FitnessManager-1.0.0.jar cycling_activity_1.tcx running_activity_1.tcx running_activity_2.tcx pool_swim-activity_1.tcx swim_activity_1.tcx walking_activity_1.tcx
+
+![](cycling_activity_1%20running_activity_1%20running_activity_2%20pool_swim-activity_1%20swim_activity_1%20walking_activity_1.png)
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 walking_activity_1.tcx running_activity_2.tcx
+
+![](-w%2065.9%20walking_activity_1%20running_activity_2.png)
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g m cycling_activity_1.tcx running_activity_1.tcx
+
+![](-w%2065.9%20-a%2020%20-g%20m%20cycling_activity_1%20running_activity_1.png)
 * java -jar ./target/FitnessManager-1.0.0.jar -w 65.9 -a 20 -g f cycling_activity_1.tcx running_activity_1.tcx
 
+![](-w%2065.9%20-a%2020-g%20f%20cycling_activity_1%20running_activity_1.png)
 ## Auxiliary .tcx Files Examples
 
-  Auxiliary .tcx files the program code executes successfully with, by default, are the following:
+Auxiliary .tcx files the program code executes successfully with, by default, are the following:
 
 * cycling_activity_1.tcx
 * pool_swim-activity_1.tcx
