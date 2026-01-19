@@ -195,6 +195,10 @@ public abstract class Activity {
         return 0;
     }
 
+    public int getCal() {
+        return cal;
+    }
+
     public void setLaps(List<Laps> laps) {
         this.laps = laps;
     }

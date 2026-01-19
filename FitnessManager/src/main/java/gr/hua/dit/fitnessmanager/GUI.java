@@ -1,16 +1,14 @@
 package gr.hua.dit.fitnessmanager;
 
 //TODO:
-// make sure even if there is no value put in by the user i can print 0 in the place
-// elegxoi egkurwthtas & make text disappear when clicking user profile
+// fix output format
+// make sure that the calorie goal i just put 0 to on input handler does not cause any problems
+// remove prints on terminal for part 2
+// add a date example like 01/01/2001 to the landing page
+// make disclaimers on profile page lower so that the user can have the dropdown open and read
 // souloupoma
-// make sure i check if it has tcx format
-// last visual details for GUI
-
-//TODO
-// look if anything in part 1 is not working
 // readme
-
+// last visual details for GUI
 
 import javax.swing.*;
 

@@ -64,7 +64,6 @@ public class GUIActivitiesPage {
         JButton saveActButton = new JButton("Save Activity");
         saveActButton.addActionListener(e -> {
 
-            //if the fields for an activity are not empty
             GUI.inputHandler.newActivity(name.getText().trim(),
                     typeList.getSelectedItem().toString(),
                     Double.parseDouble(duration.getText().trim()),
@@ -72,13 +71,12 @@ public class GUIActivitiesPage {
                     Double.parseDouble(avgPace.getText().trim()),
                     Integer.parseInt(avgHR.getText().trim()),
                     Double.parseDouble(avgSpeed.getText().trim()));
-
-            name.setText(" ");
-            duration.setText(" ");
-            distance.setText(" ");
-            avgPace.setText(" ");
-            avgHR.setText(" ");
-            avgSpeed.setText(" ");
+            name.setText("name");
+            duration.setText("0.0");
+            distance.setText("0.0");
+            avgPace.setText("0.0");
+            avgHR.setText("0");
+            avgSpeed.setText("0.0");
             refreshList();
         });
 
@@ -110,6 +108,8 @@ public class GUIActivitiesPage {
         tcxButton.setBounds(starting_x, 40, 150, 50);
         LPanel.add(tcxButton);
 
+
+        //locations and add to panel
         activityInputLabel.setBounds(starting_x, 150, 350, 15);
         LPanel.add(activityInputLabel);
         nameLabel.setBounds(starting_x, 180, 350, 15);

@@ -42,8 +42,7 @@ public class GUIInputHandler {
         double averagePace = 0;
         int averageHR = 0;
 
-
-        for (Activity activity : activities.get(activeDay)) {   //activity.getTimeSeconds();
+        for (Activity activity : activities.get(activeDay)) {
             timeSeconds += activity.getTimeSeconds();
             distanceMeters += activity.getDistanceMeters();
             averageSpeed += activity.getAverageSpeed();
@@ -106,26 +105,19 @@ public class GUIInputHandler {
     }
 
     public void setUserProfile(int age, char gender, double weight, int calorieGoal, String preferredType) {
-        //TODO maybe check if input is correct and maybe parse input
-
         u.setAge(age);
         u.setGender(gender);
         u.setWeight(weight);
 
         calGoal = calorieGoal;
-
-        //TODO make calorie factory work with part 2 - make sure nothing from part 1 is missing in part 2
-
         CaloriesFactory calFactory = new CaloriesFactory();
 
         calorieCalculationType = preferredType;
-        //un comment it out when the method is not static anymore
         if (Objects.equals(preferredType, "Simple")) {
             calFactory.createCalculator(SIMPLE);
         } else {
             calFactory.createCalculator(HEART_RATE);
         }
-
     }
 
     public int getCalPercentage() {

@@ -15,7 +15,7 @@ public class GUILandingPage {
 
         int starting_x = 20;
 
-        JLabel dateLabel = new JLabel("Please insert a date to add activities (dd/mm/yyyy format)");
+        JLabel dateLabel = new JLabel("Please insert a date to add activities (day/month/year format)");
         JFormattedTextField dateInput = new JFormattedTextField(new SimpleDateFormat("dd/MM/yyyy"));
 
         JButton nextButton = new JButton("NEXT");

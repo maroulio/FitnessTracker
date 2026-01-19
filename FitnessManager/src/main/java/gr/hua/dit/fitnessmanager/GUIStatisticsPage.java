@@ -32,11 +32,9 @@ public class GUIStatisticsPage {
         //TODO fix time format
 
         JLabel label2 = new JLabel("Total time: " + stats.getTimeSeconds());
-        JLabel label3 = new JLabel("Total distance: " + stats.getDistanceMeters() / 1000 + " km");
-        JLabel label4 = new JLabel("Average pace: " + stats.getAveragePace() + " min/km");
-        JLabel label5 = new JLabel("Average speed: " + stats.getAverageSpeed() + " km/h");
-        //TODO print doubles with %.2
-
+        JLabel label3 = new JLabel("Total distance: " + String.format("%.3f",stats.getDistanceMeters() / 1000) + " km");
+        JLabel label4 = new JLabel("Average pace: " + String.format("%.2f", stats.getAveragePace()) + " min/km");
+        JLabel label5 = new JLabel("Average speed: " + String.format("%.2f", stats.getAverageSpeed()) + " km/h");
         JLabel label6 = new JLabel("Average heart rate: " + stats.getAHR() + " bpm");
         JLabel label7 = new JLabel("Total calories burned: "/* + act.getCal()*/);  //TODO fix this once getCal is fixed
 
@@ -66,9 +64,6 @@ public class GUIStatisticsPage {
         JLabel disclaimerLabel2 = new JLabel("make sure user profile has the necessary data");
         disclaimerLabel2.setBounds(100, 180, 300, 15);
 
-
-        //TODO fix time format
-
         nameList.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String nameOfActivity = e.getItem().toString();
@@ -97,7 +92,7 @@ public class GUIStatisticsPage {
         JPanel DRPanel = new JPanel();
 
         LPanel.setBounds(0, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 280);
-        RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 280);
+        RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 30, (GUI.WINDOW_WIDTH / 2) - 20, GUI.WINDOW_HEIGHT - 280);
         DLPanel.setBounds(0, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
         DRPanel.setBounds(GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
 
