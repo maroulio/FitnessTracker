@@ -6,13 +6,17 @@ public class SimpleCaloriesCalculator extends CaloriesCalculator {
     public int calculate(Activity activity, UserProfile profile) {
 /// mu types
         double mu;
-
-        switch (activity.getSport().toLowerCase()) {
-            case "walking":  mu = 3.5; break;
-            case "running":  mu = 9.8; break;
-            case "cycling", "biking":  mu = 4.0; break;
-            case "swimming": mu = 6.0; break;
-            default:         mu = 1.0;
+        if(activity.getSport() == null){
+            mu = 1.0;
+        }
+        else{
+            switch (activity.getSport().toLowerCase()) {
+                case "walking": mu = 3.5; break;
+                case "running": mu = 9.8; break;
+                case "cycling", "biking": mu = 4.0; break;
+                case "swimming": mu = 6.0; break;
+                default: mu = 1.0;
+            }
         }
 
         double t = activity.getTimeSeconds() / 3600.0;

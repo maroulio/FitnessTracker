@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class GUIStatisticsPage {
     private JPanel panel;
-    private JProgressBar bar = new JProgressBar(0, 100000);
+    private JProgressBar bar = new JProgressBar(0, GUI.inputHandler.getCaloriesGoal());
 
     public GUIStatisticsPage() {
         refreshStats();
@@ -27,21 +27,26 @@ public class GUIStatisticsPage {
         });
 
         Activity stats = GUI.inputHandler.allActivityStatistics();
+        bar.setMaximum(GUI.inputHandler.getCaloriesGoal());
+        bar.setValue(stats.getCal());
+
         JLabel label1 = new JLabel("All of the activity statistics:");
 
         //TODO fix time format
+        int h;
+        int mins;
+        int secs;
 
-        JLabel label2 = new JLabel("Total time: " + stats.getTimeSeconds());
+        JLabel label2 = new JLabel("Total time: " +  stats.getTimeSeconds());
         JLabel label3 = new JLabel("Total distance: " + String.format("%.3f",stats.getDistanceMeters() / 1000) + " km");
         JLabel label4 = new JLabel("Average pace: " + String.format("%.2f", stats.getAveragePace()) + " min/km");
         JLabel label5 = new JLabel("Average speed: " + String.format("%.2f", stats.getAverageSpeed()) + " km/h");
         JLabel label6 = new JLabel("Average heart rate: " + stats.getAHR() + " bpm");
-        JLabel label7 = new JLabel("Total calories burned: "/* + act.getCal()*/);  //TODO fix this once getCal is fixed
+        JLabel label7 = new JLabel("Total calories burned: " + stats.getCal());
 
-        String temp = (String.valueOf(GUI.inputHandler.getCaloriesLeft()) + " calories left to reach daily goal!!!");
+        String temp = (GUI.inputHandler.getCaloriesGoal() - stats.getCal()) + " calories left to reach daily goal!!!";
         JLabel calorieProgressLabel = new JLabel(temp);
 
-        bar.setValue(GUI.inputHandler.getCalPercentage());
         bar.setBounds(new Rectangle());
         bar.setStringPainted(true);
         bar.setFont(new Font("MV Boli", Font.BOLD, 25));
@@ -53,11 +58,11 @@ public class GUIStatisticsPage {
 
         Activity activity = GUI.inputHandler.getActivity(0);
         JLabel label8 = new JLabel("Total time: " + activity.getTimeSeconds());
-        JLabel label9 = new JLabel("Total distance: " + activity.getDistanceMeters() + " km");
-        JLabel label10 = new JLabel("Average pace: " + activity.getAveragePace() + " min/km");
-        JLabel label11 = new JLabel("Avg Speed: " + activity.getAverageSpeed() + " km/h");
+        JLabel label9 = new JLabel("Total distance: " + String.format("%.3f", activity.getDistanceMeters() / 1000) + " km");
+        JLabel label10 = new JLabel("Average pace: " + String.format("%.2f",activity.getAveragePace()) + " min/km");
+        JLabel label11 = new JLabel("Avg Speed: " + String.format("%.2f", activity.getAverageSpeed()) + " km/h");
         JLabel label12 = new JLabel("Average heart rate: " + activity.getAHR() + " bpm");
-        JLabel label13 = new JLabel("Total calories burned: " + activity.getCal(activity, GUI.inputHandler.getUserProfile()));
+        JLabel label13 = new JLabel("Total calories burned: " + activity.getCal(GUI.inputHandler.getUserProfile()));
 
         JLabel disclaimerLabel1 = new JLabel("if you want to calculate calories, ");
         disclaimerLabel1.setBounds(100, 160, 300, 15);
@@ -76,7 +81,7 @@ public class GUIStatisticsPage {
                 label10.setText("Average pace: " + act.getAveragePace() + " min/km");
                 label11.setText("Avg Speed: " + act.getAverageSpeed() + " km/h");
                 label12.setText("Average heart rate: " + act.getAHR() + " bpm");
-                label13.setText("Total calories burned: " + act.getCal(act, GUI.inputHandler.getUserProfile()));
+                label13.setText("Total calories burned: " + act.getCal(GUI.inputHandler.getUserProfile()));
             }
         });
 
@@ -125,7 +130,6 @@ public class GUIStatisticsPage {
         DRPanel.setLayout(null);
         DRPanel.add(disclaimerLabel1);
         DRPanel.add(disclaimerLabel2);
-
 
 
         panel.add(new JSeparator(SwingConstants.VERTICAL));

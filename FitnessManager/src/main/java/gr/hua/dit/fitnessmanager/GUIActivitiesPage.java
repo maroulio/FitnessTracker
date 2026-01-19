@@ -10,12 +10,11 @@ public class GUIActivitiesPage {
     private JPanel panel = new JPanel();
     private JFileChooser fileChooser = new JFileChooser();
     private JList activitiesList;
-    JTextField duration = new JTextField();
-    JTextField distance = new JTextField();
-    JTextField avgPace = new JTextField();
-    JTextField avgSpeed = new JTextField();
-    JFormattedTextField avgHR = new JFormattedTextField();
-
+    JTextField duration = new JTextField("0.0");
+    JTextField distance = new JTextField("0.0");
+    JTextField avgPace = new JTextField("0.0");
+    JTextField avgSpeed = new JTextField("0.0");
+    JFormattedTextField avgHR;
 
 
     public GUIActivitiesPage() {
@@ -27,6 +26,8 @@ public class GUIActivitiesPage {
         numberFormatter.setMaximum(Integer.MAX_VALUE);
         numberFormatter.setAllowsInvalid(false);
         numberFormatter.setCommitsOnValidEdit(true);
+        avgHR = new JFormattedTextField(numberFormatter);
+        avgHR.setText("0");
 
 
         JButton backButton = new JButton("<--");
@@ -55,7 +56,7 @@ public class GUIActivitiesPage {
         JLabel avgHRLabel = new JLabel("average heart rate");
         JLabel avgSpeedLabel = new JLabel("average speed");
 
-        JTextField name = new JTextField();
+        JTextField name = new JTextField("name");
 
         String[] activityTypeStrings = {"Walking", "Running", "Swimming", "Cycling", "Other"};
         JComboBox typeList = new JComboBox(activityTypeStrings);
@@ -80,6 +81,11 @@ public class GUIActivitiesPage {
             refreshList();
         });
 
+        duration.addFocusListener(new DoubleParseFocusListener(duration));
+        distance.addFocusListener(new DoubleParseFocusListener(distance));
+        avgPace.addFocusListener(new DoubleParseFocusListener(avgPace));
+        avgSpeed.addFocusListener(new DoubleParseFocusListener(avgSpeed));
+
 
         JButton statisticsButton = new JButton("View Statistics");
         statisticsButton.addActionListener(e -> {
@@ -96,6 +102,7 @@ public class GUIActivitiesPage {
         });
 
 
+        // split frame into Left-Right panels
         JPanel LPanel = new JPanel();
         LPanel.setLayout(null);
         JPanel RPanel = new JPanel();
@@ -168,7 +175,7 @@ public class GUIActivitiesPage {
         return panel;
     }
 
-    public void refreshList(){
+    public void refreshList() {
         activitiesList.setListData(GUI.inputHandler.getActivityNames().toArray());
     }
 }

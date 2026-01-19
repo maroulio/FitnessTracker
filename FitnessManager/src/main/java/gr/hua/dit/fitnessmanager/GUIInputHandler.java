@@ -14,8 +14,7 @@ public class GUIInputHandler {
     private HashMap<LocalDate, ArrayList<Activity>> activities = new HashMap<LocalDate, ArrayList<Activity>>();
     private TCXParser parser;
     private UserProfile u = new UserProfile();
-    private int calGoal = 1;
-    private int cal = 0;
+    private int calGoal = 0;
     private String calorieCalculationType = "Simple";
     private LocalDate activeDay;
 
@@ -42,13 +41,16 @@ public class GUIInputHandler {
         double averagePace = 0;
         int averageHR = 0;
 
+        int cal = 0;
+
+
         for (Activity activity : activities.get(activeDay)) {
             timeSeconds += activity.getTimeSeconds();
             distanceMeters += activity.getDistanceMeters();
             averageSpeed += activity.getAverageSpeed();
             averagePace += activity.getAveragePace();
             averageHR += activity.getAHR();
-            cal += activity.getCal(activity, u);
+            cal += activity.getCal(u);
 
             System.out.println("seconds, meters, avg speed, avg pace, avg heart rate:");
             System.out.println(activity.getTimeSeconds() + activity.getDistanceMeters() + activity.getAverageSpeed() + activity.getAveragePace() + activity.getAHR());
@@ -59,13 +61,14 @@ public class GUIInputHandler {
         ActivityFactory factory = new ActivityFactory();
         Activity act = factory.createActivity("Other");
         act.setName("statistics");
+        act.setSport("Other");
         if (actSize != 0) {
-            act.setTimeSeconds(timeSeconds /= actSize);
-            act.setDistance(distanceMeters /= actSize);
-            act.setAverageSpeed(averageSpeed /= actSize);
-            act.setAveragePace(averagePace /= actSize);
-            act.setAHR(averageHR /= actSize);
-            act.setCal(cal /= actSize);
+            act.setTimeSeconds(timeSeconds);
+            act.setDistance(distanceMeters);
+            act.setAverageSpeed(averageSpeed / actSize);
+            act.setAveragePace(averagePace / actSize);
+            act.setAHR(averageHR / actSize);
+            act.setCal(cal);
         }
 
         return act;
@@ -120,16 +123,6 @@ public class GUIInputHandler {
         }
     }
 
-    public int getCalPercentage() {
-        if (calGoal != 0) {
-            return cal / calGoal;
-        }
-        return 0;
-    }
-
-    public int getCaloriesLeft() {
-        return calGoal - cal;
-    }
     public int getCaloriesGoal() {
         return calGoal;
     }
