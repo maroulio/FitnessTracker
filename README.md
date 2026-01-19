@@ -150,13 +150,10 @@ Part 2
 ![](-w%2065.9%20-a%2020%20-g%20f%20cycling_activity_1%20running_activity_1.png)
 * java -cp ./target/classes/ gr.hua.dit.fitnessmanager.GUI
 
-![](Screenshot 2026-01-19 224416.png)
-
-![](Screenshot 2026-01-19 224145.png)
-
-![](Screenshot 2026-01-19 224155.png)
-
-![](Screenshot 2026-01-19 224205.png)
+![](GUI.png)
+![](GUIUserProfilePage.png)
+![](GUIActivitiesPage.png)
+![](GUIStatisticsPage.png)
 
 ## Auxiliary .tcx Files Examples
 
@@ -179,4 +176,4 @@ Manousos Fountoulakis - 2024109
 * ...
 
 Anastasia Ntoutsi - 2024073
-* 
+* ...
