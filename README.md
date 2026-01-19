@@ -61,6 +61,8 @@ Part 2
 3. The interface also enables users to input personal data such as age and gender, as well as select their preferred calorie calculation method.
 4. Additionally, users can set a daily calorie target, and the application tracks whether the goal is met each day, identifies missed targets, and shows the remaining calories needed to reach the goal for the current day.
 
+    Consequently, the whole Part 2 of the assignment is successfully completed and the requests are all done!
+
 ## Program Separation - Classes Functionality
 
 1. Activity.java
@@ -86,17 +88,17 @@ Part 2
 * Creates a new TCXParser.java object to forward for parsing every new existing .tcx file in the command
 * Display the activity's statistics and calories burned if requested and available
 8. GUI.java
-* 
+* Handles basic frame of the interface
 9. GUIActivitiesPage.java
-* 
+* Handles activity page panel and components
 10. GUIInputHandler.java
-* 
+* Handles input and nescessary calculations for the interface
 11. GUILandingPage.java
-* 
+* Handles landing page panel and components
 12. GUIStatisticsPage.java
-* 
+* Handles statistics page panel and components
 13. GUIUserProfilePage.java
-*
+* Handles user profile page panel and components
 14. HRCaloriesCalculator.java
 * Calculates total calories burnt by using the relation which has a higher precision where not only weight but also age and gender are required
 15. Laps.java
@@ -161,6 +163,10 @@ Part 2
 
 ![](Screenshot%202026-01-19%20224205.png)
 
+*the initial interface design
+
+![](interface_design.png)
+
 ## Auxiliary .tcx Files Examples
 
 Auxiliary .tcx files the program code executes successfully with, by default, are the following:
@@ -174,13 +180,25 @@ Auxiliary .tcx files the program code executes successfully with, by default, ar
 
 ## Classes Division
 Maria Stavrou - 2024090
-* ...
-* ...
+* DoubleParseFocusListener
+* GUI
+* GUIActivitiesPage
+* GUIInputHandler
+* GUILandingPage
+* GUIStatisticsPage
+* GUIUserProfilePage
+* TCXParser
+* Trackpoints
+* contributed to FintessManager (main)
 
 Manousos Fountoulakis - 2024109
-* ...
-* ...
+Activityfactory,other,Laps,Tracks,CaloryFactory,Userprofile,HRCaloriesCalculator,SimpleCaloriesCalculator,CaloriesCalculator
+
+
 
 Anastasia Ntoutsi - 2024073
 
 * 
+
+
+
