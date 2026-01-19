@@ -1,12 +1,11 @@
 package gr.hua.dit.fitnessmanager;
 
 //TODO:
-// make GUI windows actually readable
-// make female and male choices lowercase
-// make a disclaimer for this - make the types that require certain user profile information that is ot given by the user, unclickable - if an activity does not have heart rate the print that it was not possible to use the complex type
-// elegxoi egkurwthtas
+// make sure even if there is no value put in by the user i can print 0 in the place
+// elegxoi egkurwthtas & make text disappear when clicking user profile
 // souloupoma
 // make sure i check if it has tcx format
+// last visual details for GUI
 
 //TODO
 // look if anything in part 1 is not working
@@ -40,10 +39,6 @@ public class GUI {
 
         landingPage = new GUILandingPage();
         frame.setContentPane(landingPage.getPanel());
-
-        //GUIUserProfilePage userProfilePage = new GUIUserProfilePage();
-        //GUIStatisticsPage statisticsPage = new GUIStatisticsPage();
-        //GUIActivitiesPage activitiesPage = new GUIActivitiesPage();
     }
 
     public static void setPanel(JPanel panel) {

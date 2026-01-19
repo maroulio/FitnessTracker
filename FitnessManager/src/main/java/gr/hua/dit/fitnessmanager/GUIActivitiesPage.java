@@ -1,18 +1,34 @@
 package gr.hua.dit.fitnessmanager;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.io.File;
+import java.text.NumberFormat;
 
 public class GUIActivitiesPage {
     private JPanel panel = new JPanel();
     private JFileChooser fileChooser = new JFileChooser();
     private JList activitiesList;
+    JTextField duration = new JTextField();
+    JTextField distance = new JTextField();
+    JTextField avgPace = new JTextField();
+    JTextField avgSpeed = new JTextField();
+    JFormattedTextField avgHR = new JFormattedTextField();
+
 
 
     public GUIActivitiesPage() {
         panel.setLayout(null);
         int starting_x = 20;
+        NumberFormatter numberFormatter = new NumberFormatter(NumberFormat.getInstance());
+        numberFormatter.setValueClass(Integer.class);
+        numberFormatter.setMinimum(0);
+        numberFormatter.setMaximum(Integer.MAX_VALUE);
+        numberFormatter.setAllowsInvalid(false);
+        numberFormatter.setCommitsOnValidEdit(true);
+
+
         JButton backButton = new JButton("<--");
         backButton.setBounds(0, 0, 50, 20);
         backButton.addActionListener(e -> {
@@ -30,31 +46,20 @@ public class GUIActivitiesPage {
             }
         });
         JLabel activityInputLabel = new JLabel("or manually input an activity:");
-        //text ether here or inside the button and disappearing somehow when typing
         JLabel nameLabel = new JLabel("name this activity\n" +
                 "(ex. run 1)");
         JLabel typeLabel = new JLabel("choose activity type");
         JLabel durationLabel = new JLabel("duration (in seconds)");
         JLabel distanceLabel = new JLabel("distance (in meters)");
-        JLabel avgPaceLabel = new JLabel("average pace???");
+        JLabel avgPaceLabel = new JLabel("average pace");
         JLabel avgHRLabel = new JLabel("average heart rate");
-        JLabel maxHRLabel = new JLabel("maximum heart rate");
-        JLabel avgSpeedLabel = new JLabel("average speed???");
+        JLabel avgSpeedLabel = new JLabel("average speed");
 
         JTextField name = new JTextField();
 
         String[] activityTypeStrings = {"Walking", "Running", "Swimming", "Cycling", "Other"};
-        //noinspection rawtypes,unchecked
         JComboBox typeList = new JComboBox(activityTypeStrings);
         typeList.setBackground(Color.white);
-
-
-        JTextField duration = new JTextField();
-        JTextField distance = new JTextField();
-        JTextField avgPace = new JTextField();
-        JTextField avgHR = new JTextField();
-        JTextField maxHR = new JTextField();
-        JTextField avgSpeed = new JTextField();
 
         JButton saveActButton = new JButton("Save Activity");
         saveActButton.addActionListener(e -> {
@@ -66,20 +71,13 @@ public class GUIActivitiesPage {
                     Double.parseDouble(distance.getText().trim()),
                     Double.parseDouble(avgPace.getText().trim()),
                     Integer.parseInt(avgHR.getText().trim()),
-                    Integer.parseInt(maxHR.getText().trim()),
                     Double.parseDouble(avgSpeed.getText().trim()));
 
-
-//            System.out.println(Double.parseDouble(duration.getText()) + "jbcjbkdcb"  + Double.parseDouble(distance.getText()) + "h khsbk" + Double.parseDouble(avgSpeed.getText()) + "ljsfjbf" + Double.parseDouble(avgPace.getText()) + "sjbcjsbdc" + Integer.parseInt(avgHR.getText()));
-//            System.out.println("Activity page seconds, meters, avg speed, avg pace, avg heart rate:");
-
-            //TODO empty text fields here
             name.setText(" ");
             duration.setText(" ");
             distance.setText(" ");
             avgPace.setText(" ");
             avgHR.setText(" ");
-            maxHR.setText(" ");
             avgSpeed.setText(" ");
             refreshList();
         });
@@ -96,7 +94,6 @@ public class GUIActivitiesPage {
             }
             GUI.statisticsPage.refreshStats();
             JPanel statisticsPagePanel = GUI.statisticsPage.getPanel();
-            //statisticsPagePanel.setVisible(true);
             GUI.setPanel(statisticsPagePanel);
         });
 
@@ -105,7 +102,6 @@ public class GUIActivitiesPage {
         LPanel.setLayout(null);
         JPanel RPanel = new JPanel();
         RPanel.setLayout(null);
-        //panel.setBorder(BorderFactory.createEmptyBorder(300, 500, 300, 500));
         RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 0, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT);
         LPanel.setBounds(0, 0, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT);
 
@@ -138,36 +134,28 @@ public class GUIActivitiesPage {
         LPanel.add(avgPaceLabel);
         avgPace.setBounds(starting_x + 225, 200, 150, 50);
         LPanel.add(avgPace);
-        avgHRLabel.setBounds(starting_x + 225, 260, 350, 15);
-        LPanel.add(avgHRLabel);
-        avgHR.setBounds(starting_x + 225, 280, 150, 50);
-        LPanel.add(avgHR);
-        maxHRLabel.setBounds(starting_x + 225, 340, 350, 15);
-        LPanel.add(maxHRLabel);
-        maxHR.setBounds(starting_x + 225, 360, 150, 50);
-        LPanel.add(maxHR);
-        avgSpeedLabel.setBounds(starting_x + 225, 420, 350, 15);
+
+
+        avgSpeedLabel.setBounds(starting_x + 225, 260, 350, 15);
         LPanel.add(avgSpeedLabel);
-        avgSpeed.setBounds(starting_x + 225, 440, 150, 50);
+        avgSpeed.setBounds(starting_x + 225, 280, 150, 50);
         LPanel.add(avgSpeed);
+        avgHRLabel.setBounds(starting_x + 225, 340, 350, 15);
+        LPanel.add(avgHRLabel);
+        avgHR.setBounds(starting_x + 225, 360, 150, 50);
+        LPanel.add(avgHR);
 
         saveActButton.setBounds(starting_x + 225, 520, 150, 30);
         LPanel.add(saveActButton);
 
 
         panel.add(new JSeparator(SwingConstants.VERTICAL));
-
-        //showing files already put for that date
         RPanel.setLayout(null);
 
         activitiesList.setBounds(starting_x, 50, (GUI.WINDOW_WIDTH / 2) - 60, GUI.WINDOW_HEIGHT - 220);
         RPanel.add(activitiesList);
         statisticsButton.setBounds(starting_x, GUI.WINDOW_HEIGHT - 120, (GUI.WINDOW_WIDTH / 2) - 60, 50);
         RPanel.add(statisticsButton);
-
-
-        //button.setBorder(BorderFactory.);
-        //button.setMaximumSize(40, 90);
 
 
         panel.add(LPanel);

@@ -2,7 +2,6 @@ package gr.hua.dit.fitnessmanager;
 
 import javax.swing.*;
 import javax.swing.text.NumberFormatter;
-import java.awt.*;
 import java.text.NumberFormat;
 
 public class GUIUserProfilePage {
@@ -30,7 +29,7 @@ public class GUIUserProfilePage {
 
         JLabel genderLabel = new JLabel("Gender:");
         genderLabel.setBounds(starting_x, 160, 100, 30);
-        gender = new JComboBox<>(new Character[]{'M', 'F'});
+        gender = new JComboBox<>(new Character[]{'m', 'f'});
         gender.setBounds(starting_x, 190, 100, 50);
 
         JLabel weightLabel = new JLabel("Weight:");
@@ -43,8 +42,15 @@ public class GUIUserProfilePage {
         cal = new JFormattedTextField(numberFormatter);
         cal.setBounds(starting_x, 100, 100, 50);
 
-        String[] typeStrings = {"Simple", "Advanced"};
-        //noinspection rawtypes,unchecked
+        JLabel disclaimerLabel1 = new JLabel("simple calorie calculation requires weight input");
+        JLabel disclaimerLabel2 = new JLabel("advanced calorie calculation requires");
+        JLabel disclaimerLabel3 = new JLabel("weight, age, gender and heart rate input");
+        disclaimerLabel1.setBounds(starting_x, 250, 400, 15);
+        disclaimerLabel2.setBounds(starting_x, 280, 400, 15);
+        disclaimerLabel3.setBounds(starting_x, 295, 400, 15);
+
+
+        String[] typeStrings = {"Simple", "Advanced - more precise"};
         typeList = new JComboBox(typeStrings);
         typeList.setBounds(starting_x, 190, 250, 40);
 
@@ -62,10 +68,8 @@ public class GUIUserProfilePage {
         });
 
         JPanel LPanel = new JPanel();
-        LPanel.setBackground(Color.red);
-        //LPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+
         LPanel.setBounds(0, 0, 450, 650);
-//        LPanel.setLayout(new GridLayout(10, 2));
         LPanel.setLayout(null);
         LPanel.add(backButton);
         LPanel.add(ageLabel);
@@ -77,14 +81,15 @@ public class GUIUserProfilePage {
 
         JPanel RPanel = new JPanel();
         RPanel.setLayout(null);
-        RPanel.setBackground(Color.blue);
-        //RPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         RPanel.setBounds(450, 0, 450, 650);
-        //RPanel.setLayout(new GridLayout(4, 3));
         RPanel.add(calorieGoalLabel);
         RPanel.add(cal);
 
         RPanel.add(typeList);
+        RPanel.add(disclaimerLabel1);
+        RPanel.add(disclaimerLabel2);
+        RPanel.add(disclaimerLabel3);
+
 
 
         panel.add(LPanel);

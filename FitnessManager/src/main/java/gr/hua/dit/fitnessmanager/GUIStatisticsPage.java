@@ -32,44 +32,40 @@ public class GUIStatisticsPage {
         //TODO fix time format
 
         JLabel label2 = new JLabel("Total time: " + stats.getTimeSeconds());
-        JLabel label3 = new JLabel("Total distance: " + stats.getDistanceMeters() / 1000 + "km");
-        JLabel label4 = new JLabel("Average pace: " + stats.getAveragePace() + "min/km");
-        JLabel label5 = new JLabel("Average speed: " + stats.getAverageSpeed() + "km/h");
+        JLabel label3 = new JLabel("Total distance: " + stats.getDistanceMeters() / 1000 + " km");
+        JLabel label4 = new JLabel("Average pace: " + stats.getAveragePace() + " min/km");
+        JLabel label5 = new JLabel("Average speed: " + stats.getAverageSpeed() + " km/h");
         //TODO print doubles with %.2
 
-        //TODO add average speed?
-        JLabel label6 = new JLabel("Average heart rate: " + stats.getAHR() + "bpm");
+        JLabel label6 = new JLabel("Average heart rate: " + stats.getAHR() + " bpm");
         JLabel label7 = new JLabel("Total calories burned: "/* + act.getCal()*/);  //TODO fix this once getCal is fixed
 
-        //TODO this needs refreshing or not? i think no
         String temp = (String.valueOf(GUI.inputHandler.getCaloriesLeft()) + " calories left to reach daily goal!!!");
         JLabel calorieProgressLabel = new JLabel(temp);
 
         bar.setValue(GUI.inputHandler.getCalPercentage());
-        bar.setBounds(new Rectangle());  //maybe change it, there is one more set bounds method
+        bar.setBounds(new Rectangle());
         bar.setStringPainted(true);
         bar.setFont(new Font("MV Boli", Font.BOLD, 25));
-        bar.setForeground(new Color(130, 62, 201));
+        bar.setForeground(new Color(192, 213, 232));
 
-
-        //a dropdown for choosing a tcx or activity to view statistics
-
-        //TODO somehow make it work for each date
 
         String[] actNameStrings = GUI.inputHandler.getActivityNames().toArray(new String[0]);
-        //noinspection rawtypes
         JComboBox nameList = new JComboBox(actNameStrings);
-
-        //TODO somehow make dropdown work and get an activity
-
 
         Activity activity = GUI.inputHandler.getActivity(0);
         JLabel label8 = new JLabel("Total time: " + activity.getTimeSeconds());
-        JLabel label9 = new JLabel("Total distance: " + activity.getDistanceMeters() + "km");
-        JLabel label10 = new JLabel("Average pace: " + activity.getAveragePace() + "min/km");
-        JLabel label11 = new JLabel("Average heart rate: " + activity.getAHR() + "bpm");
-        JLabel label12 = new JLabel("Total calories burned: " + activity.getCal(activity, GUI.inputHandler.getUserProfile()));
-        JLabel label13 = new JLabel("12  ");
+        JLabel label9 = new JLabel("Total distance: " + activity.getDistanceMeters() + " km");
+        JLabel label10 = new JLabel("Average pace: " + activity.getAveragePace() + " min/km");
+        JLabel label11 = new JLabel("Avg Speed: " + activity.getAverageSpeed() + " km/h");
+        JLabel label12 = new JLabel("Average heart rate: " + activity.getAHR() + " bpm");
+        JLabel label13 = new JLabel("Total calories burned: " + activity.getCal(activity, GUI.inputHandler.getUserProfile()));
+
+        JLabel disclaimerLabel1 = new JLabel("if you want to calculate calories, ");
+        disclaimerLabel1.setBounds(100, 160, 300, 15);
+        JLabel disclaimerLabel2 = new JLabel("make sure user profile has the necessary data");
+        disclaimerLabel2.setBounds(100, 180, 300, 15);
+
 
         //TODO fix time format
 
@@ -81,10 +77,11 @@ public class GUIStatisticsPage {
                 System.out.printf("Got item: %s\n", nameOfActivity);
 
                 label8.setText("Total time: " + act.getTimeSeconds());
-                label9.setText("Total distance: " + act.getDistanceMeters() + "km");
-                label10.setText("Average pace: " + act.getAveragePace() + "min/km");
-                label11.setText("Average heart rate: " + act.getAHR() + "bpm");
-                label12.setText("Total calories burned: " + act.getCal(act, GUI.inputHandler.getUserProfile()));
+                label9.setText("Total distance: " + act.getDistanceMeters() + " km");
+                label10.setText("Average pace: " + act.getAveragePace() + " min/km");
+                label11.setText("Avg Speed: " + act.getAverageSpeed() + " km/h");
+                label12.setText("Average heart rate: " + act.getAHR() + " bpm");
+                label13.setText("Total calories burned: " + act.getCal(act, GUI.inputHandler.getUserProfile()));
             }
         });
 
@@ -96,17 +93,13 @@ public class GUIStatisticsPage {
 
         JPanel LPanel = new JPanel();
         JPanel RPanel = new JPanel();
-        JPanel DPanel = new JPanel();
-        JPanel MPanel = new JPanel();
-        LPanel.setBackground(Color.red);
-        RPanel.setBackground(Color.BLUE);
-        DPanel.setBackground(Color.YELLOW);
-        UPanel.setBackground(Color.ORANGE);
+        JPanel DLPanel = new JPanel();
+        JPanel DRPanel = new JPanel();
 
-        LPanel.setBounds(0, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 60);
-        RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 60);
-        DPanel.setBounds(0, GUI.WINDOW_HEIGHT - 30, GUI.WINDOW_WIDTH, 30);
-        MPanel.setBounds(0, 30, GUI.WINDOW_WIDTH, GUI.WINDOW_HEIGHT - 60);
+        LPanel.setBounds(0, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 280);
+        RPanel.setBounds(GUI.WINDOW_WIDTH / 2, 30, GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 280);
+        DLPanel.setBounds(0, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
+        DRPanel.setBounds(GUI.WINDOW_WIDTH / 2, GUI.WINDOW_HEIGHT - 250, GUI.WINDOW_WIDTH / 2, 250);
 
         LPanel.setLayout(new GridLayout(7, 1));
         LPanel.add(label1);
@@ -118,13 +111,11 @@ public class GUIStatisticsPage {
         LPanel.add(label7);
 
         //progress bar
-        bar.setBounds(150, 30, 150, 40);
-        DPanel.add(bar);
-        calorieProgressLabel.setBounds(150, 90, 150, 15);
-        DPanel.add(calorieProgressLabel);
-        DPanel.setLayout(null);
-
-        panel.add(new JSeparator(SwingConstants.VERTICAL));
+        bar.setBounds(100, 100, 300, 35);
+        DLPanel.add(bar);
+        calorieProgressLabel.setBounds(150, 140, 300, 15);
+        DLPanel.add(calorieProgressLabel);
+        DLPanel.setLayout(null);
 
         RPanel.setLayout(new GridLayout(7, 1));
 
@@ -136,16 +127,18 @@ public class GUIStatisticsPage {
         RPanel.add(label12);
         RPanel.add(label13);
 
-        MPanel.add(LPanel);
-        MPanel.add(RPanel);
+        DRPanel.setLayout(null);
+        DRPanel.add(disclaimerLabel1);
+        DRPanel.add(disclaimerLabel2);
 
 
 
+        panel.add(new JSeparator(SwingConstants.VERTICAL));
         panel.add(UPanel);
-        //panel.add(LPanel);
-        //panel.add(RPanel);
-        panel.add(DPanel);
-        panel.add(MPanel);
+        panel.add(LPanel);
+        panel.add(RPanel);
+        panel.add(DLPanel);
+        panel.add(DRPanel);
         panel.setSize(GUI.WINDOW_WIDTH, GUI.WINDOW_HEIGHT);
         panel.setVisible(true);
     }

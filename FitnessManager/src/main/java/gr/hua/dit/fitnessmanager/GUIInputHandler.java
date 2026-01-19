@@ -11,19 +11,12 @@ import static gr.hua.dit.fitnessmanager.CaloriesFactory.CalorieType.SIMPLE;
 
 public class GUIInputHandler {
 
-    //TODO private or public??????? the variables
-
-    //do something so that this can be grouped up by date
     private HashMap<LocalDate, ArrayList<Activity>> activities = new HashMap<LocalDate, ArrayList<Activity>>();
     private TCXParser parser;
-
     private UserProfile u = new UserProfile();
-
     private int calGoal = 1;
-
     private int cal = 0;
-private String calorieCalculationType = "Simple";
-
+    private String calorieCalculationType = "Simple";
     private LocalDate activeDay;
 
 
@@ -39,12 +32,10 @@ private String calorieCalculationType = "Simple";
         for (Activity activity : activities.get(activeDay)) {
             names.add(activity.getName());
         }
-
         return names;
     }
 
     public Activity allActivityStatistics() {
-        //make the results an activity object, so I can use the getters when printing results
         double timeSeconds = 0;
         double distanceMeters = 0;
         double averageSpeed = 0;
@@ -58,9 +49,6 @@ private String calorieCalculationType = "Simple";
             averageSpeed += activity.getAverageSpeed();
             averagePace += activity.getAveragePace();
             averageHR += activity.getAHR();
-
-            //TODO maybe add more getters for maxHR etc.
-            //TODO cal should only be calculated if -w is passed, fix getCal's bugs
             cal += activity.getCal(activity, u);
 
             System.out.println("seconds, meters, avg speed, avg pace, avg heart rate:");
@@ -69,12 +57,9 @@ private String calorieCalculationType = "Simple";
 
         int actSize = activities.size();
 
-
-        // make a var for the name of the activity
-
-        //TODO name the activity statistics
         ActivityFactory factory = new ActivityFactory();
         Activity act = factory.createActivity("Other");
+        act.setName("statistics");
         if (actSize != 0) {
             act.setTimeSeconds(timeSeconds /= actSize);
             act.setDistance(distanceMeters /= actSize);
@@ -85,12 +70,9 @@ private String calorieCalculationType = "Simple";
         }
 
         return act;
-
-        //maybe put it with the other activities of the day or not - actually better nor, it would be good to calculate it every time
     }
 
     public void newActivity(File tcx, String name) {
-        //TODO check if file is of tcx format?
 
         parser = new TCXParser(tcx);
         ArrayList<Activity> act = parser.parse();
@@ -105,8 +87,7 @@ private String calorieCalculationType = "Simple";
         activities.get(activeDay).addAll(act);
     }
 
-    public void newActivity(String name, String type, double duration, double distance, double avgPace, int avgHR, int maxHR, double avgSpeed) {
-        //TODO: maybe make a constructor in activity with these parameters while keeping the simple one
+    public void newActivity(String name, String type, double duration, double distance, double avgPace, int avgHR, double avgSpeed) {
 
         ActivityFactory factory = new ActivityFactory();
         Activity act = factory.createActivity(type);
@@ -115,7 +96,6 @@ private String calorieCalculationType = "Simple";
         act.setDistance(distance);
         act.setAveragePace(avgPace);
         act.setAHR(avgHR);
-        act.setMHR(maxHR);
         act.setAverageSpeed(avgSpeed);
 
         if (!activities.containsKey(activeDay)) {
